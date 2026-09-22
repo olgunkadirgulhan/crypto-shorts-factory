@@ -14,5 +14,21 @@
     "title": "Weekly Market Pulse: Bitcoin, Ethereum, NEAR and Arbitrum Lead a Green Crypto Week",
     "videoId": null,
     "durationSec": 164.532
+  },
+  {
+    "at": "2026-09-22T13:32:26.523Z",
+    "coinIds": [
+      "bitcoin",
+      "ethereum",
+      "akedo",
+      "sui",
+      "venice-token",
+      "uniswap",
+      "pepe",
+      "bittensor"
+    ],
+    "title": "Weekly Market Pulse: Bitcoin, Ethereum, Sui, Uniswap and TAO Headline a Green Week",
+    "videoId": null,
+    "durationSec": 252.192
   }
 ]

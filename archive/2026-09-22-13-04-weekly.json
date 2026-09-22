@@ -1,0 +1,332 @@
+{
+  "coins": [
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": "akedo",
+      "name": "Akedo",
+      "symbol": "AKE",
+      "image": "https://coin-images.coingecko.com/coins/images/68410/large/akedo.png?1755678461"
+    },
+    {
+      "id": "sui",
+      "name": "Sui",
+      "symbol": "SUI",
+      "image": "https://coin-images.coingecko.com/coins/images/26375/large/sui-ocean-square.png?1727791290"
+    },
+    {
+      "id": "venice-token",
+      "name": "Venice Token",
+      "symbol": "VVV",
+      "image": "https://coin-images.coingecko.com/coins/images/54023/large/VVV_Token_Transparent.png?1741856877"
+    },
+    {
+      "id": "uniswap",
+      "name": "Uniswap",
+      "symbol": "UNI",
+      "image": "https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669"
+    },
+    {
+      "id": "pepe",
+      "name": "Pepe",
+      "symbol": "PEPE",
+      "image": "https://coin-images.coingecko.com/coins/images/29850/large/pepe-token.jpeg?1696528776"
+    },
+    {
+      "id": "bittensor",
+      "name": "Bittensor",
+      "symbol": "TAO",
+      "image": "https://coin-images.coingecko.com/coins/images/28452/large/ARUsPeNQ_400x400.jpeg?1696527447"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 86095,
+      "priceText": "86,095",
+      "change7dPct": 11.85,
+      "change24hPct": 1.04,
+      "weekHigh": 87330,
+      "weekLow": 75038,
+      "weekHighText": "87,330",
+      "weekLowText": "75,038",
+      "rangePositionPct": 90,
+      "rsi14": 75.5,
+      "rsiZone": "overbought",
+      "sma20": 82739.65,
+      "sma20Text": "82,740",
+      "aboveSma20": true,
+      "volume24hUsd": 50449921609,
+      "volume24hText": "50.45B",
+      "marketCapUsd": 1729295326200,
+      "marketCapText": "1.73T",
+      "marketCapRank": 1,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 2760.63,
+      "priceText": "2,761",
+      "change7dPct": 11.32,
+      "change24hPct": 0.9,
+      "weekHigh": 2804.42,
+      "weekLow": 2361.16,
+      "weekHighText": "2,804",
+      "weekLowText": "2,361",
+      "rangePositionPct": 90,
+      "rsi14": 68.8,
+      "rsiZone": "neutral",
+      "sma20": 2667.3885000000005,
+      "sma20Text": "2,667",
+      "aboveSma20": true,
+      "volume24hUsd": 20062146357,
+      "volume24hText": "20.06B",
+      "marketCapUsd": 336890369684,
+      "marketCapText": "336.89B",
+      "marketCapRank": 2,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 0.052391,
+      "priceText": "0.0524",
+      "change7dPct": 120.84,
+      "change24hPct": -5.11,
+      "weekHigh": 0.146656,
+      "weekLow": 0.01724942,
+      "weekHighText": "0.1467",
+      "weekLowText": "0.0172",
+      "rangePositionPct": 27,
+      "rsi14": 51.9,
+      "rsiZone": "neutral",
+      "sma20": 0.0580182015,
+      "sma20Text": "0.0580",
+      "aboveSma20": false,
+      "volume24hUsd": 71486876,
+      "volume24hText": "71.49M",
+      "marketCapUsd": 1195406650,
+      "marketCapText": "1.2B",
+      "marketCapRank": 71,
+      "trend": "range-bound"
+    },
+    {
+      "price": 1.026,
+      "priceText": "1.026",
+      "change7dPct": 45.02,
+      "change24hPct": -1.78,
+      "weekHigh": 1.079,
+      "weekLow": 0.675641,
+      "weekHighText": "1.079",
+      "weekLowText": "0.6756",
+      "rangePositionPct": 87,
+      "rsi14": 74,
+      "rsiZone": "overbought",
+      "sma20": 0.9211468500000001,
+      "sma20Text": "0.9211",
+      "aboveSma20": true,
+      "volume24hUsd": 1428629333,
+      "volume24hText": "1.43B",
+      "marketCapUsd": 4200255747,
+      "marketCapText": "4.2B",
+      "marketCapRank": 30,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 32,
+      "priceText": "32.00",
+      "change7dPct": 44.96,
+      "change24hPct": -1.76,
+      "weekHigh": 34.53,
+      "weekLow": 21.2,
+      "weekHighText": "34.53",
+      "weekLowText": "21.20",
+      "rangePositionPct": 81,
+      "rsi14": 61.5,
+      "rsiZone": "neutral",
+      "sma20": 29.750999999999998,
+      "sma20Text": "29.75",
+      "aboveSma20": true,
+      "volume24hUsd": 101691849,
+      "volume24hText": "101.69M",
+      "marketCapUsd": 1538876550,
+      "marketCapText": "1.54B",
+      "marketCapRank": 61,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 9.62,
+      "priceText": "9.620",
+      "change7dPct": 44.39,
+      "change24hPct": 6.82,
+      "weekHigh": 9.41,
+      "weekLow": 6.01,
+      "weekHighText": "9.410",
+      "weekLowText": "6.010",
+      "rangePositionPct": 106,
+      "rsi14": 55.8,
+      "rsiZone": "neutral",
+      "sma20": 8.828999999999999,
+      "sma20Text": "8.829",
+      "aboveSma20": true,
+      "volume24hUsd": 1331411413,
+      "volume24hText": "1.33B",
+      "marketCapUsd": 5973398013,
+      "marketCapText": "5.97B",
+      "marketCapRank": 23,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 0.00000494,
+      "priceText": "0.00000494",
+      "change7dPct": 43.2,
+      "change24hPct": 14.73,
+      "weekHigh": 0.00000534,
+      "weekLow": 0.00000328,
+      "weekHighText": "0.00000534",
+      "weekLowText": "0.00000328",
+      "rangePositionPct": 81,
+      "rsi14": 67.1,
+      "rsiZone": "neutral",
+      "sma20": 0.000004301999999999999,
+      "sma20Text": "0.00000430",
+      "aboveSma20": true,
+      "volume24hUsd": 1504991266,
+      "volume24hText": "1.5B",
+      "marketCapUsd": 2076444235,
+      "marketCapText": "2.08B",
+      "marketCapRank": 51,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 322.91,
+      "priceText": "322.91",
+      "change7dPct": 43.04,
+      "change24hPct": 12.31,
+      "weekHigh": 324.79,
+      "weekLow": 213.51,
+      "weekHighText": "324.79",
+      "weekLowText": "213.51",
+      "rangePositionPct": 98,
+      "rsi14": 80.5,
+      "rsiZone": "overbought",
+      "sma20": 277.1225,
+      "sma20Text": "277.12",
+      "aboveSma20": true,
+      "volume24hUsd": 686885926,
+      "volume24hText": "686.89M",
+      "marketCapUsd": 3661453556,
+      "marketCapText": "3.66B",
+      "marketCapRank": 33,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "This Week in Crypto",
+    "overviewLines": [
+      "Total crypto market capitalization sits near two point nine three trillion dollars this week.",
+      "That figure slipped one point five one percent over the last twenty four hours.",
+      "Bitcoin dominance holds at fifty eight point eight percent, with Ethereum at eleven point four.",
+      "We are walking through eight movers, their weekly ranges, momentum readings and volume."
+    ],
+    "coinLines": [
+      [
+        "Bitcoin climbed eleven point eight five percent this week to eighty six thousand and ninety five dollars.",
+        "It sits at ninety percent of a week range between seventy five thousand and eighty seven thousand.",
+        "R S I at seventy five point five reads overbought, with volume near fifty point four five billion dollars.",
+        "A strong uptrend week for the largest asset, closing near the upper end of its range."
+      ],
+      [
+        "Ethereum added eleven point three two percent this week, trading at two thousand seven hundred and sixty one dollars.",
+        "The week high was two thousand eight hundred and four, the low two thousand three hundred and sixty one.",
+        "R S I at sixty eight point eight sits neutral, with market cap near three hundred and thirty six billion.",
+        "Today added zero point nine percent, keeping price above its twenty period average."
+      ],
+      [
+        "Akedo jumped one hundred and twenty point eight four percent this week to zero point zero five two four dollars.",
+        "Despite that, it sits just twenty seven percent up a range from zero point zero one seven two.",
+        "The week high of zero point one four six seven is far above current price, and trend reads range bound.",
+        "Today it gave back five point one one percent, trading below its twenty period average."
+      ],
+      [
+        "Sui rose forty five point zero two percent this week, now at one point zero two six dollars.",
+        "It sits at eighty seven percent of a range between zero point six seven five six and one point zero seven nine.",
+        "R S I at seventy four reads overbought, with weekly volume around one point four three billion dollars.",
+        "Today slipped one point seven eight percent, yet the strong uptrend label still stands."
+      ],
+      [
+        "Venice Token gained forty four point nine six percent this week, priced at thirty two dollars.",
+        "Its week high was thirty four point five three, and the low twenty one dollars and twenty cents.",
+        "R S I at sixty one point five is neutral, with market cap near one point five four billion dollars.",
+        "A strong uptrend week, easing one point seven six percent over the last day."
+      ],
+      [
+        "Uniswap advanced forty four point three nine percent this week, trading at nine point six two zero dollars.",
+        "Price sits above the recorded week high of nine point four one zero dollars.",
+        "Today it added six point eight two percent, with volume around one point three three billion dollars.",
+        "Ranked twenty three by market cap, it finished the week in a strong uptrend."
+      ],
+      [
+        "Pepe rose forty three point two percent this week to zero point zero zero zero zero zero four nine four dollars.",
+        "That places it eighty one percent up its weekly range, near the high of zero point zero zero zero zero zero five three four.",
+        "Today alone added fourteen point seven three percent, with volume near one point five billion dollars.",
+        "R S I at sixty seven point one stays neutral as the uptrend label holds."
+      ],
+      [
+        "Bittensor climbed forty three point zero four percent this week to three hundred and twenty two point nine one dollars.",
+        "It sits at ninety eight percent of a range starting near two hundred and thirteen point five one.",
+        "R S I at eighty point five is overbought, with market cap around three point six six billion dollars.",
+        "Today added twelve point three one percent, closing the week right beneath its high."
+      ]
+    ],
+    "takeaway": "A broadly green week led by large caps",
+    "cta": "If this recap helped, follow the channel and leave a like before you go.",
+    "title": "Weekly Market Pulse: Bitcoin, Ethereum, Sui, Uniswap and TAO Headline a Green Week",
+    "description": "This week's recap covers Bitcoin, Ethereum, Akedo, Sui, Venice Token, Uniswap, Pepe and Bittensor, using seven day moves, weekly highs and lows, R S I readings, volume and market cap data.\n\nWe also frame the week with total crypto market capitalization, Bitcoin dominance and Ethereum dominance, then walk coin by coin through where each one finished inside its weekly range.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "akedo",
+      "ake",
+      "sui",
+      "venice token",
+      "vvv",
+      "uniswap",
+      "uni",
+      "pepe",
+      "bittensor",
+      "tao",
+      "crypto recap",
+      "weekly crypto",
+      "crypto news",
+      "weekly recap",
+      "crypto market"
+    ]
+  },
+  "hashtags": [],
+  "videoId": null,
+  "thumbnailSet": false,
+  "usage": {
+    "input_tokens": 3505,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 1627,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global"
+  }
+}
