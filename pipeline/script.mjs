@@ -2,14 +2,19 @@ import Anthropic from "@anthropic-ai/sdk";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
 
+// Exact-length array constraints (.length(N)) aren't always perfectly honored
+// by structured-output generation - the model can occasionally write one extra
+// line/segment. Accept a small overshoot and truncate to the exact count in
+// normalize() below (which already looks entries up by symbol, so extras are
+// simply ignored) rather than hard-failing the whole run over it.
 const SegmentScriptSchema = z.object({
   symbol: z.string(),
-  lines: z.array(z.string()).length(2),
+  lines: z.array(z.string()).min(2).max(3),
 });
 
 const ScriptSchema = z.object({
   hook: z.string(),
-  segments: z.array(SegmentScriptSchema).length(3),
+  segments: z.array(SegmentScriptSchema).min(3).max(4),
   takeaway: z.string(),
   cta: z.string(),
   title: z.string(),
@@ -122,8 +127,10 @@ export async function generateScript({ slot, segments, global, avoidTitles }) {
 }
 
 function normalize(out, segments) {
-  if (!Array.isArray(out.segments) || out.segments.length !== segments.length) {
-    throw new Error(`Expected ${segments.length} script segments, got ${out.segments?.length ?? 0}`);
+  // Extras are fine - matched by symbol below and simply ignored. Fewer than
+  // expected means a coin segment is genuinely missing, which is fatal.
+  if (!Array.isArray(out.segments) || out.segments.length < segments.length) {
+    throw new Error(`Expected at least ${segments.length} script segments, got ${out.segments?.length ?? 0}`);
   }
 
   const bySymbol = new Map(out.segments.map((s) => [s.symbol.trim().toUpperCase(), s]));

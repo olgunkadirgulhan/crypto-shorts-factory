@@ -2,14 +2,19 @@ import Anthropic from "@anthropic-ai/sdk";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
 
+// Exact-length array constraints (.length(N)) aren't always perfectly honored
+// by structured-output generation on deeply nested schemas like this one - the
+// model occasionally writes one extra line. Accept a small overshoot here and
+// truncate to the exact count in normalize() below, rather than hard-failing
+// the whole run over one extra sentence.
 const CoinScriptSchema = z.object({
   symbol: z.string(),
-  lines: z.array(z.string()).length(3),
+  lines: z.array(z.string()).min(3).max(4),
 });
 
 const WeeklyScriptSchema = z.object({
   hook: z.string(),
-  overviewLines: z.array(z.string()).length(3),
+  overviewLines: z.array(z.string()).min(3).max(4),
   coins: z.array(CoinScriptSchema).min(6).max(8),
   takeaway: z.string(),
   cta: z.string(),
@@ -97,8 +102,10 @@ export async function generateWeeklyScript({ segments, global, avoidTitles }) {
 }
 
 function normalize(out, segments) {
-  if (!Array.isArray(out.coins) || out.coins.length !== segments.length) {
-    throw new Error(`Expected ${segments.length} weekly coin segments, got ${out.coins?.length ?? 0}`);
+  // Extras are fine - matched by symbol below and simply ignored. Fewer than
+  // expected means a coin segment is genuinely missing, which is fatal.
+  if (!Array.isArray(out.coins) || out.coins.length < segments.length) {
+    throw new Error(`Expected at least ${segments.length} weekly coin segments, got ${out.coins?.length ?? 0}`);
   }
 
   const bySymbol = new Map(out.coins.map((c) => [c.symbol.trim().toUpperCase(), c]));
