@@ -1,0 +1,7 @@
+node_modules/
+out/
+public/voice.mp3
+public/coin-*.png
+.env
+.env.local
+*.log

@@ -1,0 +1,212 @@
+import { spawn } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
+
+import { fetchMarketContext, selectSegments } from "./market.mjs";
+import { computeMetrics, sentimentOf } from "./indicators.mjs";
+import { generateScript } from "./script.mjs";
+import { synthesizeVoiceover } from "./tts.mjs";
+import { discoverTrendingHashtags, uploadVideo, youtubeClient } from "./youtube.mjs";
+import { notify } from "./notify.mjs";
+
+const ROOT = process.cwd();
+const HISTORY_FILE = path.join(ROOT, "state", "history.json");
+const COIN_COUNT = 3;
+
+const args = process.argv.slice(2);
+const dryRun = args.includes("--dry-run");
+const slotArg = args.find((a) => a.startsWith("--slot="))?.split("=")[1];
+
+function slotForNow() {
+  const hour = new Date().getUTCHours();
+  if (hour < 12) return "open";
+  if (hour < 17) return "mover";
+  return "trending";
+}
+
+function loadHistory() {
+  try {
+    return JSON.parse(fs.readFileSync(HISTORY_FILE, "utf8"));
+  } catch {
+    return [];
+  }
+}
+
+function sh(cmd, cmdArgs) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(cmd, cmdArgs, {
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    });
+    child.on("error", reject);
+    child.on("close", (code) =>
+      code === 0 ? resolve() : reject(new Error(`${cmd} exited with code ${code}`)),
+    );
+  });
+}
+
+async function downloadLogo(url, dest) {
+  if (!url) return null;
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(15000) });
+    if (!res.ok) return null;
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, Buffer.from(await res.arrayBuffer()));
+    return path.basename(dest);
+  } catch {
+    return null;
+  }
+}
+
+const round2 = (n) => Number(n.toFixed(2));
+
+async function main() {
+  const slot = slotArg || slotForNow();
+  const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-");
+  const history = loadHistory();
+  const recentCoinIds = history.slice(-2).flatMap((h) => h.coinIds ?? (h.coinId ? [h.coinId] : []));
+
+  console.log(`\n=== slot: ${slot} | ${stamp} | dryRun=${dryRun} ===`);
+
+  console.log("1/8 market data");
+  const context = await fetchMarketContext();
+  const picked = await selectSegments(slot, context, recentCoinIds, COIN_COUNT);
+  if (picked.length < COIN_COUNT) {
+    throw new Error(`Only found ${picked.length}/${COIN_COUNT} tradeable coins with enough history`);
+  }
+
+  console.log("2/8 indicators");
+  const segmentsBase = picked.map(({ coin, candles }) => {
+    const metrics = computeMetrics(coin, candles);
+    return { coin, candles, metrics, sentiment: sentimentOf(metrics) };
+  });
+  for (const s of segmentsBase) {
+    console.log(
+      `  ${s.coin.symbol.toUpperCase().padEnd(6)} $${s.metrics.priceText} ${s.metrics.change24hPct}% RSI ${s.metrics.rsi14} ${s.metrics.trend}`,
+    );
+  }
+
+  console.log("3/8 script");
+  const { script, usage } = await generateScript({
+    slot,
+    segments: segmentsBase,
+    global: context.global,
+    avoidTitles: history.slice(-5).map((h) => h.title),
+  });
+  console.log(`  "${script.title}"`);
+  console.log(`  tokens in/out: ${usage.input_tokens}/${usage.output_tokens}`);
+
+  console.log("4/8 voiceover");
+  // Flat order: coin1 line1/2, coin2 line1/2, coin3 line1/2, then the closing CTA.
+  const allLines = [...script.segmentLines.flat(), script.cta];
+  const audioPublicPath = path.join(ROOT, "public", "voice.mp3");
+  const { timeline, totalSec } = await synthesizeVoiceover(allLines, {
+    workDir: path.join(ROOT, "out", "tts"),
+    outFile: audioPublicPath,
+    musicFile: path.join(ROOT, "public", "music.mp3"),
+  });
+  console.log(`  ${timeline.length} lines, ${totalSec}s`);
+
+  console.log("5/8 logos + segment timing");
+  // Segment boundaries share the same value with their neighbor (computed once,
+  // assigned to both endSec and the next startSec) so panels cut with no gap.
+  const boundaries = [0];
+  for (let i = 1; i <= segmentsBase.length; i++) {
+    const anchorCaption = i < segmentsBase.length ? timeline[i * 2] : timeline[timeline.length - 1];
+    const candidate = round2(anchorCaption.start - 0.3);
+    boundaries.push(Math.max(boundaries[i - 1] + 1, candidate));
+  }
+
+  const segments = [];
+  for (let i = 0; i < segmentsBase.length; i++) {
+    const { coin, candles, metrics, sentiment } = segmentsBase[i];
+    const logoFile = await downloadLogo(coin.image, path.join(ROOT, "public", `coin-${i}.png`));
+    segments.push({
+      coin: { id: coin.id, name: coin.name, symbol: coin.symbol.toUpperCase(), image: coin.image },
+      metrics,
+      candles,
+      sentiment,
+      logoFile,
+      startSec: boundaries[i],
+      endSec: boundaries[i + 1],
+    });
+  }
+
+  const props = {
+    slot,
+    hook: script.hook,
+    takeaway: script.takeaway,
+    ctaText: script.cta,
+    segments,
+    captions: timeline,
+    durationSec: totalSec,
+    audioFile: "voice.mp3",
+    generatedAt: new Date().toISOString(),
+  };
+
+  fs.mkdirSync(path.join(ROOT, "out"), { recursive: true });
+  const propsFile = path.join(ROOT, "out", "props.json");
+  fs.writeFileSync(propsFile, JSON.stringify(props, null, 2));
+
+  console.log("6/8 render");
+  const videoFile = path.join(ROOT, "out", `${stamp}-${slot}.mp4`);
+  // Duration comes from calculateMetadata reading props.durationSec, so no --frames here.
+  await sh("npx", ["remotion", "render", "src/index.ts", "CryptoShort", videoFile, `--props=${propsFile}`]);
+  const sizeMb = (fs.statSync(videoFile).size / 1e6).toFixed(1);
+  console.log(`  ${videoFile} (${sizeMb} MB)`);
+
+  let videoId = null;
+  let hashtags = [];
+
+  if (dryRun) {
+    console.log("7/8 upload skipped (--dry-run)");
+  } else {
+    console.log("7/8 hashtags + upload");
+    const yt = youtubeClient();
+    hashtags = await discoverTrendingHashtags(yt, segments.map((s) => s.coin));
+    console.log(`  ${hashtags.join(" ")}`);
+    videoId = await uploadVideo(yt, {
+      file: videoFile,
+      title: script.title,
+      description: script.description,
+      tags: script.tags,
+      hashtags,
+    });
+    console.log(`  https://youtu.be/${videoId}`);
+  }
+
+  console.log("8/8 archive");
+  fs.mkdirSync(path.join(ROOT, "archive"), { recursive: true });
+  fs.writeFileSync(
+    path.join(ROOT, "archive", `${stamp}-${slot}.json`),
+    JSON.stringify(
+      { slot, coins: segments.map((s) => s.coin), metrics: segments.map((s) => s.metrics), script, hashtags, videoId, usage },
+      null,
+      2,
+    ),
+  );
+
+  history.push({
+    at: new Date().toISOString(),
+    slot,
+    coinIds: segments.map((s) => s.coin.id),
+    title: script.title,
+    videoId,
+    durationSec: totalSec,
+  });
+  fs.mkdirSync(path.dirname(HISTORY_FILE), { recursive: true });
+  fs.writeFileSync(HISTORY_FILE, JSON.stringify(history.slice(-40), null, 2));
+
+  await notify(
+    `✅ ${slot} · ${segments.map((s) => s.coin.symbol).join(" / ")}\n` +
+      `${script.title}\n${videoId ? `https://youtu.be/${videoId}` : "(dry run, not uploaded)"}`,
+  );
+
+  console.log("\ndone\n");
+}
+
+main().catch(async (err) => {
+  console.error(`\nFAILED: ${err.message}`);
+  await notify(`❌ Crypto shorts run failed\n${err.message}`.slice(0, 900));
+  process.exit(1);
+});

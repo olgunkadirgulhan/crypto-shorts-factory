@@ -1,0 +1,4 @@
+# Not pinned on purpose. edge-tts is an unofficial client for Microsoft's
+# endpoint; Microsoft periodically changes the handshake and older releases
+# start returning 403. Floating forward picks up those fixes automatically.
+edge-tts>=7.2.8
