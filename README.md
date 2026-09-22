@@ -15,6 +15,13 @@ CoinGecko (fiyat + trend)
    -> state/ + archive/ commit (arşiv, tekrar engelleme)
 ```
 
+**Ayrıca haftada 2 kez (Pazar + Çarşamba, ABD Doğu saatiyle 17:00) `.github/workflows/weekly.yml`
+ayrı bir "Haftalık Piyasa Özeti" üretir** — yatay (1920x1080), 3-5 dakika, BTC/ETH + haftanın en
+çok hareket eden 6 coin, genel piyasa görünümü ile açılıp aynı "FOLLOW/LIKE" kapanışıyla biter.
+Kendi script şeması (`pipeline/weeklyScript.mjs`), kendi composition'ı (`ChannelWeekly.tsx`) ve
+kendi geçmiş dosyası (`state/weekly-history.json`) var — günlük Shorts hattından bağımsız çalışır.
+Elle test: `npm run weekly:dry`.
+
 ---
 
 ## ÖNCE BUNU YAP
