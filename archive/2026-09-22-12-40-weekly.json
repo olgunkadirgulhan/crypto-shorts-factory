@@ -1,0 +1,324 @@
+{
+  "coins": [
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": "near",
+      "name": "NEAR Protocol",
+      "symbol": "NEAR",
+      "image": "https://coin-images.coingecko.com/coins/images/10365/large/near.jpg?1696510367"
+    },
+    {
+      "id": "arbitrum",
+      "name": "Arbitrum",
+      "symbol": "ARB",
+      "image": "https://coin-images.coingecko.com/coins/images/16547/large/arb.jpg?1721358242"
+    },
+    {
+      "id": "useless-3",
+      "name": "Useless Coin",
+      "symbol": "USELESS",
+      "image": "https://coin-images.coingecko.com/coins/images/55684/large/coingeckoupdate.png?1755203747"
+    },
+    {
+      "id": "starknet",
+      "name": "Starknet",
+      "symbol": "STRK",
+      "image": "https://coin-images.coingecko.com/coins/images/26433/large/starknet.png?1696525507"
+    },
+    {
+      "id": "ethena",
+      "name": "Ethena",
+      "symbol": "ENA",
+      "image": "https://coin-images.coingecko.com/coins/images/36530/large/ethena.png?1711701436"
+    },
+    {
+      "id": "avalanche-2",
+      "name": "Avalanche",
+      "symbol": "AVAX",
+      "image": "https://coin-images.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1696512369"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 86024,
+      "priceText": "86,024",
+      "change7dPct": 11.59,
+      "change24hPct": 0.87,
+      "weekHigh": 87330,
+      "weekLow": 75038,
+      "weekHighText": "87,330",
+      "weekLowText": "75,038",
+      "rangePositionPct": 89,
+      "rsi14": 75.5,
+      "rsiZone": "overbought",
+      "sma20": 82739.65,
+      "sma20Text": "82,740",
+      "aboveSma20": true,
+      "volume24hUsd": 51276463341,
+      "volume24hText": "51.28B",
+      "marketCapUsd": 1728232097738,
+      "marketCapText": "1.73T",
+      "marketCapRank": 1,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 2748.62,
+      "priceText": "2,749",
+      "change7dPct": 10.38,
+      "change24hPct": 0.77,
+      "weekHigh": 2804.42,
+      "weekLow": 2361.16,
+      "weekHighText": "2,804",
+      "weekLowText": "2,361",
+      "rangePositionPct": 87,
+      "rsi14": 68.8,
+      "rsiZone": "neutral",
+      "sma20": 2667.3885000000005,
+      "sma20Text": "2,667",
+      "aboveSma20": true,
+      "volume24hUsd": 20519290640,
+      "volume24hText": "20.52B",
+      "marketCapUsd": 335567014490,
+      "marketCapText": "335.57B",
+      "marketCapRank": 2,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 4.62,
+      "priceText": "4.620",
+      "change7dPct": 91.68,
+      "change24hPct": 10.53,
+      "weekHigh": 4.62,
+      "weekLow": 2.3,
+      "weekHighText": "4.620",
+      "weekLowText": "2.300",
+      "rangePositionPct": 100,
+      "rsi14": 76.2,
+      "rsiZone": "overbought",
+      "sma20": 3.9775,
+      "sma20Text": "3.978",
+      "aboveSma20": true,
+      "volume24hUsd": 1878758801,
+      "volume24hText": "1.88B",
+      "marketCapUsd": 6060334059,
+      "marketCapText": "6.06B",
+      "marketCapRank": 21,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 0.219243,
+      "priceText": "0.2192",
+      "change7dPct": 60.71,
+      "change24hPct": -9.85,
+      "weekHigh": 0.247068,
+      "weekLow": 0.135927,
+      "weekHighText": "0.2471",
+      "weekLowText": "0.1359",
+      "rangePositionPct": 75,
+      "rsi14": 56.6,
+      "rsiZone": "neutral",
+      "sma20": 0.21617085000000005,
+      "sma20Text": "0.2162",
+      "aboveSma20": true,
+      "volume24hUsd": 404672680,
+      "volume24hText": "404.67M",
+      "marketCapUsd": 1488252812,
+      "marketCapText": "1.49B",
+      "marketCapRank": 63,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 0.317505,
+      "priceText": "0.3175",
+      "change7dPct": 52.77,
+      "change24hPct": 11.71,
+      "weekHigh": 0.314351,
+      "weekLow": 0.197022,
+      "weekHighText": "0.3144",
+      "weekLowText": "0.1970",
+      "rangePositionPct": 103,
+      "rsi14": 67.2,
+      "rsiZone": "neutral",
+      "sma20": 0.26573420000000003,
+      "sma20Text": "0.2657",
+      "aboveSma20": true,
+      "volume24hUsd": 99325305,
+      "volume24hText": "99.33M",
+      "marketCapUsd": 316962981,
+      "marketCapText": "316.96M",
+      "marketCapRank": 143,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 0.04198666,
+      "priceText": "0.0420",
+      "change7dPct": 51.97,
+      "change24hPct": -11.12,
+      "weekHigh": 0.050637,
+      "weekLow": 0.0260876,
+      "weekHighText": "0.0506",
+      "weekLowText": "0.0261",
+      "rangePositionPct": 65,
+      "rsi14": 51.9,
+      "rsiZone": "neutral",
+      "sma20": 0.04497552649999999,
+      "sma20Text": "0.0450",
+      "aboveSma20": false,
+      "volume24hUsd": 61909751,
+      "volume24hText": "61.91M",
+      "marketCapUsd": 308543564,
+      "marketCapText": "308.54M",
+      "marketCapRank": 145,
+      "trend": "range-bound"
+    },
+    {
+      "price": 0.210518,
+      "priceText": "0.2105",
+      "change7dPct": 46.75,
+      "change24hPct": -6.24,
+      "weekHigh": 0.230131,
+      "weekLow": 0.135956,
+      "weekHighText": "0.2301",
+      "weekLowText": "0.1360",
+      "rangePositionPct": 79,
+      "rsi14": 60.2,
+      "rsiZone": "neutral",
+      "sma20": 0.2073683,
+      "sma20Text": "0.2074",
+      "aboveSma20": true,
+      "volume24hUsd": 571896290,
+      "volume24hText": "571.9M",
+      "marketCapUsd": 2126003681,
+      "marketCapText": "2.13B",
+      "marketCapRank": 49,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 10.82,
+      "priceText": "10.82",
+      "change7dPct": 44.5,
+      "change24hPct": -5.26,
+      "weekHigh": 11.78,
+      "weekLow": 7.18,
+      "weekHighText": "11.78",
+      "weekLowText": "7.180",
+      "rangePositionPct": 79,
+      "rsi14": 63.2,
+      "rsiZone": "neutral",
+      "sma20": 10.4915,
+      "sma20Text": "10.49",
+      "aboveSma20": true,
+      "volume24hUsd": 777956512,
+      "volume24hText": "777.96M",
+      "marketCapUsd": 4790439860,
+      "marketCapText": "4.79B",
+      "marketCapRank": 25,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "This Week in Crypto",
+    "overviewLines": [
+      "Total crypto market cap sits near two point nine two trillion dollars.",
+      "That figure slipped one point five six percent over the past twenty four hours.",
+      "Bitcoin dominance holds at fifty eight point nine percent, with risk appetite broadly firm."
+    ],
+    "coinLines": [
+      [
+        "Bitcoin rose eleven point five nine percent this week, trading near eighty six thousand dollars.",
+        "This week's high reached eighty seven thousand three hundred and thirty dollars.",
+        "R S I at seventy five point five puts Bitcoin in overbought territory."
+      ],
+      [
+        "Ethereum added ten point three eight percent, now at two thousand seven hundred forty nine dollars.",
+        "It finished at eighty seven percent of this week's trading range.",
+        "Volume near twenty point five two billion dollars kept it above its twenty period average."
+      ],
+      [
+        "NEAR Protocol surged ninety one point six eight percent to four dollars and sixty two cents.",
+        "That price marks this week's high, one hundred percent of the weekly range.",
+        "R S I at seventy six point two reads overbought inside a strong uptrend."
+      ],
+      [
+        "Arbitrum rose sixty point seven one percent, priced at zero point two one nine two dollars.",
+        "This week's high was zero point two four seven one dollars.",
+        "A nine point eight five percent daily slide cooled an otherwise strong week."
+      ],
+      [
+        "Useless Coin jumped fifty two point seven seven percent this week overall.",
+        "It trades at zero point three one seven five dollars, just above this week's high.",
+        "Volume near ninety nine point three three million dollars accompanied the move."
+      ],
+      [
+        "Starknet climbed fifty one point nine seven percent to zero point zero four two dollars.",
+        "It fell eleven point one two percent today and sits below its twenty period average.",
+        "Range-bound, after a week high of zero point zero five zero six dollars."
+      ],
+      [
+        "Ethena rose forty six point seven five percent to zero point two one zero five dollars.",
+        "It sits at seventy nine percent of this week's trading range.",
+        "R S I near sixty point two, after a six point two four percent daily dip."
+      ],
+      [
+        "Avalanche added forty four point five percent this week, trading at ten dollars eighty two cents.",
+        "This week's low was seven dollars eighteen cents, the high eleven dollars seventy eight.",
+        "R S I sixty three point two, after a five point two six percent dip."
+      ]
+    ],
+    "takeaway": "Broad green week, majors near weekly highs",
+    "cta": "If this recap helped, follow the channel and leave a like before you go.",
+    "title": "Weekly Market Pulse: Bitcoin, Ethereum, NEAR and Arbitrum Lead a Green Crypto Week",
+    "description": "This week's Market Pulse covers Bitcoin, Ethereum, NEAR Protocol, Arbitrum, Useless Coin, Starknet, Ethena and Avalanche, with seven day moves, weekly highs and lows, R S I readings and volume.\n\nWe also look at the overall market cap direction and Bitcoin dominance to frame the week's tone across large caps and smaller movers.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "near protocol",
+      "near",
+      "arbitrum",
+      "arb",
+      "useless coin",
+      "starknet",
+      "strk",
+      "ethena",
+      "ena",
+      "avalanche",
+      "avax",
+      "crypto weekly recap",
+      "useless",
+      "crypto news",
+      "weekly recap",
+      "crypto market"
+    ]
+  },
+  "hashtags": [],
+  "videoId": null,
+  "thumbnailSet": false,
+  "usage": {
+    "input_tokens": 3404,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 4010,
+    "output_tokens_details": {
+      "thinking_tokens": 2770
+    },
+    "service_tier": "standard",
+    "inference_geo": "global"
+  }
+}
