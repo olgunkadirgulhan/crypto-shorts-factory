@@ -2,6 +2,7 @@ node_modules/
 .claude/
 out/
 public/voice.mp3
+public/trailer-voice.mp3
 public/coin-*.png
 .env
 .env.local

@@ -6,8 +6,9 @@ import { google } from "googleapis";
 const PORT = 53682;
 const REDIRECT = `http://localhost:${PORT}`;
 const SCOPES = [
-  "https://www.googleapis.com/auth/youtube.upload",
-  "https://www.googleapis.com/auth/youtube.readonly",
+  // force-ssl (not just upload/readonly) so the pipeline can also delete a bad
+  // upload or manage the video later, not just create new ones.
+  "https://www.googleapis.com/auth/youtube.force-ssl",
 ];
 
 const clientId = process.env.YOUTUBE_CLIENT_ID;
@@ -43,7 +44,14 @@ const server = http.createServer(async (req, res) => {
       console.error("\nGoogle returned no refresh token. Revoke the app at");
       console.error("https://myaccount.google.com/permissions and run this again.");
     } else {
-      console.log("\nYOUTUBE_REFRESH_TOKEN=");
+      oauth.setCredentials(tokens);
+      const yt = google.youtube({ version: "v3", auth: oauth });
+      const ch = await yt.channels.list({ part: ["snippet"], mine: true });
+      const channelTitle = ch.data.items?.[0]?.snippet?.title ?? "(unknown - could not resolve channel)";
+
+      console.log(`\nThis token is authorized for channel: "${channelTitle}"`);
+      console.log("If that's the wrong channel, don't save this token - run again and pick the right one.\n");
+      console.log("YOUTUBE_REFRESH_TOKEN=");
       console.log(tokens.refresh_token);
       console.log("\nAdd it as a GitHub repo secret. It does not expire unless you revoke it.");
     }

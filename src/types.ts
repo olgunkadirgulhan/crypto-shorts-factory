@@ -62,3 +62,17 @@ export const SLOT_LABEL: Record<ShortProps["slot"], string> = {
   mover: "MOVER OF THE DAY",
   trending: "TRENDING NOW",
 };
+
+export type TrailerCardSpec = {
+  icon: "shield" | "lock" | "search" | "bars" | null;
+  eyebrow: string;
+  headline: string;
+};
+
+export type TrailerProps = {
+  cards: TrailerCardSpec[]; // card[0] renders as the brand intro (icon/eyebrow ignored)
+  takeaway: string;
+  captions: Caption[];
+  durationSec: number;
+  audioFile: string | null;
+};
