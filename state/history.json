@@ -22,5 +22,17 @@
     "title": "BTC / ETH / AKE Market Brief: Prices, Ranges and RSI #Shorts",
     "videoId": "bf5BSOIlMF4",
     "durationSec": 42.912
+  },
+  {
+    "at": "2026-09-22T11:28:50.578Z",
+    "slot": "open",
+    "coinIds": [
+      "bitcoin",
+      "ethereum",
+      "near"
+    ],
+    "title": "BTC / ETH / NEAR Market Brief: Prices, Ranges and RSI #Shorts",
+    "videoId": "A3-wl4fyTdw",
+    "durationSec": 42.096
   }
 ]

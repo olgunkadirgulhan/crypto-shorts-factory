@@ -1,0 +1,173 @@
+{
+  "slot": "open",
+  "coins": [
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": "near",
+      "name": "NEAR Protocol",
+      "symbol": "NEAR",
+      "image": "https://coin-images.coingecko.com/coins/images/10365/large/near.jpg?1696510367"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 86026,
+      "priceText": "86,026",
+      "change24hPct": 1.71,
+      "high24h": 87330,
+      "low24h": 84396,
+      "high24hText": "87,330",
+      "low24hText": "84,396",
+      "support": 85163,
+      "resistance": 86310,
+      "supportText": "85,163",
+      "resistanceText": "86,310",
+      "distToResistancePct": 0.33,
+      "distToSupportPct": 1,
+      "rangePositionPct": 56,
+      "rsi14": 53.7,
+      "rsiZone": "neutral",
+      "sma20": 85610.25,
+      "sma20Text": "85,610",
+      "aboveSma20": true,
+      "volatility24hPct": 0.38,
+      "volume24hUsd": 53156656576,
+      "volume24hText": "53.16B",
+      "marketCapUsd": 1727909765983,
+      "marketCapText": "1.73T",
+      "marketCapRank": 1,
+      "trend": "uptrend"
+    },
+    {
+      "price": 2743.08,
+      "priceText": "2,743",
+      "change24hPct": 0.86,
+      "high24h": 2804.42,
+      "low24h": 2714.36,
+      "high24hText": "2,804",
+      "low24hText": "2,714",
+      "support": 2722.59,
+      "resistance": 2753.59,
+      "supportText": "2,723",
+      "resistanceText": "2,754",
+      "distToResistancePct": 0.38,
+      "distToSupportPct": 0.75,
+      "rangePositionPct": 32,
+      "rsi14": 51,
+      "rsiZone": "neutral",
+      "sma20": 2736.474,
+      "sma20Text": "2,736",
+      "aboveSma20": true,
+      "volatility24hPct": 0.43,
+      "volume24hUsd": 21228530618,
+      "volume24hText": "21.23B",
+      "marketCapUsd": 334805953013,
+      "marketCapText": "334.81B",
+      "marketCapRank": 2,
+      "trend": "range-bound"
+    },
+    {
+      "price": 4.61,
+      "priceText": "4.610",
+      "change24hPct": 10.75,
+      "high24h": 4.57,
+      "low24h": 3.92,
+      "high24hText": "4.570",
+      "low24hText": "3.920",
+      "support": 4.3,
+      "resistance": 4.56,
+      "supportText": "4.300",
+      "resistanceText": "4.560",
+      "distToResistancePct": -1.08,
+      "distToSupportPct": 6.72,
+      "rangePositionPct": 106,
+      "rsi14": 60.4,
+      "rsiZone": "neutral",
+      "sma20": 4.402500000000001,
+      "sma20Text": "4.403",
+      "aboveSma20": true,
+      "volatility24hPct": 2.08,
+      "volume24hUsd": 1664977598,
+      "volume24hText": "1.66B",
+      "marketCapUsd": 6023806118,
+      "marketCapText": "6.02B",
+      "marketCapRank": 21,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "Three coins framing today's session",
+    "segmentLines": [
+      [
+        "Bitcoin trades at eighty six thousand and twenty six dollars, up one point seven one percent.",
+        "It sits above its twenty day average of eighty five thousand six hundred and ten dollars."
+      ],
+      [
+        "Ethereum trades at two thousand seven hundred and forty three dollars, up zero point eight six percent.",
+        "Price sits thirty two percent up the twenty four hour range, with R S I at fifty one."
+      ],
+      [
+        "NEAR Protocol trades at four point six one zero dollars, up ten point seven five percent.",
+        "It pushed past the twenty four hour high of four point five seven zero dollars, R S I sixty."
+      ]
+    ],
+    "takeaway": "Majors grind higher while NEAR leads the movers",
+    "cta": "Hit follow and drop a like so you never miss the next daily breakdown.",
+    "title": "BTC / ETH / NEAR Market Brief: Prices, Ranges and RSI #Shorts",
+    "description": "A quick market brief covering Bitcoin, Ethereum and NEAR Protocol, with current prices, twenty four hour moves, intraday ranges, RSI readings and volume.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "near protocol",
+      "near",
+      "crypto market brief",
+      "crypto shorts",
+      "rsi",
+      "altcoins",
+      "price analysis",
+      "daily crypto update",
+      "crypto analysis",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#Bitcoin",
+    "#BTC",
+    "#Ethereum",
+    "#ETH",
+    "#NEARProtocol",
+    "#NEAR",
+    "#crypto",
+    "#cryptonews"
+  ],
+  "videoId": "A3-wl4fyTdw",
+  "thumbnailSet": false,
+  "usage": {
+    "input_tokens": 2604,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 531,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global"
+  }
+}
