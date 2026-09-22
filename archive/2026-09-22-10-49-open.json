@@ -1,0 +1,163 @@
+{
+  "slot": "open",
+  "coins": [
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": "pepe",
+      "name": "Pepe",
+      "symbol": "PEPE",
+      "image": "https://coin-images.coingecko.com/coins/images/29850/large/pepe-token.jpeg?1696528776"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 85789,
+      "priceText": "85,789",
+      "change24hPct": 1.88,
+      "high24h": 87330,
+      "low24h": 84142,
+      "high24hText": "87,330",
+      "low24hText": "84,142",
+      "support": 85163,
+      "resistance": 86310,
+      "supportText": "85,163",
+      "resistanceText": "86,310",
+      "distToResistancePct": 0.61,
+      "distToSupportPct": 0.73,
+      "rangePositionPct": 52,
+      "rsi14": 53.1,
+      "rsiZone": "neutral",
+      "sma20": 85609.55,
+      "sma20Text": "85,610",
+      "aboveSma20": true,
+      "volatility24hPct": 0.38,
+      "volume24hUsd": 53621591774,
+      "volume24hText": "53.62B",
+      "marketCapUsd": 1723642567593,
+      "marketCapText": "1.72T",
+      "marketCapRank": 1,
+      "trend": "uptrend"
+    },
+    {
+      "price": 2739.12,
+      "priceText": "2,739",
+      "change24hPct": 0.97,
+      "high24h": 2804.42,
+      "low24h": 2709.74,
+      "high24hText": "2,804",
+      "low24hText": "2,710",
+      "support": 2722.59,
+      "resistance": 2753.59,
+      "supportText": "2,723",
+      "resistanceText": "2,754",
+      "distToResistancePct": 0.53,
+      "distToSupportPct": 0.6,
+      "rangePositionPct": 31,
+      "rsi14": 49.8,
+      "rsiZone": "neutral",
+      "sma20": 2737.0685000000003,
+      "sma20Text": "2,737",
+      "aboveSma20": true,
+      "volatility24hPct": 0.43,
+      "volume24hUsd": 21637105798,
+      "volume24hText": "21.64B",
+      "marketCapUsd": 334385354453,
+      "marketCapText": "334.39B",
+      "marketCapRank": 2,
+      "trend": "range-bound"
+    },
+    {
+      "price": 0.00000492,
+      "priceText": "0.00000492",
+      "change24hPct": 17.63,
+      "high24h": 0.00000534,
+      "low24h": 0.00000416,
+      "high24hText": "0.00000534",
+      "low24hText": "0.00000416",
+      "support": 0.0000049,
+      "resistance": 0.00000524,
+      "supportText": "0.00000490",
+      "resistanceText": "0.00000524",
+      "distToResistancePct": 6.5,
+      "distToSupportPct": 0.41,
+      "rangePositionPct": 64,
+      "rsi14": 46.8,
+      "rsiZone": "neutral",
+      "sma20": 0.000005075500000000001,
+      "sma20Text": "0.00000508",
+      "aboveSma20": false,
+      "volatility24hPct": 2.34,
+      "volume24hUsd": 1511818958,
+      "volume24hText": "1.51B",
+      "marketCapUsd": 2070423020,
+      "marketCapText": "2.07B",
+      "marketCapRank": 51,
+      "trend": "range-bound"
+    }
+  ],
+  "script": {
+    "hook": "Three coins, one quick market brief",
+    "segmentLines": [
+      [
+        "Bitcoin trades near eighty five thousand seven hundred and eighty nine dollars, up one point nine percent.",
+        "It sits zero point six one percent below the last four hours' high, above its twenty period average."
+      ],
+      [
+        "Ethereum is around two thousand seven hundred and thirty nine dollars, up zero point nine seven percent.",
+        "R S I at forty nine point eight, and price sits thirty one percent up the twenty four hour range."
+      ],
+      [
+        "Pepe trades at zero point zero zero zero zero zero four nine two, up seventeen point six percent.",
+        "Despite that move, price is still below its twenty period average, with R S I at forty six point eight."
+      ]
+    ],
+    "takeaway": "Majors grind higher while a meme coin runs hot",
+    "cta": "Hit follow and drop a like so you never miss the next market breakdown.",
+    "title": "BTC / ETH / PEPE Market Brief: Prices, Ranges and RSI #Shorts",
+    "description": "A quick market brief covering Bitcoin, Ethereum and Pepe, with each coin's current price, twenty four hour move, recent range position and momentum readings.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "pepe",
+      "pepe coin",
+      "crypto market brief",
+      "crypto analysis",
+      "rsi",
+      "price action",
+      "altcoins",
+      "crypto shorts",
+      "24h range",
+      "crypto news"
+    ]
+  },
+  "hashtags": [],
+  "videoId": null,
+  "usage": {
+    "input_tokens": 2542,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 538,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global"
+  }
+}
