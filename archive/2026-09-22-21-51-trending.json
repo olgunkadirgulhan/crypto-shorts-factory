@@ -1,0 +1,173 @@
+{
+  "slot": "trending",
+  "style": "panel",
+  "coins": [
+    {
+      "id": "stonk-3",
+      "name": "STONK",
+      "symbol": "STONK",
+      "image": "https://coin-images.coingecko.com/coins/images/102175239/large/tscmgapqpfx5j4hu8gbs3aj85s7a.?1785895603"
+    },
+    {
+      "id": "fetch-ai",
+      "name": "Artificial Superintelligence Alliance",
+      "symbol": "FET",
+      "image": "https://coin-images.coingecko.com/coins/images/5681/large/ASI.png?1719827289"
+    },
+    {
+      "id": "hyperliquid",
+      "name": "Hyperliquid",
+      "symbol": "HYPE",
+      "image": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 0.298831,
+      "priceText": "0.2988",
+      "change24hPct": -20.29,
+      "high24h": 0.376214,
+      "low24h": 0.308466,
+      "high24hText": "0.3762",
+      "low24hText": "0.3085",
+      "support": 0.308466,
+      "resistance": 0.335049,
+      "supportText": "0.3085",
+      "resistanceText": "0.3350",
+      "distToResistancePct": 12.12,
+      "distToSupportPct": -3.22,
+      "rangePositionPct": -14,
+      "rsi14": 35.7,
+      "rsiZone": "neutral",
+      "sma20": 0.3344012,
+      "sma20Text": "0.3344",
+      "aboveSma20": false,
+      "volatility24hPct": 2.9,
+      "volume24hUsd": 49398938,
+      "volume24hText": "49.4M",
+      "marketCapUsd": 247098526,
+      "marketCapText": "247.1M",
+      "marketCapRank": 168,
+      "trend": "strong downtrend"
+    },
+    {
+      "price": 0.207254,
+      "priceText": "0.2073",
+      "change24hPct": 4.04,
+      "high24h": 0.212928,
+      "low24h": 0.196798,
+      "high24hText": "0.2129",
+      "low24hText": "0.1968",
+      "support": 0.20351,
+      "resistance": 0.209435,
+      "supportText": "0.2035",
+      "resistanceText": "0.2094",
+      "distToResistancePct": 1.05,
+      "distToSupportPct": 1.81,
+      "rangePositionPct": 65,
+      "rsi14": 52.2,
+      "rsiZone": "neutral",
+      "sma20": 0.2068054,
+      "sma20Text": "0.2068",
+      "aboveSma20": true,
+      "volatility24hPct": 1.11,
+      "volume24hUsd": 146091053,
+      "volume24hText": "146.09M",
+      "marketCapUsd": 478830288,
+      "marketCapText": "478.83M",
+      "marketCapRank": 116,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 97.35,
+      "priceText": "97.35",
+      "change24hPct": 4.3,
+      "high24h": 96.87,
+      "low24h": 92.19,
+      "high24hText": "96.87",
+      "low24hText": "92.19",
+      "support": 95.76,
+      "resistance": 96.87,
+      "supportText": "95.76",
+      "resistanceText": "96.87",
+      "distToResistancePct": -0.49,
+      "distToSupportPct": 1.63,
+      "rangePositionPct": 110,
+      "rsi14": 60.7,
+      "rsiZone": "neutral",
+      "sma20": 95.819,
+      "sma20Text": "95.82",
+      "aboveSma20": true,
+      "volatility24hPct": 0.68,
+      "volume24hUsd": 1143356189,
+      "volume24hText": "1.14B",
+      "marketCapUsd": 21612743945,
+      "marketCapText": "21.61B",
+      "marketCapRank": 11,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "Three coins traders are watching today",
+    "segmentLines": [
+      [
+        "Stonk trades near zero point two nine eight eight dollars, down twenty point two nine percent.",
+        "Price sits below its twenty period average of zero point three three four four, R S I at thirty five point seven."
+      ],
+      [
+        "Artificial Superintelligence Alliance is at zero point two zero seven three dollars, up four point zero four percent.",
+        "It sits sixty five percent up its twenty four hour range, with R S I at fifty two point two."
+      ],
+      [
+        "Hyperliquid trades near ninety seven point three five dollars, up four point three percent.",
+        "Price is above the last four hours' high of ninety six point eight seven, R S I sixty point seven."
+      ]
+    ],
+    "takeaway": "Two uptrends holding, one sharp drawdown",
+    "cta": "Hit follow and drop a like so you never miss the next breakdown.",
+    "title": "STONK / FET / HYPE Trending Coins: Prices, Ranges and RSI #Shorts",
+    "description": "A quick look at STONK, FET and HYPE, covering current prices, twenty four hour moves, intraday ranges, moving averages and RSI readings for each chart.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "stonk",
+      "fet",
+      "hype",
+      "hyperliquid",
+      "crypto shorts",
+      "altcoin update",
+      "rsi analysis",
+      "crypto market today",
+      "trending coins",
+      "price analysis",
+      "crypto commentary",
+      "crypto analysis",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#STONK",
+    "#ArtificialSuperintellige",
+    "#FET",
+    "#Hyperliquid",
+    "#HYPE",
+    "#crypto",
+    "#cryptonews",
+    "#trading"
+  ],
+  "videoId": "ZeApO6y4Uh0",
+  "thumbnailSet": false,
+  "usage": {
+    "input_tokens": 2705,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 536,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global"
+  }
+}
