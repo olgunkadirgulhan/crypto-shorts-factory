@@ -105,6 +105,72 @@ export async function fetchCandles(coinId) {
     .map(([t, o, h, l, c]) => ({ t, o, h, l, c }));
 }
 
+// CoinGecko returns 4-hour candles for a 7-day OHLC window (vs. 30-min for 1-day).
+export async function fetchWeeklyCandles(coinId) {
+  const raw = await cg(`/coins/${coinId}/ohlc?vs_currency=usd&days=7`);
+  return raw
+    .filter((r) => r.every((n) => Number.isFinite(n)))
+    .map(([t, o, h, l, c]) => ({ t, o, h, l, c }));
+}
+
+export async function fetchWeeklyMarketContext() {
+  const [global, markets] = await Promise.all([
+    cg("/global"),
+    cg("/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=150&page=1&price_change_percentage=24h,7d"),
+  ]);
+  const g = global.data;
+  return {
+    global: {
+      totalMarketCapUsd: g.total_market_cap.usd,
+      marketCapChange24hPct: round(g.market_cap_change_percentage_24h_usd, 2),
+      btcDominancePct: round(g.market_cap_percentage.btc, 1),
+      ethDominancePct: round(g.market_cap_percentage.eth, 1),
+    },
+    markets,
+  };
+}
+
+// Picks `count` coins for the weekly recap: BTC + ETH always anchor it (a
+// market recap that never mentions Bitcoin reads as incomplete), the rest are
+// the biggest 7-day movers. A higher volume floor than the daily pickers
+// keeps thin, easily-manipulated micro-caps out of a "market pulse" video.
+export async function pickWeeklyMovers(markets, excludeIds = [], count = 8) {
+  const liquid = markets.filter(
+    (c) => !EXCLUDED.has(c.symbol.toLowerCase()) && c.total_volume > 50_000_000,
+  );
+  const fresh = (list) => list.filter((c) => !excludeIds.includes(c.id));
+
+  const btc = markets.find((c) => c.id === "bitcoin");
+  const eth = markets.find((c) => c.id === "ethereum");
+  const byAbs7d = [...liquid]
+    .filter((c) => !CORE.has(c.id))
+    .sort(
+      (a, b) =>
+        Math.abs(b.price_change_percentage_7d_in_currency ?? 0) -
+        Math.abs(a.price_change_percentage_7d_in_currency ?? 0),
+    );
+
+  const picks = dedupeById([btc, eth, ...fresh(byAbs7d), ...byAbs7d]);
+  return picks.slice(0, count);
+}
+
+// Same "fetch candidates + candles together, skip anything too thin" pattern
+// as selectSegments, but for the weekly 7-day window.
+export async function selectWeeklySegments(context, excludeIds = [], count = 8) {
+  const candidates = await pickWeeklyMovers(context.markets, excludeIds, count + 4);
+  const result = [];
+  for (const coin of candidates) {
+    if (result.length === count) break;
+    const candles = await fetchWeeklyCandles(coin.id);
+    if (candles.length >= 10) {
+      result.push({ coin, candles });
+    } else {
+      console.log(`  ${coin.id} has only ${candles.length} weekly candles, skipping`);
+    }
+  }
+  return result.slice(0, count);
+}
+
 // Fetches candidates and their candles together, skipping any coin whose
 // history is too thin to chart, until `count` usable coins are assembled.
 export async function selectSegments(slot, context, excludeIds = [], count = 3) {

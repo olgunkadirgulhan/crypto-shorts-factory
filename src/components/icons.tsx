@@ -38,3 +38,21 @@ export const BarsIcon: React.FC<IconProps> = ({ color, size }) => (
     <rect x="16.5" y="9.5" width="4" height="11" rx="1" fill={color} />
   </svg>
 );
+
+export const BellIcon: React.FC<IconProps> = ({ color, size }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <path
+      d="M12 3a5 5 0 0 0-5 5c0 4.5-2 6-2 6h14s-2-1.5-2-6a5 5 0 0 0-5-5Z"
+      stroke={color}
+      strokeWidth={2}
+      strokeLinejoin="round"
+    />
+    <path d="M9.5 19a2.5 2.5 0 0 0 5 0" stroke={color} strokeWidth={2} strokeLinecap="round" />
+  </svg>
+);
+
+export const HeartIcon: React.FC<IconProps> = ({ color, size }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+    <path d="M12 20.5s-7.2-4.6-10-9C0.3 8 1.8 4 5.7 4c2.1 0 3.7 1.3 4.7 3 1-1.7 2.6-3 4.7-3 3.9 0 5.4 4 3.7 7.5-2.8 4.4-10 9-10 9Z" />
+  </svg>
+);

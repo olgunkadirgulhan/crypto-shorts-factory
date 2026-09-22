@@ -77,3 +77,53 @@ export type TrailerProps = {
   durationSec: number;
   audioFile: string | null;
 };
+
+export type WeeklyGlobal = {
+  totalMarketCapUsd: number;
+  marketCapChange24hPct: number;
+  btcDominancePct: number;
+  ethDominancePct: number;
+};
+
+export type WeeklyMetrics = {
+  price: number;
+  priceText: string;
+  change7dPct: number | null;
+  change24hPct: number | null;
+  weekHigh: number;
+  weekLow: number;
+  weekHighText: string;
+  weekLowText: string;
+  rangePositionPct: number;
+  rsi14: number | null;
+  rsiZone: string;
+  sma20: number | null;
+  sma20Text: string | null;
+  aboveSma20: boolean | null;
+  volume24hUsd: number;
+  volume24hText: string;
+  marketCapUsd: number;
+  marketCapText: string;
+  marketCapRank: number | null;
+  trend: string;
+};
+
+export type WeeklySegment = {
+  coin: CoinInfo;
+  metrics: WeeklyMetrics;
+  candles: Candle[];
+  logoFile: string | null;
+  startSec: number;
+  endSec: number;
+};
+
+export type WeeklyVideoProps = {
+  hook: string;
+  takeaway: string;
+  ctaText: string;
+  global: WeeklyGlobal;
+  segments: WeeklySegment[];
+  captions: Caption[];
+  durationSec: number;
+  audioFile: string | null;
+};

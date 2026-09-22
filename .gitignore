@@ -3,7 +3,9 @@ node_modules/
 out/
 public/voice.mp3
 public/trailer-voice.mp3
+public/weekly-voice.mp3
 public/coin-*.png
+public/weekly-coin-*.png
 .env
 .env.local
 *.log

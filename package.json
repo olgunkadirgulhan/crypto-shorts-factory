@@ -10,6 +10,8 @@
     "produce": "node pipeline/run.mjs",
     "produce:dry": "node pipeline/run.mjs --dry-run",
     "trailer": "node pipeline/render-trailer.mjs",
+    "weekly": "node pipeline/render-weekly.mjs",
+    "weekly:dry": "node pipeline/render-weekly.mjs --dry-run",
     "studio": "remotion studio src/index.ts",
     "render": "remotion render src/index.ts CryptoShort out/preview.mp4 --props=out/props.json",
     "youtube:auth": "node scripts/get-youtube-token.mjs"

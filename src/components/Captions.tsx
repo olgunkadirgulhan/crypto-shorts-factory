@@ -3,7 +3,7 @@ import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { theme } from "../theme";
 import type { Caption } from "../types";
 
-export const Captions: React.FC<{ captions: Caption[] }> = ({ captions }) => {
+export const Captions: React.FC<{ captions: Caption[]; hideProgress?: boolean }> = ({ captions, hideProgress }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -35,26 +35,28 @@ export const Captions: React.FC<{ captions: Caption[] }> = ({ captions }) => {
       >
         {active.text}
       </div>
-      <div
-        style={{
-          display: "flex",
-          gap: 8,
-          justifyContent: "center",
-          marginTop: 26,
-        }}
-      >
-        {captions.map((c, i) => (
-          <div
-            key={c.start}
-            style={{
-              width: i === index ? 40 : 14,
-              height: 5,
-              borderRadius: 999,
-              backgroundColor: i === index ? theme.amberText : theme.hairline,
-            }}
-          />
-        ))}
-      </div>
+      {!hideProgress && (
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            justifyContent: "center",
+            marginTop: 26,
+          }}
+        >
+          {captions.map((c, i) => (
+            <div
+              key={c.start}
+              style={{
+                width: i === index ? 40 : 14,
+                height: 5,
+                borderRadius: 999,
+                backgroundColor: i === index ? theme.amberText : theme.hairline,
+              }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

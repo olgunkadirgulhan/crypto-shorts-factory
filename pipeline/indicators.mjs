@@ -116,6 +116,46 @@ function classifyTrend(change24h, price, sma20) {
   return "range-bound";
 }
 
+// Same shape as computeMetrics but for the weekly recap: candles are the 7-day,
+// 4-hour series, so "high/low" here means the week's high/low, not 24h, and the
+// headline move is the 7-day change (still reports 24h too, for "how it's doing
+// right now" context within the week).
+export function computeWeeklyMetrics(coin, candles) {
+  const closes = candles.map((c) => c.c);
+  const price = coin.current_price;
+
+  const weekHigh = Math.max(...candles.map((c) => c.h));
+  const weekLow = Math.min(...candles.map((c) => c.l));
+  const range = weekHigh - weekLow;
+
+  const sma20 = sma(closes, Math.min(20, closes.length));
+  const rsi14 = rsi(closes);
+  const change7dPct = round(coin.price_change_percentage_7d_in_currency, 2);
+
+  return {
+    price,
+    priceText: formatPrice(price),
+    change7dPct,
+    change24hPct: round(coin.price_change_percentage_24h, 2),
+    weekHigh,
+    weekLow,
+    weekHighText: formatPrice(weekHigh),
+    weekLowText: formatPrice(weekLow),
+    rangePositionPct: range > 0 ? round(((price - weekLow) / range) * 100, 0) : 50,
+    rsi14: round(rsi14, 1),
+    rsiZone: rsi14 == null ? "unknown" : rsi14 >= 70 ? "overbought" : rsi14 <= 30 ? "oversold" : "neutral",
+    sma20,
+    sma20Text: sma20 == null ? null : formatPrice(sma20),
+    aboveSma20: sma20 == null ? null : price > sma20,
+    volume24hUsd: coin.total_volume,
+    volume24hText: formatCompact(coin.total_volume),
+    marketCapUsd: coin.market_cap,
+    marketCapText: formatCompact(coin.market_cap),
+    marketCapRank: coin.market_cap_rank,
+    trend: classifyTrend(change7dPct, price, sma20),
+  };
+}
+
 export function sentimentOf(metrics) {
   const score =
     (metrics.change24hPct ?? 0) / 3 +

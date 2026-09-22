@@ -14,6 +14,8 @@ type Props = {
   resistanceText: string;
   priceText: string;
   progress: number;
+  highLabel?: string;
+  lowLabel?: string;
 };
 
 const PAD = { top: 44, right: 178, bottom: 34, left: 20 };
@@ -29,6 +31,8 @@ export const CandleChart: React.FC<Props> = ({
   resistanceText,
   priceText,
   progress,
+  highLabel = "4H HIGH",
+  lowLabel = "4H LOW",
 }) => {
   const innerW = width - PAD.left - PAD.right;
   const innerH = height - PAD.top - PAD.bottom;
@@ -56,9 +60,9 @@ export const CandleChart: React.FC<Props> = ({
     .join(" ");
 
   const levels = [
-    { y: y(resistance), label: "4H HIGH", value: resistanceText, color: theme.inkSecondary, solid: false },
+    { y: y(resistance), label: highLabel, value: resistanceText, color: theme.inkSecondary, solid: false },
     { y: y(price), label: "LAST", value: priceText, color: theme.amberText, solid: true },
-    { y: y(support), label: "4H LOW", value: supportText, color: theme.inkSecondary, solid: false },
+    { y: y(support), label: lowLabel, value: supportText, color: theme.inkSecondary, solid: false },
   ];
   const labelYs = decollide(
     levels.map((l) => l.y),
