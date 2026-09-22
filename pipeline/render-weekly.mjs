@@ -14,8 +14,8 @@ import { notify } from "./notify.mjs";
 const ROOT = process.cwd();
 const HISTORY_FILE = path.join(ROOT, "state", "weekly-history.json");
 const COIN_COUNT = 8;
-const OVERVIEW_LINES = 3;
-const LINES_PER_COIN = 3;
+const OVERVIEW_LINES = 4;
+const LINES_PER_COIN = 4;
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");

@@ -9,12 +9,12 @@ import { z } from "zod";
 // the whole run over one extra sentence.
 const CoinScriptSchema = z.object({
   symbol: z.string(),
-  lines: z.array(z.string()).min(3).max(4),
+  lines: z.array(z.string()).min(4).max(5),
 });
 
 const WeeklyScriptSchema = z.object({
   hook: z.string(),
-  overviewLines: z.array(z.string()).min(3).max(4),
+  overviewLines: z.array(z.string()).min(4).max(5),
   coins: z.array(CoinScriptSchema).min(6).max(8),
   takeaway: z.string(),
   cta: z.string(),
@@ -35,8 +35,8 @@ HARD RULES
 - Spell numbers so a text-to-speech engine says them correctly: "one hundred and eight thousand dollars", "up thirty one point four percent this week", "R S I at sixty one".
 
 VOICEOVER STRUCTURE
-- overviewLines: exactly 3 sentences opening the video - the week's overall tone (total market cap direction, Bitcoin dominance, general risk mood). 9-16 words each.
-- coins: one object per coin supplied, SAME ORDER as the input, each with "symbol" (must exactly match the input coin's symbol) and "lines" (exactly 3 spoken sentences, 9-16 words each): sentence 1 states the 7-day move and current price, sentence 2 gives the most useful observation from that coin's data (a week-high/low level, RSI, trend, or volume fact), sentence 3 is a brief closing color line about that coin's week (still descriptive, never advice).
+- overviewLines: exactly 4 sentences opening the video - the week's overall tone (total market cap direction, Bitcoin dominance, general risk mood, and one sentence framing what this recap will cover). 9-16 words each.
+- coins: one object per coin supplied, SAME ORDER as the input, each with "symbol" (must exactly match the input coin's symbol) and "lines" (exactly 4 spoken sentences, 9-16 words each): sentence 1 states the 7-day move and current price, sentence 2 gives the most useful observation from that coin's data (a week-high/low level, RSI, trend, or volume fact), sentence 3 adds a second distinct observation (a different stat than sentence 2 - volume, market cap rank context, or how it's doing today vs. the week), sentence 4 is a brief closing color line about that coin's week (still descriptive, never advice).
 - cta: exactly one spoken sentence closing the video, asking the viewer to follow the channel and like the video. Warm, not pushy, no coin mentions.
 
 FIELDS
@@ -111,13 +111,13 @@ function normalize(out, segments) {
   const bySymbol = new Map(out.coins.map((c) => [c.symbol.trim().toUpperCase(), c]));
   const coinLines = segments.map(({ coin }, i) => {
     const match = bySymbol.get(coin.symbol.toUpperCase()) ?? out.coins[i];
-    const lines = (match.lines ?? []).map((l) => l.trim()).filter(Boolean).slice(0, 3);
-    if (lines.length < 3) throw new Error(`Weekly script segment for ${coin.symbol} has ${lines.length} usable lines`);
+    const lines = (match.lines ?? []).map((l) => l.trim()).filter(Boolean).slice(0, 4);
+    if (lines.length < 4) throw new Error(`Weekly script segment for ${coin.symbol} has ${lines.length} usable lines`);
     return lines;
   });
 
-  const overviewLines = (out.overviewLines ?? []).map((l) => l.trim()).filter(Boolean).slice(0, 3);
-  if (overviewLines.length < 3) throw new Error(`Weekly overview has ${overviewLines.length} usable lines`);
+  const overviewLines = (out.overviewLines ?? []).map((l) => l.trim()).filter(Boolean).slice(0, 4);
+  if (overviewLines.length < 4) throw new Error(`Weekly overview has ${overviewLines.length} usable lines`);
 
   let title = out.title.trim();
   if (title.length > 100) title = title.slice(0, 100).trim();

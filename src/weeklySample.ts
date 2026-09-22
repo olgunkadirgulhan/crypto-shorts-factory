@@ -76,6 +76,7 @@ const overviewLines = [
   "This week the total crypto market cap climbed a little over four percent.",
   "Bitcoin dominance held steady near fifty nine percent of the entire market.",
   "Overall risk appetite stayed firm, with alt coins outpacing majors on average.",
+  "Here is a look at the biggest movers from the past seven days.",
 ];
 
 function coinLines(name: string, change: number) {
@@ -84,6 +85,7 @@ function coinLines(name: string, change: number) {
     `${name} ${dir} ${Math.abs(change)} percent this week, trading near its recent range.`,
     "R S I sits in neutral territory, with price holding above its twenty period average.",
     "Volume stayed steady through the week without any single standout spike day.",
+    "It closed out the week broadly in line with the rest of the market.",
   ];
 }
 
@@ -108,7 +110,7 @@ const segments: WeeklySegment[] = [];
 let cursor = 3 + overviewLines.length * 4.7;
 coins.forEach((c, i) => {
   const start = cursor;
-  const end = cursor + 3 * 4.6;
+  const end = cursor + 4 * 4.6;
   segments.push(
     makeSegment({
       ...c,

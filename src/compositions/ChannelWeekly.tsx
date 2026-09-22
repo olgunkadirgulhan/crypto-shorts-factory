@@ -9,8 +9,8 @@ import { theme } from "../theme";
 import type { WeeklyVideoProps } from "../types";
 
 const TINT = theme.blueText;
-const OVERVIEW_LINES = 3;
-const LINES_PER_COIN = 3;
+const OVERVIEW_LINES = 4;
+const LINES_PER_COIN = 4;
 
 const round2 = (n: number) => Number(n.toFixed(2));
 
