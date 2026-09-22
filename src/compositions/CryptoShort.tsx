@@ -5,6 +5,7 @@ import { Captions } from "../components/Captions";
 import { CoinPanel } from "../components/CoinPanel";
 import { HookOverlay } from "../components/HookOverlay";
 import { Outro } from "../components/Outro";
+import { SpotlightPanel } from "../components/SpotlightPanel";
 import { theme } from "../theme";
 import type { ShortProps } from "../types";
 
@@ -38,14 +39,16 @@ export const CryptoShort: React.FC<ShortProps> = (props) => {
       {props.segments.map((segment, i) => {
         const from = Math.round(segment.startSec * fps);
         const to = Math.round(segment.endSec * fps);
+        const localDuration = Math.max(1, to - from);
+        const PanelComponent = props.style === "spotlight" ? SpotlightPanel : CoinPanel;
         return (
-          <Sequence key={segment.coin.id} from={from} durationInFrames={Math.max(1, to - from)}>
-            <CoinPanel
+          <Sequence key={segment.coin.id} from={from} durationInFrames={localDuration}>
+            <PanelComponent
               slot={props.slot}
               segment={segment}
               index={i + 1}
               total={props.segments.length}
-              durationInFrames={Math.max(1, to - from)}
+              durationInFrames={localDuration}
             />
           </Sequence>
         );

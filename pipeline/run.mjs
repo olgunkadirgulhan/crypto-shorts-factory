@@ -132,8 +132,15 @@ async function main() {
     });
   }
 
+  // Randomized per video (not on a fixed cadence) so the channel doesn't
+  // publish one visually identical template every time - a fixed rotation
+  // would itself be a detectable pattern.
+  const style = Math.random() < 0.5 ? "panel" : "spotlight";
+  console.log(`  visual style: ${style}`);
+
   const props = {
     slot,
+    style,
     hook: script.hook,
     takeaway: script.takeaway,
     ctaText: script.cta,
@@ -194,7 +201,7 @@ async function main() {
   fs.writeFileSync(
     path.join(ROOT, "archive", `${stamp}-${slot}.json`),
     JSON.stringify(
-      { slot, coins: segments.map((s) => s.coin), metrics: segments.map((s) => s.metrics), script, hashtags, videoId, thumbnailSet, usage },
+      { slot, style, coins: segments.map((s) => s.coin), metrics: segments.map((s) => s.metrics), script, hashtags, videoId, thumbnailSet, usage },
       null,
       2,
     ),

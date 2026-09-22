@@ -47,6 +47,7 @@ export type CoinSegment = {
 
 export type ShortProps = {
   slot: "open" | "mover" | "trending";
+  style: "panel" | "spotlight";
   hook: string;
   takeaway: string;
   ctaText: string;

@@ -87,6 +87,7 @@ const captions = [
 
 export const sampleProps: ShortProps = {
   slot: "open",
+  style: "panel",
   hook: "3 Coins Moving Right Now",
   takeaway: "Majors steady, Solana leading the tape",
   ctaText: captions[6].text,
