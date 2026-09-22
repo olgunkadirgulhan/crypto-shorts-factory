@@ -103,3 +103,21 @@ export async function uploadVideo(yt, { file, title, description, tags, hashtags
   if (!res.data.id) throw new Error("YouTube accepted the upload but returned no video id");
   return res.data.id;
 }
+
+// Custom thumbnails require the channel to be phone-verified - YouTube rejects
+// the call otherwise. That's a channel-level setting we can't fix here, so a
+// failure here is a warning, not a fatal error: the video itself already uploaded.
+export async function setThumbnail(yt, videoId, imagePath) {
+  try {
+    await yt.thumbnails.set({
+      videoId,
+      media: { mimeType: "image/png", body: fs.createReadStream(imagePath) },
+    });
+    return true;
+  } catch (err) {
+    console.warn(
+      `  thumbnail upload failed (channel likely needs phone verification at youtube.com/verify): ${err.message}`,
+    );
+    return false;
+  }
+}

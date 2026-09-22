@@ -1,4 +1,5 @@
 node_modules/
+.claude/
 out/
 public/voice.mp3
 public/coin-*.png

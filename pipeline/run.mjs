@@ -6,7 +6,7 @@ import { fetchMarketContext, selectSegments } from "./market.mjs";
 import { computeMetrics, sentimentOf } from "./indicators.mjs";
 import { generateScript } from "./script.mjs";
 import { synthesizeVoiceover } from "./tts.mjs";
-import { discoverTrendingHashtags, uploadVideo, youtubeClient } from "./youtube.mjs";
+import { discoverTrendingHashtags, setThumbnail, uploadVideo, youtubeClient } from "./youtube.mjs";
 import { notify } from "./notify.mjs";
 
 const ROOT = process.cwd();
@@ -148,20 +148,32 @@ async function main() {
   const propsFile = path.join(ROOT, "out", "props.json");
   fs.writeFileSync(propsFile, JSON.stringify(props, null, 2));
 
-  console.log("6/8 render");
+  console.log("6/9 render");
   const videoFile = path.join(ROOT, "out", `${stamp}-${slot}.mp4`);
   // Duration comes from calculateMetadata reading props.durationSec, so no --frames here.
   await sh("npx", ["remotion", "render", "src/index.ts", "CryptoShort", videoFile, `--props=${propsFile}`]);
   const sizeMb = (fs.statSync(videoFile).size / 1e6).toFixed(1);
   console.log(`  ${videoFile} (${sizeMb} MB)`);
 
+  console.log("7/9 thumbnail");
+  // Frame 50 (1.67s into the 2.6s hook): past every chip's entrance spring
+  // (last one settles ~frame 34) and before the hook's own fade-out starts
+  // (frame 68), so it's a fully-settled, legible still of the hook card.
+  const thumbFile = path.join(ROOT, "out", `${stamp}-${slot}-thumb.png`);
+  await sh("npx", [
+    "remotion", "still", "src/index.ts", "CryptoShort", thumbFile,
+    `--props=${propsFile}`, "--frame=50",
+  ]);
+  console.log(`  ${thumbFile}`);
+
   let videoId = null;
   let hashtags = [];
+  let thumbnailSet = false;
 
   if (dryRun) {
-    console.log("7/8 upload skipped (--dry-run)");
+    console.log("8/9 upload skipped (--dry-run)");
   } else {
-    console.log("7/8 hashtags + upload");
+    console.log("8/9 hashtags + upload + thumbnail");
     const yt = youtubeClient();
     hashtags = await discoverTrendingHashtags(yt, segments.map((s) => s.coin));
     console.log(`  ${hashtags.join(" ")}`);
@@ -173,14 +185,16 @@ async function main() {
       hashtags,
     });
     console.log(`  https://youtu.be/${videoId}`);
+    thumbnailSet = await setThumbnail(yt, videoId, thumbFile);
+    console.log(`  thumbnail set: ${thumbnailSet}`);
   }
 
-  console.log("8/8 archive");
+  console.log("9/9 archive");
   fs.mkdirSync(path.join(ROOT, "archive"), { recursive: true });
   fs.writeFileSync(
     path.join(ROOT, "archive", `${stamp}-${slot}.json`),
     JSON.stringify(
-      { slot, coins: segments.map((s) => s.coin), metrics: segments.map((s) => s.metrics), script, hashtags, videoId, usage },
+      { slot, coins: segments.map((s) => s.coin), metrics: segments.map((s) => s.metrics), script, hashtags, videoId, thumbnailSet, usage },
       null,
       2,
     ),

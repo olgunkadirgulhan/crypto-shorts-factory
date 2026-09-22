@@ -10,11 +10,14 @@ type Props = {
   hook: string;
   segments: WatchItem[];
   tint: string;
+  // The Hook Sequence's own length in frames - useVideoConfig() would return
+  // the whole composition's length instead, so the parent passes this explicitly.
+  durationInFrames: number;
 };
 
-export const HookOverlay: React.FC<Props> = ({ slot, hook, segments, tint }) => {
+export const HookOverlay: React.FC<Props> = ({ slot, hook, segments, tint, durationInFrames }) => {
   const frame = useCurrentFrame();
-  const { fps, durationInFrames } = useVideoConfig();
+  const { fps } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 200 }, durationInFrames: 20 });
   const exit = interpolate(
     frame,

@@ -84,6 +84,7 @@ export const CryptoShort: React.FC<ShortProps> = (props) => {
           hook={props.hook}
           segments={props.segments.map((s) => ({ symbol: s.coin.symbol, changePct: s.metrics.change24hPct }))}
           tint={tint}
+          durationInFrames={hookFrames}
         />
       </Sequence>
 
