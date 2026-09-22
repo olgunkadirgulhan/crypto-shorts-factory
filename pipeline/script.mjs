@@ -84,16 +84,23 @@ export async function generateScript({ slot, segments, global, avoidTitles }) {
 
   // No prompt caching: at 3 calls/day the 5-minute cache never hits, and a cache
   // write costs 1.25x. Caching here would raise the bill, not lower it.
+  //
+  // output_format (the schema) and output_config (effort etc.) are separate
+  // top-level request fields in this SDK version - not one nested under the
+  // other. beta.messages.parse() only attempts to parse the response when it
+  // finds a `.parse` method on `params.output_format`; nesting the schema
+  // under output_config silently skips parsing (parsed_output stays null even
+  // though the model answered normally).
   const request = {
     model,
     max_tokens: 16000,
     system: SYSTEM,
     messages: [{ role: "user", content: JSON.stringify(payload) }],
-    output_config: { format: betaZodOutputFormat(ScriptSchema, "video_script") },
+    output_format: betaZodOutputFormat(ScriptSchema, "video_script"),
   };
 
   // effort is rejected by Haiku 4.5; it is the cost lever on the Opus/Sonnet family.
-  if (!model.includes("haiku")) request.output_config.effort = "low";
+  if (!model.includes("haiku")) request.output_config = { effort: "low" };
 
   const response = await client.beta.messages.parse(request);
 
@@ -101,7 +108,12 @@ export async function generateScript({ slot, segments, global, avoidTitles }) {
     throw new Error(`Model declined: ${response.stop_details?.explanation ?? "no explanation"}`);
   }
   const out = response.parsed_output;
-  if (!out) throw new Error(`Model returned no parseable script (stop_reason=${response.stop_reason})`);
+  if (!out) {
+    const rawText = response.content.find((b) => b.type === "text")?.text ?? "(no text block)";
+    throw new Error(
+      `Model returned no parseable script (stop_reason=${response.stop_reason}): ${rawText.slice(0, 500)}`,
+    );
+  }
 
   return {
     script: normalize(out, segments),
