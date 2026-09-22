@@ -1,0 +1,174 @@
+{
+  "slot": "trending",
+  "style": "spotlight",
+  "coins": [
+    {
+      "id": "astronaut-2",
+      "name": "astronaut",
+      "symbol": "ASTRO",
+      "image": "https://coin-images.coingecko.com/coins/images/102176942/large/astro-logo.png?1789066915"
+    },
+    {
+      "id": "pudgy-penguins",
+      "name": "Pudgy Penguins",
+      "symbol": "PENGU",
+      "image": "https://coin-images.coingecko.com/coins/images/52622/large/PUDGY_PENGUINS_PENGU_PFP.png?1733809110"
+    },
+    {
+      "id": "aurora-near",
+      "name": "Aurora",
+      "symbol": "AURORA",
+      "image": "https://coin-images.coingecko.com/coins/images/20582/large/aurora.jpeg?1696519989"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 0.02283883,
+      "priceText": "0.0228",
+      "change24hPct": -21.33,
+      "high24h": 0.04639694,
+      "low24h": 0.00390519,
+      "high24hText": "0.0464",
+      "low24hText": "0.003905",
+      "support": 0.00893921,
+      "resistance": 0.04639694,
+      "supportText": "0.008939",
+      "resistanceText": "0.0464",
+      "distToResistancePct": 103.15,
+      "distToSupportPct": 60.86,
+      "rangePositionPct": 45,
+      "rsi14": 70.5,
+      "rsiZone": "overbought",
+      "sma20": 0.016787539499999997,
+      "sma20Text": "0.0168",
+      "aboveSma20": true,
+      "volatility24hPct": 29.49,
+      "volume24hUsd": 21489108,
+      "volume24hText": "21.49M",
+      "marketCapUsd": 22827430,
+      "marketCapText": "22.83M",
+      "marketCapRank": 838,
+      "trend": "range-bound"
+    },
+    {
+      "price": 0.00947215,
+      "priceText": "0.009472",
+      "change24hPct": 10.24,
+      "high24h": 0.00955461,
+      "low24h": 0.00858,
+      "high24hText": "0.009555",
+      "low24hText": "0.008580",
+      "support": 0.00880836,
+      "resistance": 0.00955461,
+      "supportText": "0.008808",
+      "resistanceText": "0.009555",
+      "distToResistancePct": 0.87,
+      "distToSupportPct": 7.01,
+      "rangePositionPct": 92,
+      "rsi14": 65.2,
+      "rsiZone": "neutral",
+      "sma20": 0.009106613500000003,
+      "sma20Text": "0.009107",
+      "aboveSma20": true,
+      "volatility24hPct": 1.9,
+      "volume24hUsd": 404212713,
+      "volume24hText": "404.21M",
+      "marketCapUsd": 595365289,
+      "marketCapText": "595.37M",
+      "marketCapRank": 104,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 0.09178,
+      "priceText": "0.0918",
+      "change24hPct": 125.03,
+      "high24h": 0.131849,
+      "low24h": 0.04065211,
+      "high24hText": "0.1318",
+      "low24hText": "0.0407",
+      "support": 0.08239,
+      "resistance": 0.131849,
+      "supportText": "0.0824",
+      "resistanceText": "0.1318",
+      "distToResistancePct": 43.66,
+      "distToSupportPct": 10.23,
+      "rangePositionPct": 56,
+      "rsi14": 55.7,
+      "rsiZone": "neutral",
+      "sma20": 0.08423845,
+      "sma20Text": "0.0842",
+      "aboveSma20": true,
+      "volatility24hPct": 16.44,
+      "volume24hUsd": 44728466,
+      "volume24hText": "44.73M",
+      "marketCapUsd": 67778690,
+      "marketCapText": "67.78M",
+      "marketCapRank": 394,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "Three coins traders are watching today",
+    "segmentLines": [
+      [
+        "Astronaut trades near zero point zero two two eight dollars, down twenty one point three three percent.",
+        "R S I at seventy point five sits overbought while price holds above the twenty period average."
+      ],
+      [
+        "Pudgy Penguins sits at zero point zero zero nine four seven two dollars, up ten point two four percent.",
+        "Price sits ninety two percent up its 24-hour range with four hundred and four million dollars traded."
+      ],
+      [
+        "Aurora trades around zero point zero nine one eight dollars, up one hundred and twenty five percent.",
+        "It sits forty three point six six percent below the last four hours' high, R S I fifty five point seven."
+      ]
+    ],
+    "takeaway": "Two strong uptrends, one sharp overnight reversal",
+    "cta": "Hit follow and drop a like so you never miss the next breakdown.",
+    "title": "ASTRO / PENGU / AURORA Trending Coins: Prices, Ranges and RSI #Shorts",
+    "description": "A quick look at Astronaut, Pudgy Penguins and Aurora, covering current prices, 24-hour moves, intraday ranges, RSI readings and volume.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "astro",
+      "astronaut",
+      "pengu",
+      "pudgy penguins",
+      "aurora",
+      "crypto analysis",
+      "altcoin update",
+      "rsi",
+      "crypto shorts",
+      "price action",
+      "24h range",
+      "trending crypto",
+      "market commentary",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#astronaut",
+    "#ASTRO",
+    "#PudgyPenguins",
+    "#PENGU",
+    "#Aurora",
+    "#crypto",
+    "#cryptonews",
+    "#trading"
+  ],
+  "videoId": "Em2G_P3yr0Q",
+  "thumbnailSet": false,
+  "usage": {
+    "input_tokens": 2664,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 544,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global"
+  }
+}
