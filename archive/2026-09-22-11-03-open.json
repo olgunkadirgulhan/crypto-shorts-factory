@@ -1,0 +1,173 @@
+{
+  "slot": "open",
+  "coins": [
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": "akedo",
+      "name": "Akedo",
+      "symbol": "AKE",
+      "image": "https://coin-images.coingecko.com/coins/images/68410/large/akedo.png?1755678461"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 85900,
+      "priceText": "85,900",
+      "change24hPct": 1.72,
+      "high24h": 87330,
+      "low24h": 84142,
+      "high24hText": "87,330",
+      "low24hText": "84,142",
+      "support": 85163,
+      "resistance": 86310,
+      "supportText": "85,163",
+      "resistanceText": "86,310",
+      "distToResistancePct": 0.48,
+      "distToSupportPct": 0.86,
+      "rangePositionPct": 55,
+      "rsi14": 53.1,
+      "rsiZone": "neutral",
+      "sma20": 85609.55,
+      "sma20Text": "85,610",
+      "aboveSma20": true,
+      "volatility24hPct": 0.38,
+      "volume24hUsd": 53302080628,
+      "volume24hText": "53.3B",
+      "marketCapUsd": 1725877211301,
+      "marketCapText": "1.73T",
+      "marketCapRank": 1,
+      "trend": "uptrend"
+    },
+    {
+      "price": 2741.98,
+      "priceText": "2,742",
+      "change24hPct": 0.94,
+      "high24h": 2804.42,
+      "low24h": 2714.36,
+      "high24hText": "2,804",
+      "low24hText": "2,714",
+      "support": 2722.59,
+      "resistance": 2753.59,
+      "supportText": "2,723",
+      "resistanceText": "2,754",
+      "distToResistancePct": 0.42,
+      "distToSupportPct": 0.71,
+      "rangePositionPct": 31,
+      "rsi14": 51,
+      "rsiZone": "neutral",
+      "sma20": 2736.474,
+      "sma20Text": "2,736",
+      "aboveSma20": true,
+      "volatility24hPct": 0.43,
+      "volume24hUsd": 21449991199,
+      "volume24hText": "21.45B",
+      "marketCapUsd": 334785739395,
+      "marketCapText": "334.79B",
+      "marketCapRank": 2,
+      "trend": "range-bound"
+    },
+    {
+      "price": 0.052902,
+      "priceText": "0.0529",
+      "change24hPct": 16.91,
+      "high24h": 0.062659,
+      "low24h": 0.04300573,
+      "high24hText": "0.0627",
+      "low24hText": "0.0430",
+      "support": 0.05218,
+      "resistance": 0.055681,
+      "supportText": "0.0522",
+      "resistanceText": "0.0557",
+      "distToResistancePct": 5.25,
+      "distToSupportPct": 1.36,
+      "rangePositionPct": 50,
+      "rsi14": 46.5,
+      "rsiZone": "neutral",
+      "sma20": 0.05512305000000001,
+      "sma20Text": "0.0551",
+      "aboveSma20": false,
+      "volatility24hPct": 3.67,
+      "volume24hUsd": 86265890,
+      "volume24hText": "86.27M",
+      "marketCapUsd": 1208689677,
+      "marketCapText": "1.21B",
+      "marketCapRank": 71,
+      "trend": "range-bound"
+    }
+  ],
+  "script": {
+    "hook": "Three coins, one quick market brief",
+    "segmentLines": [
+      [
+        "Bitcoin trades near eighty five thousand nine hundred dollars, up one point seven two percent.",
+        "It sits above its twenty period average with R S I at fifty three point one."
+      ],
+      [
+        "Ethereum is near two thousand seven hundred and forty two dollars, up zero point nine four percent.",
+        "Price sits at thirty one percent of the twenty four hour range, R S I fifty one."
+      ],
+      [
+        "Akedo trades near zero point zero five two nine dollars, up sixteen point nine one percent.",
+        "It stays five point two five percent below the last four hours' high, under its twenty period average."
+      ]
+    ],
+    "takeaway": "Majors grind higher while a small cap swings hard",
+    "cta": "Hit follow and drop a like so you never miss the next market breakdown.",
+    "title": "BTC / ETH / AKE Market Brief: Prices, Ranges and RSI #Shorts",
+    "description": "A quick market brief covering Bitcoin, Ethereum and Akedo, with current prices, twenty four hour moves, recent four hour ranges, RSI readings and volume for each coin.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "akedo",
+      "ake",
+      "crypto market brief",
+      "crypto shorts",
+      "rsi",
+      "price action",
+      "altcoins",
+      "market update",
+      "crypto analysis",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#Bitcoin",
+    "#BTC",
+    "#Ethereum",
+    "#ETH",
+    "#Akedo",
+    "#AKE",
+    "#crypto",
+    "#cryptonews"
+  ],
+  "videoId": "bf5BSOIlMF4",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 2569,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 518,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "service_tier": "standard",
+    "inference_geo": "global"
+  }
+}

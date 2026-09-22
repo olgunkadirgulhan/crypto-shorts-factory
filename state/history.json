@@ -10,5 +10,17 @@
     "title": "BTC / ETH / PEPE Market Brief: Prices, Ranges and RSI #Shorts",
     "videoId": null,
     "durationSec": 46.488
+  },
+  {
+    "at": "2026-09-22T11:07:37.785Z",
+    "slot": "open",
+    "coinIds": [
+      "bitcoin",
+      "ethereum",
+      "akedo"
+    ],
+    "title": "BTC / ETH / AKE Market Brief: Prices, Ranges and RSI #Shorts",
+    "videoId": "bf5BSOIlMF4",
+    "durationSec": 42.912
   }
 ]
