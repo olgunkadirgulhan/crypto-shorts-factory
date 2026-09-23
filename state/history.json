@@ -58,5 +58,17 @@
     "title": "STONK / FET / HYPE Trending Coins: Prices, Ranges and RSI #Shorts",
     "videoId": "ZeApO6y4Uh0",
     "durationSec": 47.856
+  },
+  {
+    "at": "2026-09-23T12:17:18.716Z",
+    "slot": "mover",
+    "coinIds": [
+      "bitcoin-cash",
+      "uniswap",
+      "aptos"
+    ],
+    "title": "BCH / UNI / APT Movers of the Day: Price Analysis #Shorts",
+    "videoId": null,
+    "durationSec": 38.976
   }
 ]

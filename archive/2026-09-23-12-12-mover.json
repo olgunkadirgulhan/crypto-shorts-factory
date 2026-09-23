@@ -1,0 +1,151 @@
+{
+  "slot": "mover",
+  "style": "panel",
+  "coins": [
+    {
+      "id": "bitcoin-cash",
+      "name": "Bitcoin Cash",
+      "symbol": "BCH",
+      "image": "https://coin-images.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932"
+    },
+    {
+      "id": "uniswap",
+      "name": "Uniswap",
+      "symbol": "UNI",
+      "image": "https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669"
+    },
+    {
+      "id": "aptos",
+      "name": "Aptos",
+      "symbol": "APT",
+      "image": "https://coin-images.coingecko.com/coins/images/26455/large/Aptos-Network-Profile-Picture_%281%29.png?1788259511"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 343.59,
+      "priceText": "343.59",
+      "change24hPct": 26.67,
+      "high24h": 365.1,
+      "low24h": 269.24,
+      "high24hText": "365.10",
+      "low24hText": "269.24",
+      "support": 345.5,
+      "resistance": 365.1,
+      "supportText": "345.50",
+      "resistanceText": "365.10",
+      "distToResistancePct": 6.26,
+      "distToSupportPct": -0.56,
+      "rangePositionPct": 78,
+      "rsi14": 54.7,
+      "rsiZone": "neutral",
+      "sma20": 347.99099999999993,
+      "sma20Text": "347.99",
+      "aboveSma20": false,
+      "volatility24hPct": 2.48,
+      "volume24hUsd": 1808271860,
+      "volume24hText": "1.81B",
+      "marketCapUsd": 6904836387,
+      "marketCapText": "6.9B",
+      "marketCapRank": 21,
+      "trend": "range-bound"
+    },
+    {
+      "price": 9.75,
+      "priceText": "9.750",
+      "change24hPct": 11.7,
+      "high24h": 10.89,
+      "low24h": 8.69,
+      "high24hText": "10.89",
+      "low24hText": "8.690",
+      "support": 9.61,
+      "resistance": 10.46,
+      "supportText": "9.610",
+      "resistanceText": "10.46",
+      "distToResistancePct": 7.28,
+      "distToSupportPct": 1.44,
+      "rangePositionPct": 48,
+      "rsi14": 40.2,
+      "rsiZone": "neutral",
+      "sma20": 10.318000000000001,
+      "sma20Text": "10.32",
+      "aboveSma20": false,
+      "volatility24hPct": 1.86,
+      "volume24hUsd": 2448797173,
+      "volume24hText": "2.45B",
+      "marketCapUsd": 6053202985,
+      "marketCapText": "6.05B",
+      "marketCapRank": 23,
+      "trend": "range-bound"
+    },
+    {
+      "price": 0.838632,
+      "priceText": "0.8386",
+      "change24hPct": 11.05,
+      "high24h": 0.857235,
+      "low24h": 0.753582,
+      "high24hText": "0.8572",
+      "low24hText": "0.7536",
+      "support": 0.81799,
+      "resistance": 0.840372,
+      "supportText": "0.8180",
+      "resistanceText": "0.8404",
+      "distToResistancePct": 0.21,
+      "distToSupportPct": 2.46,
+      "rangePositionPct": 82,
+      "rsi14": 55.2,
+      "rsiZone": "neutral",
+      "sma20": 0.8331136000000001,
+      "sma20Text": "0.8331",
+      "aboveSma20": true,
+      "volatility24hPct": 1.47,
+      "volume24hUsd": 182271142,
+      "volume24hText": "182.27M",
+      "marketCapUsd": 730276938,
+      "marketCapText": "730.28M",
+      "marketCapRank": 93,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "Movers of the day: Three major crypto shifts",
+    "segmentLines": [
+      [
+        "Up twenty-six point sixty-seven percent Bitcoin Cash is three-hundred forty-three point fifty-nine.",
+        "The twenty-four hour high reached three-hundred sixty-five point ten dollars."
+      ],
+      [
+        "Up eleven point seven percent Uniswap is trading at nine point seven five zero.",
+        "Uniswap is trading below its twenty day simple moving average of ten point thirty two."
+      ],
+      [
+        "Up eleven point zero five percent Aptos is trading at zero point eight three eight six.",
+        "Its R S I is currently at fifty five point two in the neutral zone."
+      ]
+    ],
+    "takeaway": "Significant daily shifts across major altcoins",
+    "cta": "Hit follow and drop a like so you never miss the next breakdown.",
+    "title": "BCH / UNI / APT Movers of the Day: Price Analysis #Shorts",
+    "description": "Today we analyze the daily movements of Bitcoin Cash, Uniswap, and Aptos, looking at their 24-hour gains, price levels, and technical indicators.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "bitcoin cash",
+      "bch",
+      "uniswap",
+      "uni",
+      "aptos",
+      "apt",
+      "crypto analysis",
+      "altcoin news",
+      "crypto price",
+      "market movers",
+      "crypto news"
+    ]
+  },
+  "hashtags": [],
+  "videoId": null,
+  "thumbnailSet": false,
+  "usage": {
+    "input_tokens": 1777,
+    "output_tokens": 420
+  }
+}
