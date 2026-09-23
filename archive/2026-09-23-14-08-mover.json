@@ -1,0 +1,161 @@
+{
+  "slot": "mover",
+  "style": "panel",
+  "coins": [
+    {
+      "id": "lighter",
+      "name": "Lighter",
+      "symbol": "LIT",
+      "image": "https://coin-images.coingecko.com/coins/images/71121/large/lighter.png?1765888098"
+    },
+    {
+      "id": "pudgy-penguins",
+      "name": "Pudgy Penguins",
+      "symbol": "PENGU",
+      "image": "https://coin-images.coingecko.com/coins/images/52622/large/PUDGY_PENGUINS_PENGU_PFP.png?1733809110"
+    },
+    {
+      "id": "dash",
+      "name": "Dash",
+      "symbol": "DASH",
+      "image": "https://coin-images.coingecko.com/coins/images/19/large/dash-logo.png?1696501423"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 5.45,
+      "priceText": "5.450",
+      "change24hPct": 15.87,
+      "high24h": 5.31,
+      "low24h": 4.64,
+      "high24hText": "5.310",
+      "low24hText": "4.640",
+      "support": 5.08,
+      "resistance": 5.3,
+      "supportText": "5.080",
+      "resistanceText": "5.300",
+      "distToResistancePct": -2.75,
+      "distToSupportPct": 6.79,
+      "rangePositionPct": 121,
+      "rsi14": 59.5,
+      "rsiZone": "neutral",
+      "sma20": 5.182499999999999,
+      "sma20Text": "5.182",
+      "aboveSma20": true,
+      "volatility24hPct": 1.44,
+      "volume24hUsd": 125977936,
+      "volume24hText": "125.98M",
+      "marketCapUsd": 1362155441,
+      "marketCapText": "1.36B",
+      "marketCapRank": 70,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 0.01035818,
+      "priceText": "0.0104",
+      "change24hPct": 13.94,
+      "high24h": 0.01111058,
+      "low24h": 0.00880836,
+      "high24hText": "0.0111",
+      "low24hText": "0.008808",
+      "support": 0.01004397,
+      "resistance": 0.01104874,
+      "supportText": "0.0100",
+      "resistanceText": "0.0110",
+      "distToResistancePct": 6.67,
+      "distToSupportPct": 3.03,
+      "rangePositionPct": 67,
+      "rsi14": 49.1,
+      "rsiZone": "neutral",
+      "sma20": 0.010597549000000003,
+      "sma20Text": "0.0106",
+      "aboveSma20": false,
+      "volatility24hPct": 2.08,
+      "volume24hUsd": 534866926,
+      "volume24hText": "534.87M",
+      "marketCapUsd": 650973918,
+      "marketCapText": "650.97M",
+      "marketCapRank": 99,
+      "trend": "range-bound"
+    },
+    {
+      "price": 64.76,
+      "priceText": "64.76",
+      "change24hPct": 8.74,
+      "high24h": 65.53,
+      "low24h": 58.18,
+      "high24hText": "65.53",
+      "low24hText": "58.18",
+      "support": 61.73,
+      "resistance": 65.48,
+      "supportText": "61.73",
+      "resistanceText": "65.48",
+      "distToResistancePct": 1.11,
+      "distToSupportPct": 4.68,
+      "rangePositionPct": 90,
+      "rsi14": 64,
+      "rsiZone": "neutral",
+      "sma20": 62.936,
+      "sma20Text": "62.94",
+      "aboveSma20": true,
+      "volatility24hPct": 1.35,
+      "volume24hUsd": 245408832,
+      "volume24hText": "245.41M",
+      "marketCapUsd": 831334662,
+      "marketCapText": "831.33M",
+      "marketCapRank": 87,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "Top three crypto gainers of the day",
+    "segmentLines": [
+      [
+        "Up fifteen point eight seven percent LIT trades at five point four five zero dollars.",
+        "This token is trading above its simple moving average of five point one eight two."
+      ],
+      [
+        "PENGU climbed thirteen point nine four percent to zero point zero one zero four dollars.",
+        "Its R S I is neutral at forty nine point one with range bound momentum."
+      ],
+      [
+        "DASH rose eight point seven four percent reaching sixty four point seven six dollars.",
+        "The price trades near the last four hours high of sixty five point four eight."
+      ]
+    ],
+    "takeaway": "Daily movers show strong momentum across major assets",
+    "cta": "Hit follow and drop a like so you never miss the next breakdown.",
+    "title": "LIT / PENGU / DASH Movers of the Day: Price Analysis #Shorts",
+    "description": "Today we analyze the market moves of LIT, PENGU, and DASH. We cover recent price changes, trading levels, and momentum metrics based on current data.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "lit",
+      "pengu",
+      "dash",
+      "lighter",
+      "pudgy penguins",
+      "crypto analysis",
+      "crypto market",
+      "daily movers",
+      "price action",
+      "technical analysis",
+      "crypto updates",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#Lighter",
+    "#LIT",
+    "#PudgyPenguins",
+    "#PENGU",
+    "#Dash",
+    "#crypto",
+    "#cryptonews",
+    "#trading"
+  ],
+  "videoId": "txK9P4EcAy0",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1783,
+    "output_tokens": 420
+  }
+}
