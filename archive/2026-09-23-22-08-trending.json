@@ -1,0 +1,162 @@
+{
+  "slot": "trending",
+  "style": "spotlight",
+  "coins": [
+    {
+      "id": "raydium",
+      "name": "Raydium",
+      "symbol": "RAY",
+      "image": "https://coin-images.coingecko.com/coins/images/13928/large/PSigc4ie_400x400.jpg?1696513668"
+    },
+    {
+      "id": "near",
+      "name": "NEAR Protocol",
+      "symbol": "NEAR",
+      "image": "https://coin-images.coingecko.com/coins/images/10365/large/near.jpg?1696510367"
+    },
+    {
+      "id": "pons",
+      "name": "Pons",
+      "symbol": "PONS",
+      "image": "https://coin-images.coingecko.com/coins/images/102174571/large/jhitvkisdq8fhxvimdkpcw7y3dx5.?1784093932"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 2.01,
+      "priceText": "2.010",
+      "change24hPct": 14.71,
+      "high24h": 2.12,
+      "low24h": 1.75,
+      "high24hText": "2.120",
+      "low24hText": "1.750",
+      "support": 2,
+      "resistance": 2.12,
+      "supportText": "2.000",
+      "resistanceText": "2.120",
+      "distToResistancePct": 5.47,
+      "distToSupportPct": 0.5,
+      "rangePositionPct": 70,
+      "rsi14": 53.2,
+      "rsiZone": "neutral",
+      "sma20": 2.0149999999999997,
+      "sma20Text": "2.015",
+      "aboveSma20": false,
+      "volatility24hPct": 2.42,
+      "volume24hUsd": 154280067,
+      "volume24hText": "154.28M",
+      "marketCapUsd": 542722516,
+      "marketCapText": "542.72M",
+      "marketCapRank": 106,
+      "trend": "range-bound"
+    },
+    {
+      "price": 4.37,
+      "priceText": "4.370",
+      "change24hPct": 1.13,
+      "high24h": 4.79,
+      "low24h": 4.09,
+      "high24hText": "4.790",
+      "low24hText": "4.090",
+      "support": 4.27,
+      "resistance": 4.48,
+      "supportText": "4.270",
+      "resistanceText": "4.480",
+      "distToResistancePct": 2.52,
+      "distToSupportPct": 2.29,
+      "rangePositionPct": 40,
+      "rsi14": 46.7,
+      "rsiZone": "neutral",
+      "sma20": 4.4510000000000005,
+      "sma20Text": "4.451",
+      "aboveSma20": false,
+      "volatility24hPct": 3.04,
+      "volume24hUsd": 2617799809,
+      "volume24hText": "2.62B",
+      "marketCapUsd": 5726237350,
+      "marketCapText": "5.73B",
+      "marketCapRank": 22,
+      "trend": "range-bound"
+    },
+    {
+      "price": 0.638177,
+      "priceText": "0.6382",
+      "change24hPct": -11.23,
+      "high24h": 0.737313,
+      "low24h": 0.633427,
+      "high24hText": "0.7373",
+      "low24hText": "0.6334",
+      "support": 0.633427,
+      "resistance": 0.671749,
+      "supportText": "0.6334",
+      "resistanceText": "0.6717",
+      "distToResistancePct": 5.26,
+      "distToSupportPct": 0.74,
+      "rangePositionPct": 5,
+      "rsi14": 34,
+      "rsiZone": "neutral",
+      "sma20": 0.66683435,
+      "sma20Text": "0.6668",
+      "aboveSma20": false,
+      "volatility24hPct": 1.48,
+      "volume24hUsd": 105513323,
+      "volume24hText": "105.51M",
+      "marketCapUsd": 436557735,
+      "marketCapText": "436.56M",
+      "marketCapRank": 122,
+      "trend": "strong downtrend"
+    }
+  ],
+  "script": {
+    "hook": "Trending Crypto Assets To Watch Today",
+    "segmentLines": [
+      [
+        "Raydium trades at two point zero one dollars, up fourteen point seven one percent today.",
+        "The fourteen day R S I sits in neutral territory at fifty three point two."
+      ],
+      [
+        "Near Protocol is at four point three seven dollars, up one point one three percent.",
+        "Price remains above the last four hours low of four point two seven dollars."
+      ],
+      [
+        "Pons dropped eleven point two three percent, trading at zero point six three eight two.",
+        "The token is in a strong downtrend with an R S I of thirty four."
+      ]
+    ],
+    "takeaway": "Mixed momentum across trending digital assets",
+    "cta": "Hit follow and drop a like so you never miss the next market breakdown.",
+    "title": "RAY / NEAR / PONS Trading Activity and Key Levels #Shorts",
+    "description": "Today we analyze the latest price actions, trends, and key metrics for Raydium, NEAR Protocol, and Pons. Get the latest data-driven insights on these trending assets.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "ray",
+      "raydium",
+      "near",
+      "near protocol",
+      "pons",
+      "crypto analysis",
+      "price trends",
+      "rsi indicator",
+      "crypto shorts",
+      "trading volume",
+      "market data",
+      "digital assets",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#Raydium",
+    "#RAY",
+    "#NEARProtocol",
+    "#NEAR",
+    "#Pons",
+    "#crypto",
+    "#cryptonews",
+    "#trading"
+  ],
+  "videoId": "ToLW_Ssd6P8",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1771,
+    "output_tokens": 422
+  }
+}
