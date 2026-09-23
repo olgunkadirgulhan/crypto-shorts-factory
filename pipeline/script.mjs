@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
+import { generateStructured } from "./lib/llm.mjs";
 
 // Exact-length array constraints (.length(N)) aren't always perfectly honored
 // by structured-output generation - the model can occasionally write one extra
@@ -53,9 +54,6 @@ FIELDS
 - tags: 10 to 14 lowercase search phrases, 2 to 25 characters each, no "#" prefix. Include all three coin names and symbols.`;
 
 export async function generateScript({ slot, segments, global, avoidTitles }) {
-  const client = new Anthropic();
-  const model = process.env.CLAUDE_MODEL || "claude-opus-5";
-
   const payload = {
     format: SLOT_BRIEF[slot],
     market: global,
@@ -86,6 +84,22 @@ export async function generateScript({ slot, segments, global, avoidTitles }) {
     })),
     avoid_reusing_these_recent_titles: avoidTitles,
   };
+
+  // Free LLMs first (Gemini -> Groq); the original Claude call below is only a last resort.
+  const { out, usage, provider } = await generateStructured({
+    system: SYSTEM,
+    user: JSON.stringify(payload),
+    schema: ScriptSchema,
+    name: "video_script",
+    claude: () => viaClaude(payload),
+  });
+  console.log(`  script by ${provider}`);
+  return { script: normalize(out, segments), usage };
+}
+
+async function viaClaude(payload) {
+  const client = new Anthropic();
+  const model = process.env.CLAUDE_MODEL || "claude-opus-5";
 
   // No prompt caching: at 3 calls/day the 5-minute cache never hits, and a cache
   // write costs 1.25x. Caching here would raise the bill, not lower it.
@@ -120,10 +134,7 @@ export async function generateScript({ slot, segments, global, avoidTitles }) {
     );
   }
 
-  return {
-    script: normalize(out, segments),
-    usage: response.usage,
-  };
+  return { out, usage: response.usage };
 }
 
 function normalize(out, segments) {

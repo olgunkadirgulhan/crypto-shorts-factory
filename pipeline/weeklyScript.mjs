@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
+import { generateStructured } from "./lib/llm.mjs";
 
 // Exact-length array constraints (.length(N)) aren't always perfectly honored
 // by structured-output generation on deeply nested schemas like this one - the
@@ -47,9 +48,6 @@ FIELDS
 - tags: 12 to 16 lowercase search phrases, 2 to 25 characters each, no "#" prefix. Include every coin name/symbol covered plus general crypto-recap terms.`;
 
 export async function generateWeeklyScript({ segments, global, avoidTitles }) {
-  const client = new Anthropic();
-  const model = process.env.CLAUDE_MODEL || "claude-opus-5";
-
   const payload = {
     format: "WEEKLY MARKET PULSE - long-form recap of this week's biggest crypto movers",
     market: global,
@@ -76,6 +74,21 @@ export async function generateWeeklyScript({ segments, global, avoidTitles }) {
     avoid_reusing_these_recent_titles: avoidTitles,
   };
 
+  // Free LLMs first (Gemini -> Groq); the original Claude call below is only a last resort.
+  const { out, usage, provider } = await generateStructured({
+    system: SYSTEM,
+    user: JSON.stringify(payload),
+    schema: WeeklyScriptSchema,
+    name: "weekly_script",
+    claude: () => viaClaude(payload),
+  });
+  console.log(`  weekly script by ${provider}`);
+  return { script: normalize(out, segments), usage };
+}
+
+async function viaClaude(payload) {
+  const client = new Anthropic();
+  const model = process.env.CLAUDE_MODEL || "claude-opus-5";
   const request = {
     model,
     max_tokens: 16000,
@@ -98,7 +111,7 @@ export async function generateWeeklyScript({ segments, global, avoidTitles }) {
     );
   }
 
-  return { script: normalize(out, segments), usage: response.usage };
+  return { out, usage: response.usage };
 }
 
 function normalize(out, segments) {
