@@ -1,0 +1,162 @@
+{
+  "slot": "mover",
+  "style": "spotlight",
+  "coins": [
+    {
+      "id": "litecoin",
+      "name": "Litecoin",
+      "symbol": "LTC",
+      "image": "https://coin-images.coingecko.com/coins/images/2/large/litecoin.png?1696501400"
+    },
+    {
+      "id": "ethereum-classic",
+      "name": "Ethereum Classic",
+      "symbol": "ETC",
+      "image": "https://coin-images.coingecko.com/coins/images/453/large/ethereum-classic-logo.png?1696501717"
+    },
+    {
+      "id": "morpho",
+      "name": "Morpho",
+      "symbol": "MORPHO",
+      "image": "https://coin-images.coingecko.com/coins/images/29837/large/Morpho-token-icon.png?1726771230"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 71.97,
+      "priceText": "71.97",
+      "change24hPct": 18.54,
+      "high24h": 74.65,
+      "low24h": 60.32,
+      "high24hText": "74.65",
+      "low24hText": "60.32",
+      "support": 70.68,
+      "resistance": 74.65,
+      "supportText": "70.68",
+      "resistanceText": "74.65",
+      "distToResistancePct": 3.72,
+      "distToSupportPct": 1.79,
+      "rangePositionPct": 81,
+      "rsi14": 59.1,
+      "rsiZone": "neutral",
+      "sma20": 69.86699999999999,
+      "sma20Text": "69.87",
+      "aboveSma20": true,
+      "volatility24hPct": 2.24,
+      "volume24hUsd": 1672377037,
+      "volume24hText": "1.67B",
+      "marketCapUsd": 5590095854,
+      "marketCapText": "5.59B",
+      "marketCapRank": 24,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 9.85,
+      "priceText": "9.850",
+      "change24hPct": 11.99,
+      "high24h": 10.38,
+      "low24h": 8.67,
+      "high24hText": "10.38",
+      "low24hText": "8.670",
+      "support": 9.61,
+      "resistance": 10.38,
+      "supportText": "9.610",
+      "resistanceText": "10.38",
+      "distToResistancePct": 5.38,
+      "distToSupportPct": 2.44,
+      "rangePositionPct": 69,
+      "rsi14": 57,
+      "rsiZone": "neutral",
+      "sma20": 9.660499999999999,
+      "sma20Text": "9.660",
+      "aboveSma20": true,
+      "volatility24hPct": 2.8,
+      "volume24hUsd": 227144165,
+      "volume24hText": "227.14M",
+      "marketCapUsd": 1560039865,
+      "marketCapText": "1.56B",
+      "marketCapRank": 60,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 2.8,
+      "priceText": "2.800",
+      "change24hPct": 9.83,
+      "high24h": 2.94,
+      "low24h": 2.51,
+      "high24hText": "2.940",
+      "low24hText": "2.510",
+      "support": 2.78,
+      "resistance": 2.94,
+      "supportText": "2.780",
+      "resistanceText": "2.940",
+      "distToResistancePct": 5,
+      "distToSupportPct": 0.71,
+      "rangePositionPct": 67,
+      "rsi14": 57.1,
+      "rsiZone": "neutral",
+      "sma20": 2.7730000000000006,
+      "sma20Text": "2.773",
+      "aboveSma20": true,
+      "volatility24hPct": 2.24,
+      "volume24hUsd": 64832417,
+      "volume24hText": "64.83M",
+      "marketCapUsd": 1959201158,
+      "marketCapText": "1.96B",
+      "marketCapRank": 51,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "Movers of the day across three digital assets",
+    "segmentLines": [
+      [
+        "Litecoin is at seventy-one dollars and ninety-seven cents, up eighteen point five four percent.",
+        "The R S I sits at fifty-nine point one while in a strong uptrend."
+      ],
+      [
+        "Ethereum Classic is trading at nine dollars and eighty-five cents, up eleven point nine nine percent.",
+        "The R S I is at fifty-seven with the asset trading above the twenty period simple moving average."
+      ],
+      [
+        "Morpho is priced at two dollars and eighty cents, up nine point eight three percent.",
+        "The R S I is at fifty-seven point one while showing a strong uptrend."
+      ]
+    ],
+    "takeaway": "Three distinct altcoins showing positive twenty-four hour momentum",
+    "cta": "Hit follow and drop a like so you never miss the next breakdown.",
+    "title": "LTC / ETC / MORPHO Movers of the Day: Price Analysis #Shorts",
+    "description": "This video breaks down the latest price action, ranges, and indicators for Litecoin, Ethereum Classic, and Morpho.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "litecoin",
+      "ltc",
+      "ethereum classic",
+      "etc",
+      "morpho",
+      "crypto movers",
+      "altcoin analysis",
+      "crypto price analysis",
+      "market trends",
+      "digital assets",
+      "crypto market",
+      "crypto analysis",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#Litecoin",
+    "#LTC",
+    "#EthereumClassic",
+    "#ETC",
+    "#Morpho",
+    "#crypto",
+    "#cryptonews",
+    "#trading"
+  ],
+  "videoId": "rOZJBlaMx6w",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1732,
+    "output_tokens": 432
+  }
+}

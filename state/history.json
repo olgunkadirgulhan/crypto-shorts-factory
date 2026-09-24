@@ -106,5 +106,17 @@
     "title": "BTC / ETH / ONDO Market Brief: Prices, Ranges and RSI #Shorts",
     "videoId": "JnU0QPUyYAo",
     "durationSec": 41.688
+  },
+  {
+    "at": "2026-09-24T18:25:09.411Z",
+    "slot": "mover",
+    "coinIds": [
+      "litecoin",
+      "ethereum-classic",
+      "morpho"
+    ],
+    "title": "LTC / ETC / MORPHO Movers of the Day: Price Analysis #Shorts",
+    "videoId": "rOZJBlaMx6w",
+    "durationSec": 37.44
   }
 ]
