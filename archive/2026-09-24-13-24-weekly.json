@@ -1,0 +1,330 @@
+{
+  "coins": [
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": "near",
+      "name": "NEAR Protocol",
+      "symbol": "NEAR",
+      "image": "https://coin-images.coingecko.com/coins/images/10365/large/near.jpg?1696510367"
+    },
+    {
+      "id": "bitcoin-cash",
+      "name": "Bitcoin Cash",
+      "symbol": "BCH",
+      "image": "https://coin-images.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932"
+    },
+    {
+      "id": "injective-protocol",
+      "name": "Injective",
+      "symbol": "INJ",
+      "image": "https://coin-images.coingecko.com/coins/images/12882/large/Other_200x200.png?1738782212"
+    },
+    {
+      "id": "layerzero",
+      "name": "LayerZero",
+      "symbol": "ZRO",
+      "image": "https://coin-images.coingecko.com/coins/images/28206/large/ftxG9_TJ_400x400.jpeg?1696527208"
+    },
+    {
+      "id": "raydium",
+      "name": "Raydium",
+      "symbol": "RAY",
+      "image": "https://coin-images.coingecko.com/coins/images/13928/large/PSigc4ie_400x400.jpg?1696513668"
+    },
+    {
+      "id": "ethena",
+      "name": "Ethena",
+      "symbol": "ENA",
+      "image": "https://coin-images.coingecko.com/coins/images/36530/large/ethena.png?1711701436"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 83830,
+      "priceText": "83,830",
+      "change7dPct": 9.39,
+      "change24hPct": -1.97,
+      "weekHigh": 87330,
+      "weekLow": 75972,
+      "weekHighText": "87,330",
+      "weekLowText": "75,972",
+      "rangePositionPct": 69,
+      "rsi14": 49.2,
+      "rsiZone": "neutral",
+      "sma20": 85224.65,
+      "sma20Text": "85,225",
+      "aboveSma20": false,
+      "volume24hUsd": 43460558780,
+      "volume24hText": "43.46B",
+      "marketCapUsd": 1684057015987,
+      "marketCapText": "1.68T",
+      "marketCapRank": 1,
+      "trend": "range-bound"
+    },
+    {
+      "price": 2663.12,
+      "priceText": "2,663",
+      "change7dPct": 8.51,
+      "change24hPct": -1.93,
+      "weekHigh": 2804.42,
+      "weekLow": 2432.62,
+      "weekHighText": "2,804",
+      "weekLowText": "2,433",
+      "rangePositionPct": 62,
+      "rsi14": 45.8,
+      "rsiZone": "neutral",
+      "sma20": 2720.3015,
+      "sma20Text": "2,720",
+      "aboveSma20": false,
+      "volume24hUsd": 16382512659,
+      "volume24hText": "16.38B",
+      "marketCapUsd": 325081842183,
+      "marketCapText": "325.08B",
+      "marketCapRank": 2,
+      "trend": "range-bound"
+    },
+    {
+      "price": 4.52,
+      "priceText": "4.520",
+      "change7dPct": 53.98,
+      "change24hPct": -3.29,
+      "weekHigh": 4.79,
+      "weekLow": 2.81,
+      "weekHighText": "4.790",
+      "weekLowText": "2.810",
+      "rangePositionPct": 86,
+      "rsi14": 56.6,
+      "rsiZone": "neutral",
+      "sma20": 4.346500000000001,
+      "sma20Text": "4.347",
+      "aboveSma20": true,
+      "volume24hUsd": 1772347594,
+      "volume24hText": "1.77B",
+      "marketCapUsd": 5909020522,
+      "marketCapText": "5.91B",
+      "marketCapRank": 22,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 336.62,
+      "priceText": "336.62",
+      "change7dPct": 50.05,
+      "change24hPct": -5.53,
+      "weekHigh": 365.1,
+      "weekLow": 223.27,
+      "weekHighText": "365.10",
+      "weekLowText": "223.27",
+      "rangePositionPct": 80,
+      "rsi14": 69.8,
+      "rsiZone": "neutral",
+      "sma20": 310.4145,
+      "sma20Text": "310.41",
+      "aboveSma20": true,
+      "volume24hUsd": 767431368,
+      "volume24hText": "767.43M",
+      "marketCapUsd": 6764198377,
+      "marketCapText": "6.76B",
+      "marketCapRank": 21,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 8.13,
+      "priceText": "8.130",
+      "change7dPct": 44.7,
+      "change24hPct": -1.41,
+      "weekHigh": 8.32,
+      "weekLow": 5.53,
+      "weekHighText": "8.320",
+      "weekLowText": "5.530",
+      "rangePositionPct": 93,
+      "rsi14": 58.2,
+      "rsiZone": "neutral",
+      "sma20": 7.833000000000001,
+      "sma20Text": "7.833",
+      "aboveSma20": true,
+      "volume24hUsd": 203907429,
+      "volume24hText": "203.91M",
+      "marketCapUsd": 813235585,
+      "marketCapText": "813.24M",
+      "marketCapRank": 87,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 1.48,
+      "priceText": "1.480",
+      "change7dPct": 42.43,
+      "change24hPct": 2.18,
+      "weekHigh": 1.63,
+      "weekLow": 1.009,
+      "weekHighText": "1.630",
+      "weekLowText": "1.009",
+      "rangePositionPct": 76,
+      "rsi14": 66.8,
+      "rsiZone": "neutral",
+      "sma20": 1.342,
+      "sma20Text": "1.342",
+      "aboveSma20": true,
+      "volume24hUsd": 228481122,
+      "volume24hText": "228.48M",
+      "marketCapUsd": 521258510,
+      "marketCapText": "521.26M",
+      "marketCapRank": 108,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 2.05,
+      "priceText": "2.050",
+      "change7dPct": 40,
+      "change24hPct": 4.02,
+      "weekHigh": 2.16,
+      "weekLow": 1.43,
+      "weekHighText": "2.160",
+      "weekLowText": "1.430",
+      "rangePositionPct": 85,
+      "rsi14": 57.8,
+      "rsiZone": "neutral",
+      "sma20": 1.8645,
+      "sma20Text": "1.865",
+      "aboveSma20": true,
+      "volume24hUsd": 181811570,
+      "volume24hText": "181.81M",
+      "marketCapUsd": 553463160,
+      "marketCapText": "553.46M",
+      "marketCapRank": 105,
+      "trend": "strong uptrend"
+    },
+    {
+      "price": 0.213747,
+      "priceText": "0.2137",
+      "change7dPct": 39.47,
+      "change24hPct": 0.62,
+      "weekHigh": 0.230131,
+      "weekLow": 0.149464,
+      "weekHighText": "0.2301",
+      "weekLowText": "0.1495",
+      "rangePositionPct": 80,
+      "rsi14": 52,
+      "rsiZone": "neutral",
+      "sma20": 0.21088,
+      "sma20Text": "0.2109",
+      "aboveSma20": true,
+      "volume24hUsd": 441182262,
+      "volume24hText": "441.18M",
+      "marketCapUsd": 2157907083,
+      "marketCapText": "2.16B",
+      "marketCapRank": 49,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "This Week in Crypto",
+    "overviewLines": [
+      "Welcome to the weekly market pulse covering the biggest crypto moves.",
+      "Total crypto market capitalization stands at two trillion eight hundred sixty four billion dollars.",
+      "Bitcoin dominance is currently recorded at fifty eight point seven percent.",
+      "This recap reviews individual asset performance across the entire digital ecosystem."
+    ],
+    "coinLines": [
+      [
+        "Bitcoin is up nine point three nine percent this week trading at eighty three thousand eight hundred thirty dollars.",
+        "This week's high reached eighty seven thousand three hundred thirty dollars while this week's low touched seventy five thousand nine hundred seventy two dollars.",
+        "The market capitalization sits at one point six eight trillion dollars with volume at forty three point four six billion dollars.",
+        "RSI is currently sitting at forty nine point two with the trend remaining range bound."
+      ],
+      [
+        "Ethereum moved up eight point five one percent this week changing hands at two thousand six hundred sixty three dollars.",
+        "The asset logged this week's high at two thousand eight hundred four dollars and this week's low at two thousand four hundred thirty three dollars.",
+        "Total market capitalization is measured at three hundred twenty five point zero eight billion dollars alongside sixteen point three eight billion dollars in volume.",
+        "The relative strength index sits at forty five point eight while the current trend remains range bound."
+      ],
+      [
+        "NEAR Protocol gained fifty three point nine eight percent this week reaching four point five two zero dollars.",
+        "During the last seven days it posted this week's high of four point seven nine zero dollars and this week's low of two point eight one zero dollars.",
+        "Trading volume reached one point seven seven billion dollars with a market capitalization of five point nine one billion dollars.",
+        "The relative strength index is recorded at fifty six point six supporting a strong uptrend."
+      ],
+      [
+        "Bitcoin Cash increased by fifty point zero five percent over the week trading at three hundred thirty six point six two dollars.",
+        "Price action registered this week's high at three hundred sixty five point one zero dollars and this week's low at two hundred twenty three point two seven dollars.",
+        "Market capitalization stands at six point seven six billion dollars while volume reached seven hundred sixty seven point four three million dollars.",
+        "The relative strength index is at sixty nine point eight as the asset maintains a strong uptrend."
+      ],
+      [
+        "Injective moved higher by forty four point seven percent this week to price at eight point one three zero dollars.",
+        "The token marked this week's high at eight point three two zero dollars and this week's low at five point five three zero dollars.",
+        "Market capitalization is registered at eight hundred thirteen point two four million dollars with two hundred three point nine one million dollars in volume.",
+        "RSI is listed at fifty eight point two accompanied by a strong uptrend structure."
+      ],
+      [
+        "LayerZero advanced forty two point four three percent over the week resting at one point four eight zero dollars.",
+        "Extreme price points recorded this week's high at one point six three zero dollars and this week's low at one point zero zero nine dollars.",
+        "Trading volume totaled two hundred twenty eight point four eight million dollars alongside a market capitalization of five hundred twenty one point two six million dollars.",
+        "The relative strength index is measured at sixty six point eight during this strong uptrend."
+      ],
+      [
+        "Raydium gained forty percent across the week to trade at two point zero five zero dollars.",
+        "The coin established this week's high at two point one six zero dollars and this week's low at one point four three zero dollars.",
+        "Market capitalization stands at five hundred fifty three point four six million dollars with one hundred eighty one point eight one million dollars in volume.",
+        "The relative strength index registers at fifty seven point eight within a strong uptrend."
+      ],
+      [
+        "Ethena increased thirty nine point four seven percent this week to change hands at zero point two one three seven dollars.",
+        "Observations include this week's high of zero point two three zero one dollars and this week's low of zero point one four nine five dollars.",
+        "Market capitalization is calculated at two point one six billion dollars alongside four hundred forty one point one eight million dollars in volume.",
+        "The relative strength index reads fifty two while the asset maintains a strong uptrend."
+      ]
+    ],
+    "takeaway": "Strong Gains Across Multiple Layer Ones and DeFi Tokens",
+    "cta": "Please follow the channel and like the video for more weekly market updates.",
+    "title": "Weekly Market Pulse: Bitcoin, Ethereum, NEAR, Bitcoin Cash, Injective, LayerZero, Raydium and Ethena",
+    "description": "This weekly market pulse video covers price movements and metrics for Bitcoin, Ethereum, NEAR Protocol, Bitcoin Cash, Injective, LayerZero, Raydium, and Ethena. We review seven day percentage changes, trading volumes, relative strength index levels, and overall market trends across these major digital assets.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "near protocol",
+      "near",
+      "bitcoin cash",
+      "bch",
+      "injective",
+      "inj",
+      "layerzero",
+      "zro",
+      "raydium",
+      "ray",
+      "ethena",
+      "ena",
+      "crypto news",
+      "weekly recap",
+      "crypto market"
+    ]
+  },
+  "hashtags": [
+    "#Bitcoin",
+    "#BTC",
+    "#Ethereum",
+    "#ETH",
+    "#NEARProtocol",
+    "#NEAR",
+    "#BitcoinCash",
+    "#BCH"
+  ],
+  "videoId": "82RboNJCMfY",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 2350,
+    "output_tokens": 1387
+  }
+}

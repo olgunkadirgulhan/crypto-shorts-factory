@@ -30,5 +30,21 @@
     "title": "Weekly Market Pulse: Bitcoin, Ethereum, Sui, Uniswap and TAO Headline a Green Week",
     "videoId": null,
     "durationSec": 252.192
+  },
+  {
+    "at": "2026-09-24T13:47:34.273Z",
+    "coinIds": [
+      "bitcoin",
+      "ethereum",
+      "near",
+      "bitcoin-cash",
+      "injective-protocol",
+      "layerzero",
+      "raydium",
+      "ethena"
+    ],
+    "title": "Weekly Market Pulse: Bitcoin, Ethereum, NEAR, Bitcoin Cash, Injective, LayerZero, Raydium and Ethena",
+    "videoId": "82RboNJCMfY",
+    "durationSec": 295.704
   }
 ]
