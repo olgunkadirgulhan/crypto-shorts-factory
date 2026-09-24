@@ -31,11 +31,16 @@ function jsonFrom(text) {
   }
 }
 
-async function gemini(system, user) {
+let geminiSchemaOk = true; // structured output (responseJsonSchema); switched off if the API rejects the schema
+
+async function gemini(system, user, jsonSchema) {
   let last = "no model tried";
   for (let i = geminiStart; i < GEMINI_MODELS.length; i++) {
     const model = GEMINI_MODELS[i];
     try {
+      const generationConfig = { temperature: 0.7, maxOutputTokens: 8192, responseMimeType: "application/json" };
+      // with the schema attached Gemini can only emit valid JSON of that shape (no missing fields, no broken quotes)
+      if (jsonSchema && geminiSchemaOk) generationConfig.responseJsonSchema = jsonSchema;
       const r = await fetchWithTimeout(
         `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${process.env.GEMINI_API_KEY}`,
         {
@@ -44,13 +49,20 @@ async function gemini(system, user) {
           body: JSON.stringify({
             systemInstruction: { parts: [{ text: system }] },
             contents: [{ role: "user", parts: [{ text: user }] }],
-            generationConfig: { temperature: 0.7, maxOutputTokens: 8192, responseMimeType: "application/json" },
+            generationConfig,
           }),
         },
         75_000,
       );
       if (!r.ok) {
-        last = `${model}: ${r.status} ${(await r.text()).slice(0, 200)}`;
+        const body = (await r.text()).slice(0, 200);
+        if (r.status === 400 && generationConfig.responseJsonSchema) {
+          console.log(`  gemini rejected the response schema (${body.slice(0, 120)}), continuing without it`);
+          geminiSchemaOk = false;
+          i--; // same model again, schema in the prompt only
+          continue;
+        }
+        last = `${model}: ${r.status} ${body}`;
         continue;
       }
       const j = await r.json();
@@ -111,7 +123,9 @@ async function groq(system, user) {
  * Returns { out, usage, provider }.
  */
 export async function generateStructured({ system, user, schema, name, claude }) {
-  const jsonSchema = JSON.stringify(z.toJSONSchema(schema));
+  const schemaObj = z.toJSONSchema(schema);
+  delete schemaObj.$schema; // Gemini's responseJsonSchema does not accept the meta-schema key
+  const jsonSchema = JSON.stringify(schemaObj);
   const sys = `${system}
 
 OUTPUT FORMAT
@@ -129,7 +143,7 @@ ${jsonSchema}`;
     for (let attempt = 0; attempt < attempts; attempt++) {
       let res;
       try {
-        res = await call(sys, message);
+        res = await call(sys, message, schemaObj);
       } catch (e) {
         errors.push(e.message.slice(0, 220));
         if (call === gemini && attempt < attempts - 1) {
@@ -140,7 +154,14 @@ ${jsonSchema}`;
       }
       let parsed;
       try {
-        parsed = schema.safeParse(jsonFrom(res.text));
+        const obj = jsonFrom(res.text);
+        parsed = schema.safeParse(obj);
+        // models sometimes wrap the answer as {"<name>": {...}}: unwrap a single-key object and try again
+        const vals = obj && typeof obj === "object" && !Array.isArray(obj) ? Object.values(obj) : [];
+        if (!parsed.success && vals.length === 1 && vals[0] && typeof vals[0] === "object") {
+          const inner = schema.safeParse(vals[0]);
+          if (inner.success) parsed = inner;
+        }
       } catch (e) {
         parsed = { success: false, error: { issues: [{ path: [], message: `invalid JSON (${e.message})` }] } };
       }
