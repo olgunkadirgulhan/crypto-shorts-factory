@@ -49,7 +49,7 @@ FIELDS
 - segments: exactly 3 objects, one per coin, IN THE SAME ORDER the coins are listed in the input. Each has "symbol" (must exactly match that coin's symbol from the input) and "lines" (exactly 2 strings, see VOICEOVER).
 - takeaway: on-screen closing headline, max 55 characters. Summarizes the overall session, not a rehash of one coin.
 - cta: see VOICEOVER, max 110 characters.
-- title: YouTube title, max 90 characters. Must contain all three coin symbols separated by " / " and end with " #Shorts". Factual, no ALL CAPS words, no clickbait question marks.
+- title: YouTube title, max 75 characters, ending with " #Shorts". Written to earn the click, not to list data: lead with the single most interesting coin (biggest move or most hyped name) and its 24h move, then a curiosity angle about the other two. At least one coin symbol must appear. You may use a question and at most one emoji before " #Shorts". Every number must come from the input JSON. Never use the phrases "Market Brief", "Prices, Ranges and RSI", "Price Analysis" or "Trading Activity", never list three symbols separated by " / ", and do not reuse the pattern of any recent title. Good shapes: "PENGU +18% While Bitcoin Sleeps — What the Chart Shows #Shorts", "Why Is Everyone Searching HYPE Today? 👀 #Shorts", "FET Just Did -9%. Here's the 4H Chart #Shorts".
 - description: 2 short paragraphs. First names the three coins covered and what the video covers. Second is exactly: "Data: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research."
 - tags: 10 to 14 lowercase search phrases, 2 to 25 characters each, no "#" prefix. Include all three coin names and symbols.`;
 
