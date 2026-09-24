@@ -5,7 +5,7 @@ import { z } from "zod";
 // Every answer is validated against the same zod schema the Claude path used, so quality rules are unchanged.
 // A backend without a key is skipped; one that errors, rate-limits or returns invalid JSON hands over to the next.
 
-const GEMINI_MODELS = (process.env.GEMINI_MODEL || "gemini-flash-latest,gemini-3.5-flash,gemini-flash-lite-latest")
+const GEMINI_MODELS = (process.env.GEMINI_MODEL || "gemini-3.8-flash,gemini-3.5-flash,gemini-flash-latest,gemini-3-flash-preview,gemini-flash-lite-latest")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
@@ -125,12 +125,17 @@ ${jsonSchema}`;
   const errors = [];
   for (const call of backends) {
     let message = user;
-    for (let attempt = 0; attempt < 2; attempt++) {
+    const attempts = call === gemini ? 4 : 2;
+    for (let attempt = 0; attempt < attempts; attempt++) {
       let res;
       try {
         res = await call(sys, message);
       } catch (e) {
         errors.push(e.message.slice(0, 220));
+        if (call === gemini && attempt < attempts - 1) {
+          await new Promise((ok) => setTimeout(ok, 20_000)); // every model busy (503/429): wait, then retry
+          continue;
+        }
         break; // backend down or rate-limited: next backend
       }
       let parsed;
@@ -145,6 +150,8 @@ ${jsonSchema}`;
         .map((i) => `${i.path.join(".") || "(root)"}: ${i.message}`)
         .join("; ");
       errors.push(`${res.provider}: schema ${issues}`);
+      // a model that returned broken JSON tends to repeat it: move the next attempt to the next Gemini model
+      if (call === gemini) geminiStart = (geminiStart + 1) % GEMINI_MODELS.length;
       message = `${user}\n\nYour previous JSON failed validation: ${issues}\nReturn the corrected JSON object only.`;
     }
   }
