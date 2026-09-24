@@ -94,5 +94,17 @@
     "title": "RAY / NEAR / PONS Trading Activity and Key Levels #Shorts",
     "videoId": "ToLW_Ssd6P8",
     "durationSec": 37.392
+  },
+  {
+    "at": "2026-09-24T14:11:02.229Z",
+    "slot": "open",
+    "coinIds": [
+      "bitcoin",
+      "ethereum",
+      "ondo-finance"
+    ],
+    "title": "BTC / ETH / ONDO Market Brief: Prices, Ranges and RSI #Shorts",
+    "videoId": "JnU0QPUyYAo",
+    "durationSec": 41.688
   }
 ]

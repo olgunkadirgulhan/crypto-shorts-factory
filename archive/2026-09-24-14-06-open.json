@@ -1,0 +1,162 @@
+{
+  "slot": "open",
+  "style": "panel",
+  "coins": [
+    {
+      "id": "bitcoin",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
+    },
+    {
+      "id": "ethereum",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
+    },
+    {
+      "id": "ondo-finance",
+      "name": "Ondo",
+      "symbol": "ONDO",
+      "image": "https://coin-images.coingecko.com/coins/images/26580/large/ONDO.png?1696525656"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 84184,
+      "priceText": "84,184",
+      "change24hPct": -1.72,
+      "high24h": 85876,
+      "low24h": 82941,
+      "high24hText": "85,876",
+      "low24hText": "82,941",
+      "support": 82941,
+      "resistance": 83918,
+      "supportText": "82,941",
+      "resistanceText": "83,918",
+      "distToResistancePct": -0.32,
+      "distToSupportPct": 1.48,
+      "rangePositionPct": 42,
+      "rsi14": 45.5,
+      "rsiZone": "neutral",
+      "sma20": 83785.55,
+      "sma20Text": "83,786",
+      "aboveSma20": true,
+      "volatility24hPct": 0.37,
+      "volume24hUsd": 43539423644,
+      "volume24hText": "43.54B",
+      "marketCapUsd": 1691059681371,
+      "marketCapText": "1.69T",
+      "marketCapRank": 1,
+      "trend": "range-bound"
+    },
+    {
+      "price": 2668.67,
+      "priceText": "2,669",
+      "change24hPct": -1.64,
+      "high24h": 2720.31,
+      "low24h": 2634.74,
+      "high24hText": "2,720",
+      "low24hText": "2,635",
+      "support": 2634.74,
+      "resistance": 2672.06,
+      "supportText": "2,635",
+      "resistanceText": "2,672",
+      "distToResistancePct": 0.13,
+      "distToSupportPct": 1.27,
+      "rangePositionPct": 40,
+      "rsi14": 52.8,
+      "rsiZone": "neutral",
+      "sma20": 2666.5955000000004,
+      "sma20Text": "2,667",
+      "aboveSma20": true,
+      "volatility24hPct": 0.46,
+      "volume24hUsd": 16138184170,
+      "volume24hText": "16.14B",
+      "marketCapUsd": 325748637525,
+      "marketCapText": "325.75B",
+      "marketCapRank": 2,
+      "trend": "range-bound"
+    },
+    {
+      "price": 0.489813,
+      "priceText": "0.4898",
+      "change24hPct": 14.22,
+      "high24h": 0.486301,
+      "low24h": 0.406139,
+      "high24hText": "0.4863",
+      "low24hText": "0.4061",
+      "support": 0.418108,
+      "resistance": 0.486301,
+      "supportText": "0.4181",
+      "resistanceText": "0.4863",
+      "distToResistancePct": -0.72,
+      "distToSupportPct": 14.64,
+      "rangePositionPct": 104,
+      "rsi14": 83.8,
+      "rsiZone": "overbought",
+      "sma20": 0.43629785000000004,
+      "sma20Text": "0.4363",
+      "aboveSma20": true,
+      "volatility24hPct": 2.21,
+      "volume24hUsd": 619689664,
+      "volume24hText": "619.69M",
+      "marketCapUsd": 2384888899,
+      "marketCapText": "2.38B",
+      "marketCapRank": 44,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "Three coins shaping today's crypto session",
+    "segmentLines": [
+      [
+        "Bitcoin is priced at eighty-four thousand one hundred and eighty-four dollars, down one point seven two percent.",
+        "The relative strength index sits at forty-five point five within a range-bound trend."
+      ],
+      [
+        "Ethereum trades at two thousand six hundred and sixty-nine dollars, down one point six four percent.",
+        "The relative strength index reads fifty-two point eight with twenty-four-hour volume at sixteen billion dollars."
+      ],
+      [
+        "Ondo trades at zero point four eight nine eight dollars, up fourteen point two two percent.",
+        "The relative strength index is at eighty-three point eight inside a strong uptrend."
+      ]
+    ],
+    "takeaway": "Bitcoin and Ethereum traded neutral while Ondo surged upward",
+    "cta": "Hit follow and drop a like so you never miss the next breakdown.",
+    "title": "BTC / ETH / ONDO Market Brief: Prices, Ranges and RSI #Shorts",
+    "description": "This video covers market statistics and price action for Bitcoin, Ethereum, and Ondo. Data: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "bitcoin",
+      "btc",
+      "ethereum",
+      "eth",
+      "ondo",
+      "crypto price analysis",
+      "crypto market brief",
+      "crypto trends",
+      "altcoins",
+      "crypto data",
+      "market update",
+      "crypto analysis",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#Bitcoin",
+    "#BTC",
+    "#Ethereum",
+    "#ETH",
+    "#Ondo",
+    "#crypto",
+    "#cryptonews",
+    "#trading"
+  ],
+  "videoId": "JnU0QPUyYAo",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1754,
+    "output_tokens": 319
+  }
+}
