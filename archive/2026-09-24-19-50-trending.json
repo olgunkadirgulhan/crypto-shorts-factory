@@ -1,0 +1,163 @@
+{
+  "slot": "trending",
+  "style": "spotlight",
+  "coins": [
+    {
+      "id": "astronaut-2",
+      "name": "astronaut",
+      "symbol": "ASTRO",
+      "image": "https://coin-images.coingecko.com/coins/images/102176942/large/astro-logo.png?1789066915"
+    },
+    {
+      "id": "pudgy-penguins",
+      "name": "Pudgy Penguins",
+      "symbol": "PENGU",
+      "image": "https://coin-images.coingecko.com/coins/images/52622/large/PUDGY_PENGUINS_PENGU_PFP.png?1733809110"
+    },
+    {
+      "id": "near",
+      "name": "NEAR Protocol",
+      "symbol": "NEAR",
+      "image": "https://coin-images.coingecko.com/coins/images/10365/large/near.jpg?1696510367"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 0.03115205,
+      "priceText": "0.0312",
+      "change24hPct": -0.04,
+      "high24h": 0.053717,
+      "low24h": 0.00195379,
+      "high24hText": "0.0537",
+      "low24hText": "0.001954",
+      "support": 0.01898327,
+      "resistance": 0.053717,
+      "supportText": "0.0190",
+      "resistanceText": "0.0537",
+      "distToResistancePct": 72.43,
+      "distToSupportPct": 39.06,
+      "rangePositionPct": 56,
+      "rsi14": 55.7,
+      "rsiZone": "neutral",
+      "sma20": 0.017654932499999998,
+      "sma20Text": "0.0177",
+      "aboveSma20": true,
+      "volatility24hPct": 22.91,
+      "volume24hUsd": 54617977,
+      "volume24hText": "54.62M",
+      "marketCapUsd": 31147911,
+      "marketCapText": "31.15M",
+      "marketCapRank": 697,
+      "trend": "range-bound"
+    },
+    {
+      "price": 0.00997346,
+      "priceText": "0.009973",
+      "change24hPct": 3.25,
+      "high24h": 0.01025822,
+      "low24h": 0.00954354,
+      "high24hText": "0.0103",
+      "low24hText": "0.009544",
+      "support": 0.00977488,
+      "resistance": 0.01007715,
+      "supportText": "0.009775",
+      "resistanceText": "0.0101",
+      "distToResistancePct": 1.04,
+      "distToSupportPct": 1.99,
+      "rangePositionPct": 60,
+      "rsi14": 55.4,
+      "rsiZone": "neutral",
+      "sma20": 0.0099012025,
+      "sma20Text": "0.009901",
+      "aboveSma20": true,
+      "volatility24hPct": 1.87,
+      "volume24hUsd": 314310373,
+      "volume24hText": "314.31M",
+      "marketCapUsd": 627379391,
+      "marketCapText": "627.38M",
+      "marketCapRank": 98,
+      "trend": "uptrend"
+    },
+    {
+      "price": 4.7,
+      "priceText": "4.700",
+      "change24hPct": 7.08,
+      "high24h": 4.8,
+      "low24h": 4.12,
+      "high24hText": "4.800",
+      "low24hText": "4.120",
+      "support": 4.49,
+      "resistance": 4.8,
+      "supportText": "4.490",
+      "resistanceText": "4.800",
+      "distToResistancePct": 2.13,
+      "distToSupportPct": 4.47,
+      "rangePositionPct": 85,
+      "rsi14": 68.8,
+      "rsiZone": "neutral",
+      "sma20": 4.499,
+      "sma20Text": "4.499",
+      "aboveSma20": true,
+      "volatility24hPct": 2.57,
+      "volume24hUsd": 1673973031,
+      "volume24hText": "1.67B",
+      "marketCapUsd": 6158377655,
+      "marketCapText": "6.16B",
+      "marketCapRank": 22,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "hook": "Trending Crypto Search Results Today",
+    "segmentLines": [
+      [
+        "Astronaut is currently trading at zero point zero three one two dollars after a flat day",
+        "The chart shows an R S I at fifty five point seven following a four hour high"
+      ],
+      [
+        "Pudgy Penguins rose three point two five percent today reaching zero point zero zero nine nine seven three",
+        "Trading volume hit three hundred and fourteen point three one million dollars while staying above the moving average"
+      ],
+      [
+        "Near Protocol gained seven point zero eight percent as the price moved up to four point seven dollars",
+        "The R S I is currently sixty eight point eight after touching the twenty four hour high"
+      ]
+    ],
+    "takeaway": "Mixed Momentum Across Trending Assets",
+    "cta": "Subscribe and like for more daily data breakdowns of the coins you are watching",
+    "title": "NEAR Climbs Over 7% While PENGU Gains Momentum 📈 #Shorts",
+    "description": "We look at the latest price action for Astronaut, Pudgy Penguins, and Near Protocol.\n\nData: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research.",
+    "tags": [
+      "astronaut",
+      "astro",
+      "pudgy penguins",
+      "pengu",
+      "near protocol",
+      "near",
+      "crypto",
+      "price data",
+      "rsi",
+      "market update",
+      "volume",
+      "blockchain",
+      "crypto analysis",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#astronaut",
+    "#ASTRO",
+    "#PudgyPenguins",
+    "#PENGU",
+    "#NEARProtocol",
+    "#NEAR",
+    "#crypto",
+    "#cryptonews"
+  ],
+  "videoId": "Ful-ve3f_-Q",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1914,
+    "output_tokens": 277
+  }
+}
