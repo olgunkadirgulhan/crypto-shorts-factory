@@ -1,0 +1,87 @@
+{
+  "slot": "open",
+  "style": "spotlight",
+  "coins": [
+    {
+      "id": "ripple",
+      "name": "XRP",
+      "symbol": "XRP",
+      "image": "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 1.58,
+      "priceText": "1.580",
+      "change24hPct": 5.98,
+      "high24h": 1.63,
+      "low24h": 1.49,
+      "high24hText": "1.630",
+      "low24hText": "1.490",
+      "support": 1.56,
+      "resistance": 1.63,
+      "supportText": "1.560",
+      "resistanceText": "1.630",
+      "distToResistancePct": 3.16,
+      "distToSupportPct": 1.27,
+      "rangePositionPct": 64,
+      "rsi14": 58.8,
+      "rsiZone": "neutral",
+      "sma20": 1.5605,
+      "sma20Text": "1.561",
+      "aboveSma20": true,
+      "volatility24hPct": 1.22,
+      "volume24hUsd": 6585946555,
+      "volume24hText": "6.59B",
+      "marketCapUsd": 99721791927,
+      "marketCapText": "99.72B",
+      "marketCapRank": 5,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "spokenHook": "While the total market dropped nearly 2%, XRP pushed towards new daily highs.",
+    "hook": "XRP Defies The Market Trend",
+    "segmentLines": [
+      [
+        "The asset climbed almost 6% to $1.58, hitting a 24-hour high of $1.63 earlier today.",
+        "Price is currently holding above the 4-hour low of $1.56 with a neutral RSI of 59.",
+        "Trading volume reached $6.5 billion as the coin continues to move in a strong uptrend."
+      ]
+    ],
+    "takeaway": "Strong uptrend holds as volume hits 6.5 billion",
+    "cta": "Is this the start of a bigger move or just a temporary bounce? Tell me below and follow for updates.",
+    "title": "XRP climbs 5.98% while the total market cap falls -1.81% #Shorts",
+    "description": "XRP gained +5.98% to reach $1.580 today. The move comes as the total market cap fell -1.81% and trading volume hit $6.59B.\n\nMarket data: CoinGecko\n\nThis Short is market commentary built from public price data. It is not financial advice. Do your own research.\n\nWhale Market Pulse: where the big money moved in crypto today. New Shorts every day, weekly recap on Sundays and Wednesdays.",
+    "headline": null,
+    "tags": [
+      "xrp",
+      "ripple",
+      "xrp price",
+      "xrp news",
+      "crypto",
+      "top gainers",
+      "xrp analysis",
+      "whale market pulse",
+      "altcoin",
+      "trading volume",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#XRP",
+    "#crypto",
+    "#cryptonews",
+    "#trading",
+    "#Shorts",
+    "#cryptocurrency",
+    "#ripple",
+    "#xrpnews"
+  ],
+  "videoId": "yJbiJNv2gmM",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1757,
+    "output_tokens": 272
+  }
+}
