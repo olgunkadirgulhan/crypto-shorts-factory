@@ -77,9 +77,13 @@ function dedupeHashtags(list) {
   return out;
 }
 
+// YouTube rejects the whole upload (invalidTitle / invalidDescription) if any of these contain < or >
+const clean = (s) => String(s).replace(/->/g, "→").replace(/[<>]/g, "");
+
 export async function uploadVideo(yt, { file, title, description, tags, hashtags }) {
-  const safeTitle = title.replace(/[<>]/g, "").slice(0, 100);
-  const body = `${description}\n\n${hashtags.join(" ")}`.slice(0, 4900);
+  const safeTitle = clean(title).slice(0, 100);
+  const body = clean(`${description}\n\n${hashtags.join(" ")}`).slice(0, 4900);
+  tags = tags?.map(clean);
 
   const res = await yt.videos.insert({
     part: ["snippet", "status"],
