@@ -43,7 +43,7 @@ VOICEOVER STRUCTURE
 FIELDS
 - hook: on-screen opening title card text, max 60 characters, no final period, no numbers. Names the weekly-recap theme (e.g. "This Week in Crypto").
 - takeaway: on-screen closing headline, max 60 characters, summarizes the week's overall tone in one punchy phrase.
-- title: YouTube title for a long-form video, max 95 characters. Should read as a normal (non-Shorts) crypto recap title, factual, no ALL CAPS, no clickbait question marks. Do not include "#Shorts".
+- title: YouTube title for a long-form video, max 70 characters so it is not cut off in search. Lead with the single biggest story of the week (the coin with the largest 7-day move, or Bitcoin if it moved notably) and its number, then a reason to watch, e.g. "NEAR +54% This Week: What Moved Crypto (and What Didn't)". Never a comma-separated list of coin names. Factual, no ALL CAPS, no hype words, no "#Shorts".
 - description: 2-3 short paragraphs. First names the coins covered and what the video covers. Last paragraph is exactly: "Data: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research."
 - tags: 12 to 16 lowercase search phrases, 2 to 25 characters each, no "#" prefix. Include every coin name/symbol covered plus general crypto-recap terms.`;
 

@@ -60,9 +60,13 @@ const byVolume = (list) => [...list].sort((a, b) => b.total_volume - a.total_vol
 
 // Picks `count` distinct candidate coins, best first. A video tells one coin's story, but several
 // candidates come back so selectSegments can skip any whose chart history is too thin.
+// Micro-caps with a volume spike are where pump-and-dumps live. Featuring one reads as shilling it,
+// so no coin under this market cap becomes a video's subject.
+const MIN_MCAP = 100_000_000;
+
 export async function pickSubjects(slot, { markets, trendingIds }, excludeIds = [], count = 3) {
   const liquid = markets.filter(
-    (c) => !EXCLUDED.has(c.symbol.toLowerCase()) && c.total_volume > 50_000_000,
+    (c) => !EXCLUDED.has(c.symbol.toLowerCase()) && c.total_volume > 50_000_000 && c.market_cap >= MIN_MCAP,
   );
   const fresh = (list) => list.filter((c) => !excludeIds.includes(c.id));
 
@@ -82,7 +86,7 @@ export async function pickSubjects(slot, { markets, trendingIds }, excludeIds = 
     const ids = trendingIds.filter((id) => !CORE.has(id)).slice(0, 15);
     const rows = ids.length ? await marketsByIds(ids) : [];
     const pool = rows
-      .filter((c) => !EXCLUDED.has(c.symbol.toLowerCase()) && c.total_volume > 10_000_000)
+      .filter((c) => !EXCLUDED.has(c.symbol.toLowerCase()) && c.total_volume > 10_000_000 && c.market_cap >= MIN_MCAP)
       .sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id));
     picks = dedupeById(fresh(pool));
   }
