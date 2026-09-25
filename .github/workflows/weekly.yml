@@ -6,7 +6,11 @@ on:
     # follow US daylight saving time - 21:00 UTC = 5pm EDT (Mar-Nov). During
     # EST (Nov-Mar) this fires at 4pm ET instead; adjust to "0 22 * * 0,3" if
     # you want it pinned to EST months instead.
-    - cron: "0 21 * * 0,3"
+    # GitHub delays or drops cron runs: two backup triggers follow, the guard step skips
+    # them once a weekly run has succeeded today.
+    - cron: "29 21 * * 0,3"
+    - cron: "29 22 * * 0,3"
+    - cron: "29 23 * * 0,3"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -22,7 +26,24 @@ permissions:
   contents: write
 
 jobs:
+  guard:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.g.outputs.go }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: g
+        run: |
+          # look at the latest master, not the commit that triggered this (possibly late) run
+          git fetch -q origin master
+          if git ls-tree --name-only origin/master archive/ | grep -q "archive/$(date -u +%F)-.*-weekly.json"; then
+            echo "go=0" >> "$GITHUB_OUTPUT"; echo "weekly recap already made today, nothing to do"
+          else echo "go=1" >> "$GITHUB_OUTPUT"; fi
+
   produce:
+    needs: guard
+    if: always() && (github.event_name != 'schedule' || needs.guard.outputs.go == '1')
     runs-on: ubuntu-latest
     timeout-minutes: 45
 

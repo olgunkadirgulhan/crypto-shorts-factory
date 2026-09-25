@@ -5,13 +5,8 @@ on:
     # Three videos a day, UTC: open (from 09:00), mover (from 14:00), trending (from 19:00).
     # GitHub often fires crons hours late or drops them, so there are backup triggers. The "Pick slot"
     # step produces the earliest slot that is due and not yet in archive/ today, or skips: never more than 3/day.
-    - cron: "0 9 * * *"
-    - cron: "0 11 * * *"
-    - cron: "0 14 * * *"
-    - cron: "0 16 * * *"
-    - cron: "0 19 * * *"
-    - cron: "0 21 * * *"
-    - cron: "0 23 * * *"
+    # Hourly and off the :00 mark, where GitHub drops the most runs (09:00/11:00 never fired).
+    - cron: "17 9-23 * * *"
   workflow_dispatch:
     inputs:
       slot:
