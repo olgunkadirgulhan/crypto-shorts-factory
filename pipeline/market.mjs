@@ -34,8 +34,8 @@ export async function fetchMarketContext() {
   };
 }
 
-// The 08:00 brief always covers BTC, so the other two slots avoid it -
-// otherwise two of the three daily videos are the same asset.
+// Bitcoin and Ether belong to the morning large-cap story, so the other two slots avoid them -
+// otherwise two of the three daily videos could be the same asset.
 const CORE = new Set(["bitcoin", "ethereum"]);
 
 const marketsByIds = (ids) =>
@@ -58,8 +58,8 @@ const byAbsMove = (list) =>
   );
 const byVolume = (list) => [...list].sort((a, b) => b.total_volume - a.total_volume);
 
-// Picks `count` distinct coins for one video. Each slot has its own strategy
-// but all three always return several candidates - a video needs 3 coins, not 1.
+// Picks `count` distinct candidate coins, best first. A video tells one coin's story, but several
+// candidates come back so selectSegments can skip any whose chart history is too thin.
 export async function pickSubjects(slot, { markets, trendingIds }, excludeIds = [], count = 3) {
   const liquid = markets.filter(
     (c) => !EXCLUDED.has(c.symbol.toLowerCase()) && c.total_volume > 50_000_000,
@@ -69,10 +69,9 @@ export async function pickSubjects(slot, { markets, trendingIds }, excludeIds = 
   let picks = [];
 
   if (slot === "open") {
-    const btc = markets.find((c) => c.id === "bitcoin");
-    const eth = markets.find((c) => c.id === "ethereum");
-    const movers = byAbsMove(liquid.filter((c) => !CORE.has(c.id)));
-    picks = dedupeById([btc, eth, ...fresh(movers)]);
+    // The one large-cap story of the morning: whichever top-10 coin moved most, Bitcoin included.
+    const majors = byAbsMove(liquid.filter((c) => (c.market_cap_rank ?? 999) <= 10));
+    picks = dedupeById([...fresh(majors), ...majors]);
   } else if (slot === "mover") {
     const movers = byAbsMove(liquid.filter((c) => !CORE.has(c.id)));
     picks = dedupeById(fresh(movers));

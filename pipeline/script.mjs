@@ -3,61 +3,71 @@ import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
 import { generateStructured } from "./lib/llm.mjs";
 
-// Exact-length array constraints (.length(N)) aren't always perfectly honored
-// by structured-output generation - the model can occasionally write one extra
-// line/segment. Accept a small overshoot and truncate to the exact count in
-// normalize() below (which already looks entries up by symbol, so extras are
-// simply ignored) rather than hard-failing the whole run over it.
-const SegmentScriptSchema = z.object({
-  symbol: z.string(),
-  lines: z.array(z.string()).min(2).max(3),
-});
+// One video = one coin's story (25-35 s). Short, single-subject Shorts hold viewers far better than
+// a three-coin data readout, and a story built from that day's data and headlines is what keeps the
+// channel clear of YouTube's "inauthentic / mass-produced content" rule.
+
+// Advice, hype and promotion never reach the voiceover or the title. A script that trips one of
+// these fails validation and the LLM is asked again with the reason (see lib/llm.mjs).
+const BANNED = [
+  [/\b(buy|sell)\b(?!ers|-off|ing pressure| pressure| wall| side| orders?)/i, "buy/sell wording"],
+  [/\bshould (you )?(buy|sell|hold|get in|get out)\b|\bhold or fold\b|\bprice target\b|\bwill (hit|reach|go to|explode)\b/i, "advice or prediction"],
+  [/\b(moon|mooning|explode|exploding|parabolic|100x|1000x|easy money|financial freedom|get rich|guarantee[ds]?|don'?t miss|too late|last chance|to the moon)\b/i, "hype word"],
+  [/\b(referral|promo code|sign ?up|use my link|affiliate)\b/i, "promotion"],
+];
+const clean = (s) => BANNED.every(([re]) => !re.test(s));
+const why = (s) => BANNED.filter(([re]) => re.test(s)).map(([, m]) => m).join(", ");
+const safeText = (max) =>
+  z.string().max(max).refine(clean, { error: (i) => `contains ${why(String(i.input))}; rewrite it neutrally` });
 
 const ScriptSchema = z.object({
-  hook: z.string(),
-  segments: z.array(SegmentScriptSchema).min(3).max(4),
-  takeaway: z.string(),
-  cta: z.string(),
-  title: z.string(),
-  description: z.string(),
-  tags: z.array(z.string()),
+  spoken_hook: safeText(110),
+  hook: z.string().max(60),
+  lines: z.array(safeText(160)).min(3).max(4),
+  takeaway: z.string().max(70),
+  cta: safeText(140),
+  title: safeText(100),
+  summary: safeText(320),
+  headline_used: z.number().int().min(-1).max(2),
+  tags: z.array(z.string()).min(5).max(16),
 });
 
 const SLOT_BRIEF = {
-  open: "MARKET BRIEF - three coins that frame today's session (majors first), lead each with the move that matters.",
-  mover: "MOVERS OF THE DAY - three coins with the biggest 24h moves, lead each with the size of the move.",
-  trending: "TRENDING NOW - three coins traders are searching for today, lead each with what makes it notable right now.",
+  open: "LARGE-CAP STORY: the top-10 coin that moved most in the last 24 hours. The audience knows this coin; tell them what actually happened today.",
+  mover: "BIGGEST MOVE: the liquid coin with one of the largest 24h moves. Lead with the size of the move.",
+  trending: "WHY IT'S TRENDING: a coin people are searching for right now. Lead with what makes it notable today.",
 };
 
-const SYSTEM = `You write voiceover scripts for a professional English-language crypto analysis YouTube Short (about 45-60 seconds, vertical) that covers THREE different coins in one video, back to back.
+const SYSTEM = `You write a 25-35 second vertical YouTube Short for "Whale Market Pulse", an English crypto channel about where the big money moved today. The whole video is about ONE coin.
 
 HARD RULES
-- Use ONLY the numbers in the supplied JSON for each coin. Never invent, round differently, or extrapolate a figure. If a field is null, do not mention it.
-- Describe what each chart did. Never advise. No "buy", "sell", "target", "will reach", no price predictions, no portfolio suggestions.
-- Call levels what they are: "the last four hours' high", "the 24-hour low". Do not call them "key support" or "key resistance" - a 4-hour extreme is not a tested level.
-- Banned words: moon, mooning, explode, parabolic, guaranteed, 100x, pump it, easy money, financial freedom.
-- No markdown, no emoji, no hashtags, no stage directions inside the spoken lines.
-- Treat the three coins as independent segments - never compare one coin's numbers to another's.
+- Use ONLY numbers from the supplied JSON. Never invent, round differently or extrapolate. Skip null fields.
+- Describe what happened. Never advise and never predict: no "buy", "sell", "target", "will reach", no portfolio talk.
+- Call levels what they are: "the four-hour high", "the 24-hour low". Not "key support" or "key resistance".
+- Banned: moon, explode, parabolic, guaranteed, 100x, easy money, financial freedom, don't miss, too late, hold or fold.
+- Headlines: "headlines" lists recent news that names this coin. You may use AT MOST one, attributed to its source ("CoinDesk reports..."), paraphrased faithfully. Never say the headline caused the price move - write "comes as" or "alongside", never "because" or "due to". If none is relevant, use none and set headline_used to -1; otherwise set it to that headline's index.
+- turnover_24h_pct is 24h volume as a percent of market cap: how much of the coin changed hands. It is the channel's signature stat ("the big money"); use it when it is notable (above ~15%) or clearly unusual.
+- No markdown, emoji, hashtags or stage directions in spoken text.
 
-VOICEOVER
-- For each of the 3 coins: exactly 2 spoken sentences, 9 to 16 words each, that read naturally aloud. Sentence 1 states the price and the 24h move. Sentence 2 gives the single most useful observation from that coin's data (a level, RSI, trend, or volume fact).
-- Spell numbers so a text-to-speech engine says them correctly: "one hundred and eight thousand dollars", "down four point two percent", "R S I at sixty one".
-- cta: exactly one spoken sentence that closes the video by asking the viewer to follow the channel and like the video. Warm, not pushy, no coin mentions, no financial-advice language. Example shape: "Hit follow and drop a like so you never miss the next breakdown."
+SPOKEN TEXT (read by text-to-speech; spell numbers the way they are said: "one hundred and eight thousand dollars", "down four point two percent", "R S I at sixty one")
+- spoken_hook: the first thing the viewer hears. 6 to 14 words, one sentence, a real curiosity gap built on the most surprising fact in the data. No greeting, no channel name, no "in this video".
+- lines: 3 sentences, 10 to 18 words each, that pay off the hook in order: (1) the move itself with price and 24h change, (2) the one chart detail that matters (where it sits versus its 24h range or four-hour high/low, RSI zone, trend), (3) the context: the headline if used, else the turnover / volume angle.
+- cta: one sentence that asks the viewer a genuine opinion question about this move (not advice, e.g. "Real breakout or a bull trap? Tell me below.") and then asks them to follow for the next move. Max 140 characters.
 
-FIELDS
-- hook: on-screen text for the opening card, max 50 characters, no final period, no numbers (each coin gets its own number a moment later). Introduces the "three coins" theme for this format.
-- segments: exactly 3 objects, one per coin, IN THE SAME ORDER the coins are listed in the input. Each has "symbol" (must exactly match that coin's symbol from the input) and "lines" (exactly 2 strings, see VOICEOVER).
-- takeaway: on-screen closing headline, max 55 characters. Summarizes the overall session, not a rehash of one coin.
-- cta: see VOICEOVER, max 110 characters.
-- title: YouTube title, max 75 characters, ending with " #Shorts". Written to earn the click, not to list data: lead with the single most interesting coin (biggest move or most hyped name) and its 24h move, then a curiosity angle about the other two. At least one coin symbol must appear. You may use a question and at most one emoji before " #Shorts". Every number must come from the input JSON. Never use the phrases "Market Brief", "Prices, Ranges and RSI", "Price Analysis" or "Trading Activity", never list three symbols separated by " / ", and do not reuse the pattern of any recent title. Good shapes: "PENGU +18% While Bitcoin Sleeps — What the Chart Shows #Shorts", "Why Is Everyone Searching HYPE Today? 👀 #Shorts", "FET Just Did -9%. Here's the 4H Chart #Shorts".
-- description: 2 short paragraphs. First names the three coins covered and what the video covers. Second is exactly: "Data: CoinGecko. This video is market commentary generated from public price data and is not financial advice. Do your own research."
-- tags: 10 to 14 lowercase search phrases, 2 to 25 characters each, no "#" prefix. Include all three coin names and symbols.`;
+ON-SCREEN / METADATA
+- hook: opening card text, max 45 characters, no numbers, no final period.
+- takeaway: closing card headline, max 55 characters.
+- title: max 70 characters plus " #Shorts". Earns the click with the story, not a data list: the coin's name or symbol, the move, and a curiosity angle. At most one emoji. Every number from the input. Never reuse the structure of a title in "recent_titles". Never use "Market Brief", "Price Analysis", "Prices, Ranges and RSI", "Trading Activity", "Movers of the Day".
+- summary: 1-2 plain sentences for the top of the description saying what happened to this coin today. Numbers from the input only.
+- tags: 8 to 14 lowercase search phrases, 2 to 25 characters, no "#". Include the coin's name and symbol.`;
 
-export async function generateScript({ slot, segments, global, avoidTitles }) {
+export async function generateScript({ slot, segments, global, avoidTitles, headlines = [] }) {
+  const { coin, metrics, sentiment } = segments[0];
+  const turnover = metrics.marketCapUsd ? Number(((metrics.volume24hUsd / metrics.marketCapUsd) * 100).toFixed(1)) : null;
   const payload = {
     format: SLOT_BRIEF[slot],
     market: global,
-    coins: segments.map(({ coin, metrics, sentiment }) => ({
+    coin: {
       symbol: coin.symbol.toUpperCase(),
       name: coin.name,
       rank: metrics.marketCapRank,
@@ -74,15 +84,16 @@ export async function generateScript({ slot, segments, global, avoidTitles }) {
         position_in_24h_range_pct: metrics.rangePositionPct,
         rsi_14: metrics.rsi14,
         rsi_zone: metrics.rsiZone,
-        sma_20: metrics.sma20Text,
         trading_above_sma20: metrics.aboveSma20,
         volatility_pct: metrics.volatility24hPct,
         volume_24h_usd: metrics.volume24hText,
         market_cap_usd: metrics.marketCapText,
+        turnover_24h_pct: turnover,
         trend: metrics.trend,
       },
-    })),
-    avoid_reusing_these_recent_titles: avoidTitles,
+    },
+    headlines: headlines.map((h, i) => ({ index: i, source: h.source, title: h.title, age_hours: h.age_hours })),
+    recent_titles: avoidTitles,
   };
 
   // Free LLMs first (Gemini -> Groq); the original Claude call below is only a last resort.
@@ -94,7 +105,7 @@ export async function generateScript({ slot, segments, global, avoidTitles }) {
     claude: () => viaClaude(payload),
   });
   console.log(`  script by ${provider}`);
-  return { script: normalize(out, segments), usage };
+  return { script: normalize(out, coin, headlines), usage };
 }
 
 async function viaClaude(payload) {
@@ -137,37 +148,45 @@ async function viaClaude(payload) {
   return { out, usage: response.usage };
 }
 
-function normalize(out, segments) {
-  // Extras are fine - matched by symbol below and simply ignored. Fewer than
-  // expected means a coin segment is genuinely missing, which is fatal.
-  if (!Array.isArray(out.segments) || out.segments.length < segments.length) {
-    throw new Error(`Expected at least ${segments.length} script segments, got ${out.segments?.length ?? 0}`);
-  }
+const DISCLAIMER =
+  "This Short is market commentary built from public price data. It is not financial advice. Do your own research.";
 
-  const bySymbol = new Map(out.segments.map((s) => [s.symbol.trim().toUpperCase(), s]));
-  const segmentLines = segments.map(({ coin }, i) => {
-    const match = bySymbol.get(coin.symbol.toUpperCase()) ?? out.segments[i];
-    const lines = (match.lines ?? []).map((l) => l.trim()).filter(Boolean).slice(0, 2);
-    if (lines.length < 2) throw new Error(`Script segment for ${coin.symbol} has ${lines.length} usable lines`);
-    return lines;
-  });
+function normalize(out, coin, headlines) {
+  const lines = out.lines.map((l) => l.trim()).filter(Boolean).slice(0, 3);
+  if (lines.length < 3) throw new Error(`Script has ${lines.length} usable lines, need 3`);
 
-  const symbols = segments.map(({ coin }) => coin.symbol.toUpperCase());
-  let title = out.title.trim();
-  if (!/#shorts/i.test(title)) title = `${title} #Shorts`;
-  if (!symbols.some((s) => title.toUpperCase().includes(s))) {
-    title = `${symbols.join(" / ")} — 3 Coins to Watch #Shorts`;
+  const symbol = coin.symbol.toUpperCase();
+  let title = out.title.trim().replace(/\s*#shorts\s*$/i, "");
+  if (!title.toUpperCase().includes(symbol) && !title.toLowerCase().includes(coin.name.toLowerCase())) {
+    title = `${coin.name} (${symbol}): ${title}`;
   }
-  if (title.length > 100) title = `${title.slice(0, 92).trim()} #Shorts`;
+  title = `${title.slice(0, 90).trim()} #Shorts`;
+
+  // Sources and the disclaimer are written by code, never by the model, so a link or a legal line
+  // can't be invented or dropped.
+  const used = headlines[out.headline_used] ?? null;
+  const sources = ["Market data: CoinGecko"];
+  if (used) sources.push(`News: "${used.title}" (${used.source}) ${used.link}`);
+  const description = [
+    out.summary.trim(),
+    "",
+    sources.join("\n"),
+    "",
+    DISCLAIMER,
+    "",
+    "Whale Market Pulse: where the big money moved in crypto today. New Shorts every day, weekly recap on Sundays and Wednesdays.",
+  ].join("\n");
 
   return {
+    spokenHook: out.spoken_hook.trim(),
     hook: out.hook.trim().slice(0, 60),
-    segmentLines,
+    segmentLines: [lines],
     takeaway: out.takeaway.trim().slice(0, 70),
     cta: out.cta.trim().slice(0, 140),
     title,
-    description: out.description.trim().slice(0, 4500),
-    tags: sanitizeTags(out.tags, segments.map(({ coin }) => coin)),
+    description,
+    headline: used,
+    tags: sanitizeTags(out.tags, [coin]),
   };
 }
 
@@ -176,7 +195,7 @@ function sanitizeTags(raw, coins) {
   const tags = [];
   let chars = 0;
   const baseline = coins.flatMap((c) => [c.name.toLowerCase(), c.symbol.toLowerCase()]);
-  for (const candidate of [...raw, ...baseline, "crypto analysis", "crypto news"]) {
+  for (const candidate of [...raw, ...baseline, "crypto news", "whale market pulse"]) {
     const tag = String(candidate).replace(/#/g, "").replace(/\s+/g, " ").trim().toLowerCase();
     if (tag.length < 2 || tag.length > 25) continue;
     if (seen.has(tag)) continue;

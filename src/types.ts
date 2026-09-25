@@ -49,6 +49,8 @@ export type ShortProps = {
   slot: "open" | "mover" | "trending";
   style: "panel" | "spotlight";
   hook: string;
+  // How long the hook card stays up: until the spoken hook line ends. Older props files lack it.
+  hookSec?: number;
   takeaway: string;
   ctaText: string;
   segments: CoinSegment[];
@@ -59,9 +61,9 @@ export type ShortProps = {
 };
 
 export const SLOT_LABEL: Record<ShortProps["slot"], string> = {
-  open: "MARKET BRIEF",
-  mover: "MOVER OF THE DAY",
-  trending: "TRENDING NOW",
+  open: "BIG CAP MOVE",
+  mover: "BIGGEST MOVE TODAY",
+  trending: "WHY IT'S TRENDING",
 };
 
 export type TrailerCardSpec = {

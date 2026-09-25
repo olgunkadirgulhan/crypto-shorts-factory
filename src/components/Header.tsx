@@ -64,7 +64,7 @@ export const Header: React.FC<Props> = ({ slot, coin, logoFile, rank, index, tot
             letterSpacing: 1,
           }}
         >
-          {index} / {total}
+          {total > 1 ? `${index} / ${total}` : "LAST 24H"}
         </div>
       </div>
 

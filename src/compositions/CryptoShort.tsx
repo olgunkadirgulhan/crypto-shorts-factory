@@ -20,7 +20,7 @@ const TINT: Record<"bullish" | "bearish" | "neutral", string> = {
 export const CryptoShort: React.FC<ShortProps> = (props) => {
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
-  const hookFrames = Math.round(HOOK_SEC * fps);
+  const hookFrames = Math.round((props.hookSec ?? HOOK_SEC) * fps);
 
   const lastSegment = props.segments[props.segments.length - 1];
   const outroStartFrame = Math.round(lastSegment.endSec * fps);

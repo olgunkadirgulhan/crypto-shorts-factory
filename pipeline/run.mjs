@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { fetchMarketContext, selectSegments } from "./market.mjs";
 import { computeMetrics, sentimentOf } from "./indicators.mjs";
+import { headlinesFor } from "./news.mjs";
 import { generateScript } from "./script.mjs";
 import { synthesizeVoiceover } from "./tts.mjs";
 import { discoverTrendingHashtags, setThumbnail, uploadVideo, youtubeClient } from "./youtube.mjs";
@@ -11,7 +12,8 @@ import { notify } from "./notify.mjs";
 
 const ROOT = process.cwd();
 const HISTORY_FILE = path.join(ROOT, "state", "history.json");
-const COIN_COUNT = 3;
+const COIN_COUNT = 1; // one coin's story per video
+const REPEAT_WINDOW = 6; // a coin isn't the subject again within the last 6 videos (~2 days)
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
@@ -64,7 +66,7 @@ async function main() {
   const slot = slotArg || slotForNow();
   const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-");
   const history = loadHistory();
-  const recentCoinIds = history.slice(-2).flatMap((h) => h.coinIds ?? (h.coinId ? [h.coinId] : []));
+  const recentCoinIds = history.slice(-REPEAT_WINDOW).flatMap((h) => h.coinIds ?? (h.coinId ? [h.coinId] : []));
 
   console.log(`\n=== slot: ${slot} | ${stamp} | dryRun=${dryRun} ===`);
 
@@ -86,19 +88,24 @@ async function main() {
     );
   }
 
-  console.log("3/8 script");
+  console.log("3/8 news + script");
+  const headlines = await headlinesFor(segmentsBase[0].coin);
+  for (const h of headlines) console.log(`  ${h.source} (${h.age_hours}h): ${h.title}`);
   const { script, usage } = await generateScript({
     slot,
     segments: segmentsBase,
     global: context.global,
-    avoidTitles: history.slice(-5).map((h) => h.title),
+    avoidTitles: history.slice(-10).map((h) => h.title),
+    headlines,
   });
   console.log(`  "${script.title}"`);
+  console.log(`  hook: ${script.spokenHook}`);
+  if (script.headline) console.log(`  uses headline: ${script.headline.title}`);
   console.log(`  tokens in/out: ${usage.input_tokens}/${usage.output_tokens}`);
 
   console.log("4/8 voiceover");
-  // Flat order: coin1 line1/2, coin2 line1/2, coin3 line1/2, then the closing CTA.
-  const allLines = [...script.segmentLines.flat(), script.cta];
+  // Spoken hook first (the first two seconds decide whether a viewer stays), then the story, then the CTA.
+  const allLines = [script.spokenHook, ...script.segmentLines.flat(), script.cta];
   const audioPublicPath = path.join(ROOT, "public", "voice.mp3");
   const { timeline, totalSec } = await synthesizeVoiceover(allLines, {
     workDir: path.join(ROOT, "out", "tts"),
@@ -110,12 +117,16 @@ async function main() {
   console.log("5/8 logos + segment timing");
   // Segment boundaries share the same value with their neighbor (computed once,
   // assigned to both endSec and the next startSec) so panels cut with no gap.
+  // Line 0 is the spoken hook (played over the hook card, with the first panel behind it);
+  // each segment then ends where the next segment's first line (or the closing CTA) begins.
   const boundaries = [0];
-  for (let i = 1; i <= segmentsBase.length; i++) {
-    const anchorCaption = i < segmentsBase.length ? timeline[i * 2] : timeline[timeline.length - 1];
-    const candidate = round2(anchorCaption.start - 0.3);
-    boundaries.push(Math.max(boundaries[i - 1] + 1, candidate));
+  let lineIdx = 1;
+  for (let i = 0; i < segmentsBase.length; i++) {
+    lineIdx += script.segmentLines[i].length;
+    const candidate = round2(timeline[lineIdx].start - 0.3);
+    boundaries.push(Math.max(boundaries[i] + 1, candidate));
   }
+  const hookSec = round2(Math.max(2.2, timeline[0].start + timeline[0].duration + 0.15));
 
   const segments = [];
   for (let i = 0; i < segmentsBase.length; i++) {
@@ -142,6 +153,7 @@ async function main() {
     slot,
     style,
     hook: script.hook,
+    hookSec,
     takeaway: script.takeaway,
     ctaText: script.cta,
     segments,
@@ -196,6 +208,12 @@ async function main() {
     console.log(`  thumbnail set: ${thumbnailSet}`);
   }
 
+  // A dry run must not look like a produced slot: the workflow's slot picker reads archive/.
+  if (dryRun) {
+    console.log("9/9 archive skipped (--dry-run)");
+    console.log(`\n--- dry run script ---\n${allLines.join("\n")}\n\n${script.title}\n\n${script.description}\n`);
+    return;
+  }
   console.log("9/9 archive");
   fs.mkdirSync(path.join(ROOT, "archive"), { recursive: true });
   fs.writeFileSync(
