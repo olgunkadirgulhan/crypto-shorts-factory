@@ -5,7 +5,12 @@ import { z } from "zod";
 // Every answer is validated against the same zod schema the Claude path used, so quality rules are unchanged.
 // A backend without a key is skipped; one that errors, rate-limits or returns invalid JSON hands over to the next.
 
-const GEMINI_MODELS = (process.env.GEMINI_MODEL || "gemini-3.8-flash,gemini-3.5-flash,gemini-flash-latest,gemini-3-flash-preview,gemini-flash-lite-latest")
+// The flash models share one capacity pool and are often busy (503) together; lite and gemma usually answer.
+const GEMINI_MODELS = (
+  process.env.GEMINI_MODEL ||
+  "gemini-3.8-flash,gemini-3.5-flash,gemini-flash-latest,gemini-3.7-flash,gemini-3-flash-preview," +
+    "gemini-flash-lite-latest,gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemma-4-26b-a4b-it,gemma-4-31b-it"
+)
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
@@ -35,20 +40,25 @@ let geminiSchemaOk = true; // structured output (responseJsonSchema); switched o
 
 async function gemini(system, user, jsonSchema) {
   let last = "no model tried";
-  for (let i = geminiStart; i < GEMINI_MODELS.length; i++) {
+  const n = GEMINI_MODELS.length;
+  // start at the model that worked last in this run and wrap around, so every model gets a turn
+  for (let k = 0; k < n; k++) {
+    const i = (geminiStart + k) % n;
     const model = GEMINI_MODELS[i];
+    const gemma = model.startsWith("gemma"); // no system instruction and no JSON mode: both go in the prompt
     try {
-      const generationConfig = { temperature: 0.7, maxOutputTokens: 8192, responseMimeType: "application/json" };
+      const generationConfig = { temperature: 0.7, maxOutputTokens: 8192 };
+      if (!gemma) generationConfig.responseMimeType = "application/json";
       // with the schema attached Gemini can only emit valid JSON of that shape (no missing fields, no broken quotes)
-      if (jsonSchema && geminiSchemaOk) generationConfig.responseJsonSchema = jsonSchema;
+      if (!gemma && jsonSchema && geminiSchemaOk) generationConfig.responseJsonSchema = jsonSchema;
       const r = await fetchWithTimeout(
         `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${process.env.GEMINI_API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            systemInstruction: { parts: [{ text: system }] },
-            contents: [{ role: "user", parts: [{ text: user }] }],
+            ...(gemma ? {} : { systemInstruction: { parts: [{ text: system }] } }),
+            contents: [{ role: "user", parts: [{ text: gemma ? `${system}\n\n${user}` : user }] }],
             generationConfig,
           }),
         },
@@ -59,7 +69,7 @@ async function gemini(system, user, jsonSchema) {
         if (r.status === 400 && generationConfig.responseJsonSchema) {
           console.log(`  gemini rejected the response schema (${body.slice(0, 120)}), continuing without it`);
           geminiSchemaOk = false;
-          i--; // same model again, schema in the prompt only
+          k--; // same model again, schema in the prompt only
           continue;
         }
         last = `${model}: ${r.status} ${body}`;
@@ -147,7 +157,7 @@ ${jsonSchema}`;
       } catch (e) {
         errors.push(e.message.slice(0, 220));
         if (call === gemini && attempt < attempts - 1) {
-          await new Promise((ok) => setTimeout(ok, 20_000)); // every model busy (503/429): wait, then retry
+          await new Promise((ok) => setTimeout(ok, 45_000)); // every model busy (503/429): wait, then retry
           continue;
         }
         break; // backend down or rate-limited: next backend
