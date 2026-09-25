@@ -34,6 +34,19 @@ async function probeDuration(file) {
   return seconds;
 }
 
+// Scripts are written the way captions should read ("RSI 46", "$97M", "the 4H low"); the voice
+// gets a speakable version of the same line while the caption keeps the digits.
+const SCALE = { K: "thousand", M: "million", B: "billion", T: "trillion" };
+export function forSpeech(text) {
+  return text
+    .replace(/\bRSI\b/g, "R S I")
+    .replace(/\bSMA\b/g, "S M A")
+    .replace(/\b(\d+)\s?[hH]\b(?=\s+(high|low|chart|candle|range|close|move|volume))/g, "$1-hour")
+    .replace(/\b(\d+)\s?[hH]\b/g, "$1 hours")
+    .replace(/\$(\d[\d,]*(?:\.\d+)?)\s?([KMBT])\b/g, (_, n, s) => `$${n} ${SCALE[s]}`)
+    .replace(/~\s?/g, "about ");
+}
+
 export async function synthesizeVoiceover(lines, { workDir, outFile, musicFile = null }) {
   const voice = process.env.TTS_VOICE || "en-US-AndrewMultilingualNeural";
   const rate = process.env.TTS_RATE || "+6%";
@@ -43,7 +56,8 @@ export async function synthesizeVoiceover(lines, { workDir, outFile, musicFile =
   const parts = [];
   for (const [i, text] of lines.entries()) {
     const file = path.join(workDir, `line_${i}.mp3`);
-    await run("edge-tts", ["--voice", voice, "--rate", rate, "--text", text, "--write-media", file]);
+    // "--text=" form: a line starting with "-" (e.g. "-3% today") would otherwise be parsed as an option
+    await run("edge-tts", ["--voice", voice, `--rate=${rate}`, `--text=${forSpeech(text)}`, "--write-media", file]);
     parts.push({ file, duration: await probeDuration(file) });
   }
 

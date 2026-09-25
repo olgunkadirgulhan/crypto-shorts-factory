@@ -87,7 +87,7 @@ export const Outro: React.FC<{ takeaway: string; tint: string }> = ({ takeaway, 
             lineHeight: 1.4,
           }}
         >
-          Daily crypto chart breakdowns — new video every day.
+          Where the big money moved in crypto today. New story every day.
         </div>
         <div style={{ color: theme.inkMuted, fontSize: 22, fontWeight: 700, marginTop: 14 }}>
           Market commentary from public price data. Not financial advice.

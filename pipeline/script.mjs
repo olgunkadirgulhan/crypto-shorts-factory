@@ -12,7 +12,7 @@ import { generateStructured } from "./lib/llm.mjs";
 const BANNED = [
   [/\b(buy|sell)\b(?!ers|-off|ing pressure| pressure| wall| side| orders?)/i, "buy/sell wording"],
   [/\bshould (you )?(buy|sell|hold|get in|get out)\b|\bhold or fold\b|\bprice target\b|\bwill (hit|reach|go to|explode)\b/i, "advice or prediction"],
-  [/\b(moon|mooning|explode|exploding|parabolic|100x|1000x|easy money|financial freedom|get rich|guarantee[ds]?|don'?t miss|too late|last chance|to the moon)\b/i, "hype word"],
+  [/\b(moon|mooning|explode|exploding|parabolic|100x|1000x|easy money|financial freedom|get rich|guarantee[ds]?|don'?t miss|too late|last chance|to the moon)\b|🚀|🌕|💎|🤑/i, "hype word"],
   [/\b(referral|promo code|sign ?up|use my link|affiliate)\b/i, "promotion"],
 ];
 const clean = (s) => BANNED.every(([re]) => !re.test(s));
@@ -41,7 +41,7 @@ const SLOT_BRIEF = {
 const SYSTEM = `You write a 25-35 second vertical YouTube Short for "Whale Market Pulse", an English crypto channel about where the big money moved today. The whole video is about ONE coin.
 
 HARD RULES
-- Use ONLY numbers from the supplied JSON. Never invent, round differently or extrapolate. Skip null fields.
+- Use ONLY numbers from the supplied JSON. Never invent or extrapolate; in spoken text you may round as described below. Skip null fields.
 - Describe what happened. Never advise and never predict: no "buy", "sell", "target", "will reach", no portfolio talk.
 - Call levels what they are: "the four-hour high", "the 24-hour low". Not "key support" or "key resistance".
 - Banned: moon, explode, parabolic, guaranteed, 100x, easy money, financial freedom, don't miss, too late, hold or fold.
@@ -49,16 +49,18 @@ HARD RULES
 - turnover_24h_pct is 24h volume as a percent of market cap: how much of the coin changed hands. It is the channel's signature stat ("the big money"); use it when it is notable (above ~15%) or clearly unusual.
 - No markdown, emoji, hashtags or stage directions in spoken text.
 
-SPOKEN TEXT (read by text-to-speech; spell numbers the way they are said: "one hundred and eight thousand dollars", "down four point two percent", "R S I at sixty one")
-- spoken_hook: the first thing the viewer hears. 6 to 14 words, one sentence, a real curiosity gap built on the most surprising fact in the data. No greeting, no channel name, no "in this video".
-- lines: 3 sentences, 10 to 18 words each, that pay off the hook in order: (1) the move itself with price and 24h change, (2) the one chart detail that matters (where it sits versus its 24h range or four-hour high/low, RSI zone, trend), (3) the context: the headline if used, else the turnover / volume angle.
+SPOKEN TEXT (also shown word for word as captions, so write numbers as digits: "$94", "almost 19%", "RSI 46", "the 4-hour high")
+- Say numbers the way a person would: round naturally in speech and signal it ("almost 19%" for 18.63%, "about $94" for $94.41, "$97 million" for $97.27M). Exact figures are already on screen.
+- spoken_hook: the first thing the viewer hears. 6 to 14 words, one sentence. It must open a curiosity gap - a contrast, a question or a surprising detail - that the next lines resolve. Do NOT just state the price move. Good: "Quant ripped almost 19% today, but look where it's sitting now." / "Everyone is searching this coin today, and the chart shows why." / "Bitcoin barely moved, yet a fifth of Solana changed hands." No greeting, no channel name, no "in this video".
+- lines: 3 sentences, 10 to 18 words each, that pay off the hook in order: (1) the move itself with price and 24h change, (2) the one chart detail that matters (where it sits versus its 24h range or 4-hour high/low, RSI zone, trend), (3) the context: the headline if used, else the turnover / volume angle.
+- Plain words. No "massive", "huge", "insane", "skyrocket", "crazy".
 - cta: one sentence that asks the viewer a genuine opinion question about this move (not advice, e.g. "Real breakout or a bull trap? Tell me below.") and then asks them to follow for the next move. Max 140 characters.
 
 ON-SCREEN / METADATA
-- hook: opening card text, max 45 characters, no numbers, no final period.
-- takeaway: closing card headline, max 55 characters.
-- title: max 70 characters plus " #Shorts". Earns the click with the story, not a data list: the coin's name or symbol, the move, and a curiosity angle. At most one emoji. Every number from the input. Never reuse the structure of a title in "recent_titles". Never use "Market Brief", "Price Analysis", "Prices, Ranges and RSI", "Trading Activity", "Movers of the Day".
-- summary: 1-2 plain sentences for the top of the description saying what happened to this coin today. Numbers from the input only.
+- hook: opening card text, max 45 characters, no digits and no number words, no final period. The coin's % change is shown right under it. Good: "Quant Just Woke Up", "Nobody Saw This Coming".
+- takeaway: closing card headline, max 55 characters: the insight in one line, not a repeat of the price move (e.g. "Big day, but it's already off the highs").
+- title: max 70 characters plus " #Shorts". Earns the click with the story, not a data list: the coin's name or symbol, the move, and a curiosity angle. At most one emoji, never 🚀 🌕 💎 🤑 (they read as hype). Every number from the input. Never reuse the structure of a title in "recent_titles". Never use "Market Brief", "Price Analysis", "Prices, Ranges and RSI", "Trading Activity", "Movers of the Day".
+- summary: 1-2 plain sentences for the top of the description saying what happened to this coin today, with exact figures as digits ("+18.63% to $94.41").
 - tags: 8 to 14 lowercase search phrases, 2 to 25 characters, no "#". Include the coin's name and symbol.`;
 
 export async function generateScript({ slot, segments, global, avoidTitles, headlines = [] }) {
