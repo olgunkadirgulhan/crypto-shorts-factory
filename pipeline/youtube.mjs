@@ -108,6 +108,53 @@ export async function uploadVideo(yt, { file, title, description, tags, hashtags
   return res.data.id;
 }
 
+// One playlist per format, so a viewer who liked one story gets the next one of the same kind
+// (session time is what YouTube rewards). Ids are cached in state/ once created.
+const PLAYLISTS_FILE = "state/playlists.json";
+export const PLAYLISTS = {
+  open: ["Big Cap Moves", "The biggest move among the top-10 cryptocurrencies each day, explained in 30 seconds."],
+  mover: ["Biggest Crypto Movers Today", "The day's biggest crypto move: what happened and what the chart shows."],
+  trending: ["Why It's Trending", "The coin everyone is searching for today, and the data behind the attention."],
+  weekly: ["Weekly Market Pulse", "Twice-weekly crypto recap: what moved, what didn't, and where the money went."],
+};
+
+export async function ensurePlaylist(yt, key) {
+  const cache = fs.existsSync(PLAYLISTS_FILE) ? JSON.parse(fs.readFileSync(PLAYLISTS_FILE, "utf8")) : {};
+  if (cache[key]) return cache[key];
+  const [title, description] = PLAYLISTS[key];
+  const mine = await yt.playlists.list({ part: ["snippet"], mine: true, maxResults: 50 });
+  let id = (mine.data.items ?? []).find((p) => p.snippet?.title === title)?.id;
+  if (!id) {
+    const res = await yt.playlists.insert({
+      part: ["snippet", "status"],
+      requestBody: {
+        snippet: { title, description: `${description} Not financial advice.`, defaultLanguage: "en" },
+        status: { privacyStatus: "public" },
+      },
+    });
+    id = res.data.id;
+  }
+  cache[key] = id;
+  fs.mkdirSync("state", { recursive: true });
+  fs.writeFileSync(PLAYLISTS_FILE, JSON.stringify(cache, null, 2));
+  return id;
+}
+
+// A playlist failure never fails the run: the video is already public.
+export async function addToPlaylist(yt, key, videoId) {
+  try {
+    const playlistId = await ensurePlaylist(yt, key);
+    await yt.playlistItems.insert({
+      part: ["snippet"],
+      requestBody: { snippet: { playlistId, resourceId: { kind: "youtube#video", videoId } } },
+    });
+    return playlistId;
+  } catch (err) {
+    console.warn(`  playlist add failed: ${err.message}`);
+    return null;
+  }
+}
+
 // Custom thumbnails require the channel to be phone-verified - YouTube rejects
 // the call otherwise. That's a channel-level setting we can't fix here, so a
 // failure here is a warning, not a fatal error: the video itself already uploaded.

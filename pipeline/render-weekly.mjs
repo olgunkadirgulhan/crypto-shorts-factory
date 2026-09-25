@@ -8,7 +8,7 @@ import { fetchWeeklyMarketContext, selectWeeklySegments } from "./market.mjs";
 import { computeWeeklyMetrics, sentimentOf } from "./indicators.mjs";
 import { generateWeeklyScript } from "./weeklyScript.mjs";
 import { synthesizeVoiceover } from "./tts.mjs";
-import { discoverTrendingHashtags, setThumbnail, uploadVideo, youtubeClient } from "./youtube.mjs";
+import { addToPlaylist, discoverTrendingHashtags, setThumbnail, uploadVideo, youtubeClient } from "./youtube.mjs";
 import { notify } from "./notify.mjs";
 
 const ROOT = process.cwd();
@@ -173,6 +173,7 @@ async function main() {
     console.log(`  https://youtu.be/${videoId}`);
     thumbnailSet = await setThumbnail(yt, videoId, thumbFile);
     console.log(`  thumbnail set: ${thumbnailSet}`);
+    console.log(`  playlist: ${(await addToPlaylist(yt, "weekly", videoId)) ?? "not added"}`);
   }
 
   console.log("9/9 archive");
