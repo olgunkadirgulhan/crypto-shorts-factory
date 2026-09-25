@@ -1,0 +1,86 @@
+{
+  "slot": "mover",
+  "style": "spotlight",
+  "coins": [
+    {
+      "id": "aerodrome-finance",
+      "name": "Aerodrome Finance",
+      "symbol": "AERO",
+      "image": "https://coin-images.coingecko.com/coins/images/31745/large/token.png?1696530564"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 0.848295,
+      "priceText": "0.8483",
+      "change24hPct": 20.38,
+      "high24h": 0.864722,
+      "low24h": 0.683981,
+      "high24hText": "0.8647",
+      "low24hText": "0.6840",
+      "support": 0.779641,
+      "resistance": 0.864722,
+      "supportText": "0.7796",
+      "resistanceText": "0.8647",
+      "distToResistancePct": 1.94,
+      "distToSupportPct": 8.09,
+      "rangePositionPct": 91,
+      "rsi14": 77,
+      "rsiZone": "overbought",
+      "sma20": 0.8017206000000001,
+      "sma20Text": "0.8017",
+      "aboveSma20": true,
+      "volatility24hPct": 2.02,
+      "volume24hUsd": 121594137,
+      "volume24hText": "121.59M",
+      "marketCapUsd": 845491869,
+      "marketCapText": "845.49M",
+      "marketCapRank": 87,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "spokenHook": "Aerodrome jumped 20% today, but RSI is already flashing overbought.",
+    "hook": "Aerodrome Pulls Off A Surprise Rally",
+    "segmentLines": [
+      [
+        "AERO gained over 20% to reach about $0.85, rebounding from its 24-hour low of $0.68.",
+        "Price is sitting near the four-hour high of $0.86, pushing its RSI up to 77.",
+        "Trading volume topped $121 million today, representing over 14% of its entire market cap."
+      ]
+    ],
+    "takeaway": "Trading near highs with RSI in overbought territory",
+    "cta": "Can Aerodrome hold this rally or is a pullback coming? Share your thoughts below and subscribe.",
+    "title": "AERO Jumps 20% While the Market Stumbles #Shorts",
+    "description": "Aerodrome Finance (AERO) surged +20.38% to $0.8483 today, outperforming the broader market. The rally pushed its RSI to 77 with 24-hour volume reaching $121.59M.\n\nMarket data: CoinGecko\n\nThis Short is market commentary built from public price data. It is not financial advice. Do your own research.\n\nWhale Market Pulse: where the big money moved in crypto today. New Shorts every day, weekly recap on Sundays and Wednesdays.",
+    "headline": null,
+    "tags": [
+      "aerodrome finance",
+      "aero",
+      "aero crypto",
+      "aerodrome",
+      "altcoins",
+      "crypto news",
+      "crypto trading",
+      "defi tokens",
+      "dex tokens",
+      "whale market pulse"
+    ]
+  },
+  "hashtags": [
+    "#AerodromeFinance",
+    "#AERO",
+    "#crypto",
+    "#cryptonews",
+    "#trading",
+    "#Shorts",
+    "#Aerodrome",
+    "#Altcoins"
+  ],
+  "videoId": "BKO71z3zrBs",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1767,
+    "output_tokens": 344
+  }
+}
