@@ -18,6 +18,10 @@ on:
         description: Render but do not upload
         type: boolean
         default: false
+      auto:
+        description: External scheduler call - pick the due slot like a scheduled run (slot input ignored)
+        type: boolean
+        default: false
 
 concurrency:
   group: produce
@@ -37,7 +41,7 @@ jobs:
       - name: Pick slot
         id: pick
         run: |
-          [ "${{ github.event_name }}" = "schedule" ] || exit 0
+          [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.auto }}" = "true" ] || exit 0
           # look at the latest master, not the commit that triggered this (possibly late) run
           git fetch -q origin master
           today=$(date -u +%F); hour=$((10#$(date -u +%H)))
@@ -108,7 +112,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           node pipeline/run.mjs \
-            ${{ inputs.slot && format('--slot={0}', inputs.slot) || (steps.pick.outputs.slot && format('--slot={0}', steps.pick.outputs.slot)) || '' }} \
+            ${{ steps.pick.outputs.slot && format('--slot={0}', steps.pick.outputs.slot) || (inputs.slot && format('--slot={0}', inputs.slot)) || '' }} \
             ${{ inputs.dry_run == true && '--dry-run' || '' }}
 
       - name: Keep the rendered file for review

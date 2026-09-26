@@ -17,6 +17,10 @@ on:
         description: Render but do not upload
         type: boolean
         default: false
+      auto:
+        description: External scheduler call - skip if this week's recap was already made today
+        type: boolean
+        default: false
 
 concurrency:
   group: weekly
@@ -27,7 +31,7 @@ permissions:
 
 jobs:
   guard:
-    if: github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || inputs.auto
     runs-on: ubuntu-latest
     outputs:
       go: ${{ steps.g.outputs.go }}
@@ -43,7 +47,7 @@ jobs:
 
   produce:
     needs: guard
-    if: always() && (github.event_name != 'schedule' || needs.guard.outputs.go == '1')
+    if: always() && ((github.event_name != 'schedule' && !inputs.auto) || needs.guard.outputs.go == '1')
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
