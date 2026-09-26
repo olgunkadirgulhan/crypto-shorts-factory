@@ -1,0 +1,81 @@
+{
+  "slot": "trending",
+  "style": "panel",
+  "coins": [
+    {
+      "id": "backpack",
+      "name": "Backpack",
+      "symbol": "BP",
+      "image": "https://coin-images.coingecko.com/coins/images/102171961/large/image_%285%29.png?1774269858"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 1.33,
+      "priceText": "1.330",
+      "change24hPct": -0.48,
+      "high24h": 1.41,
+      "low24h": 1.17,
+      "high24hText": "1.410",
+      "low24hText": "1.170",
+      "support": 1.33,
+      "resistance": 1.41,
+      "supportText": "1.330",
+      "resistanceText": "1.410",
+      "distToResistancePct": 6.02,
+      "distToSupportPct": 0,
+      "rangePositionPct": 67,
+      "rsi14": 54,
+      "rsiZone": "neutral",
+      "sma20": 1.3139999999999996,
+      "sma20Text": "1.314",
+      "aboveSma20": true,
+      "volatility24hPct": 1.61,
+      "volume24hUsd": 13127391,
+      "volume24hText": "13.13M",
+      "marketCapUsd": 331520466,
+      "marketCapText": "331.52M",
+      "marketCapRank": 138,
+      "trend": "range-bound"
+    }
+  ],
+  "script": {
+    "spokenHook": "Backpack is holding flat today while most of the crypto market slips.",
+    "hook": "Backpack Defies The Red",
+    "segmentLines": [
+      [
+        "The token sits near $1.33, dipping less than 1% over the past 24 hours.",
+        "It trades right at the 4-hour low with a neutral RSI of 54.",
+        "Over $13 million in volume moved today, keeping trading activity quiet at 4% turnover."
+      ]
+    ],
+    "takeaway": "Holding flat near the four-hour low",
+    "cta": "Will Backpack bounce from this 4-hour low? Share your take and subscribe for daily updates.",
+    "title": "Backpack Stays Flat at $1.33 Despite Market Pressure #Shorts",
+    "description": "Backpack slipped -0.48% to $1.330 over the last 24 hours. Daily volume reached $13.13M with the token sitting at its 4-hour low.\n\nMarket data: CoinGecko\n\nThis Short is market commentary built from public price data. It is not financial advice. Do your own research.\n\nWhale Market Pulse: where the big money moved in crypto today. New Shorts every day, weekly recap on Sundays and Wednesdays.",
+    "headline": null,
+    "tags": [
+      "backpack",
+      "bp",
+      "bp crypto",
+      "backpack token",
+      "crypto news",
+      "crypto market",
+      "altcoins",
+      "whale market pulse"
+    ]
+  },
+  "hashtags": [
+    "#Backpack",
+    "#crypto",
+    "#cryptonews",
+    "#trading",
+    "#Shorts"
+  ],
+  "videoId": "FLXhqJ9Ze9M",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1768,
+    "output_tokens": 303
+  }
+}
