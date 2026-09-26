@@ -1,0 +1,92 @@
+{
+  "slot": "open",
+  "style": "spotlight",
+  "coins": [
+    {
+      "id": "zcash",
+      "name": "Zcash",
+      "symbol": "ZEC",
+      "image": "https://coin-images.coingecko.com/coins/images/486/large/Brandmark-Yellow_%281%29.png?1785810558"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 1536.6,
+      "priceText": "1,537",
+      "change24hPct": -4.73,
+      "high24h": 1622.95,
+      "low24h": 1517.49,
+      "high24hText": "1,623",
+      "low24hText": "1,517",
+      "support": 1517.49,
+      "resistance": 1539.11,
+      "supportText": "1,517",
+      "resistanceText": "1,539",
+      "distToResistancePct": 0.16,
+      "distToSupportPct": 1.24,
+      "rangePositionPct": 18,
+      "rsi14": 45.4,
+      "rsiZone": "neutral",
+      "sma20": 1533.8919999999998,
+      "sma20Text": "1,534",
+      "aboveSma20": true,
+      "volatility24hPct": 0.48,
+      "volume24hUsd": 885904866,
+      "volume24hText": "885.9M",
+      "marketCapUsd": 26059915975,
+      "marketCapText": "26.06B",
+      "marketCapRank": 9,
+      "trend": "range-bound"
+    }
+  ],
+  "script": {
+    "spokenHook": "Zcash is making headlines today, but sellers just pushed it near the lows.",
+    "hook": "Zcash Slips Toward The Floor",
+    "segmentLines": [
+      [
+        "Zcash dropped nearly 5% down to about $1,537 over the last 24 hours.",
+        "The price sits just above the 24-hour low of $1,517, with RSI holding neutral at 45.",
+        "This slide comes as CoinDesk reports Bitcoin could soon adopt Zcash-style shielded privacy transfers."
+      ]
+    ],
+    "takeaway": "Trading right above the daily low despite the news",
+    "cta": "Is Zcash setting up for a rebound or more downside? Share your take and follow for more.",
+    "title": "Zcash Drops 4.73% to $1,537 Despite Privacy Buzz 👀 #Shorts",
+    "description": "Zcash slipped -4.73% to $1,537 over the last 24 hours, testing near its 24-hour low of $1,517. The dip comes alongside reports from CoinDesk about Bitcoin potentially adopting Zcash-style privacy.\n\nMarket data: CoinGecko\nNews: \"Bitcoin could soon get Zcash-style 'shielded' privacy without changing its rules\" (CoinDesk) https://www.coindesk.com/tech/2026/09/26/bitcoin-could-soon-get-zcash-style-shielded-privacy-without-changing-its-rules\n\nThis Short is market commentary built from public price data. It is not financial advice. Do your own research.\n\nWhale Market Pulse: where the big money moved in crypto today. New Shorts every day, weekly recap on Sundays and Wednesdays.",
+    "headline": {
+      "source": "CoinDesk",
+      "title": "Bitcoin could soon get Zcash-style 'shielded' privacy without changing its rules",
+      "link": "https://www.coindesk.com/tech/2026/09/26/bitcoin-could-soon-get-zcash-style-shielded-privacy-without-changing-its-rules",
+      "published": 1790395333000,
+      "age_hours": 7
+    },
+    "tags": [
+      "zcash",
+      "zec",
+      "zec price",
+      "zcash crypto",
+      "crypto market",
+      "crypto privacy",
+      "coindesk",
+      "altcoins",
+      "whale market pulse",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#Zcash",
+    "#ZEC",
+    "#crypto",
+    "#cryptonews",
+    "#trading",
+    "#Shorts",
+    "#Altcoins",
+    "#Bitcoin"
+  ],
+  "videoId": "7tbHAGekLao",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1874,
+    "output_tokens": 270
+  }
+}
