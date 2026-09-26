@@ -1,0 +1,85 @@
+{
+  "slot": "mover",
+  "style": "panel",
+  "coins": [
+    {
+      "id": "quant-network",
+      "name": "Quant",
+      "symbol": "QNT",
+      "image": "https://coin-images.coingecko.com/coins/images/3370/large/5ZOu7brX_400x400.jpg?1696504070"
+    }
+  ],
+  "metrics": [
+    {
+      "price": 106.26,
+      "priceText": "106.26",
+      "change24hPct": 14.18,
+      "high24h": 109.85,
+      "low24h": 92.82,
+      "high24hText": "109.85",
+      "low24hText": "92.82",
+      "support": 103.31,
+      "resistance": 109.85,
+      "supportText": "103.31",
+      "resistanceText": "109.85",
+      "distToResistancePct": 3.38,
+      "distToSupportPct": 2.78,
+      "rangePositionPct": 79,
+      "rsi14": 61.3,
+      "rsiZone": "neutral",
+      "sma20": 103.3395,
+      "sma20Text": "103.34",
+      "aboveSma20": true,
+      "volatility24hPct": 2.1,
+      "volume24hUsd": 57951111,
+      "volume24hText": "57.95M",
+      "marketCapUsd": 1546813715,
+      "marketCapText": "1.55B",
+      "marketCapRank": 60,
+      "trend": "strong uptrend"
+    }
+  ],
+  "script": {
+    "spokenHook": "Quant gained over 14% today, defying a falling crypto market.",
+    "hook": "Quant Defies The Market",
+    "segmentLines": [
+      [
+        "The price jumped over 14% to trade around $106 after starting near $93.",
+        "It now trades just 3% below the four-hour high of nearly $110.",
+        "Over $57 million traded while the broader crypto market sank almost 3%."
+      ]
+    ],
+    "takeaway": "Holding strong near the four-hour high",
+    "cta": "Is Quant primed to break $110 or pull back? Share your view below and follow for the next move.",
+    "title": "Quant Climbs 14% to $106 While Red Floods Crypto #Shorts",
+    "description": "Quant gained +14.18% to reach $106.26 today, trading near its 24-hour high of $109.85 despite the total crypto market cap falling -2.81%.\n\nMarket data: CoinGecko\n\nThis Short is market commentary built from public price data. It is not financial advice. Do your own research.\n\nWhale Market Pulse: where the big money moved in crypto today. New Shorts every day, weekly recap on Sundays and Wednesdays.",
+    "headline": null,
+    "tags": [
+      "quant",
+      "qnt",
+      "crypto",
+      "altcoins",
+      "crypto market",
+      "quant price",
+      "qnt analysis",
+      "whale market pulse",
+      "crypto news"
+    ]
+  },
+  "hashtags": [
+    "#Quant",
+    "#QNT",
+    "#crypto",
+    "#cryptonews",
+    "#trading",
+    "#Shorts",
+    "#QuantNetwork",
+    "#quantcrypto"
+  ],
+  "videoId": "paKhDw7iyhY",
+  "thumbnailSet": true,
+  "usage": {
+    "input_tokens": 1772,
+    "output_tokens": 312
+  }
+}
